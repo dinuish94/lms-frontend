@@ -9,12 +9,14 @@ import { TableListComponent } from './table-list/table-list.component';
 import { IconsComponent } from './icons/icons.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 
+import { AuthGuard } from './auth/auth.guard';
+
 const routes: Routes =[
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user',   component: UserProfileComponent },
-    { path: 'table-list',     component: TableListComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'notifications',  component: NotificationsComponent },
+    { path: 'dashboard',      component: DashboardComponent /*,canActivate:[AuthGuard]*/},
+    { path: 'user',   component: UserProfileComponent /*,canActivate:[AuthGuard]*/},
+    { path: 'table-list',     component: TableListComponent /*,canActivate:[AuthGuard]*/},
+    { path: 'icons',          component: IconsComponent /*,canActivate:[AuthGuard]*/},
+    { path: 'notifications',  component: NotificationsComponent /*,canActivate:[AuthGuard]*/},
     { path: '',          redirectTo: 'dashboard', pathMatch: 'full' }
 ];
 
