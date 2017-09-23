@@ -1,0 +1,25 @@
+[
+    {
+        "id": 1,
+        "role": "admin",
+        "permissions": [{ "path": "dashboard", "title": "Dashboard", "icon": "dashboard", "class": "" },
+            { "path": "user", "title": "Users", "icon": "person", "class": "" },
+            { "path": "table-list", "title": "Table List", "icon": "content_paste", "class": "" },
+            { "path": "typography", "title": "Typography", "icon": "library_books", "class": "" },
+            { "path": "icons", "title": "Icons", "icon": "bubble_chart", "class": "" },
+            { "path": "maps", "title": "Maps", "icon": "location_on", "class": "" },
+            { "path": "notifications", "title": "Notifications", "icon": "notifications", "class": "" }]
+    }, {
+        "id": 2,
+        "role": "teacher",
+        "permissions": [{ "path": "dashboard", "title": "Dashboard", "icon": "dashboard", "class": "" },
+        { "path": "user", "title": "Users", "icon": "person", "class": "" },
+        { "path": "table-list", "title": "Table List", "icon": "content_paste", "class": "" }]
+    }, {
+        "id": 3,
+        "role": "student",
+        "permissions": [
+            { "path": "notifications", "title": "Notifications", "icon": "notifications", "class": "" }]
+    }
+]
+
