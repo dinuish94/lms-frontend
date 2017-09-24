@@ -2,7 +2,7 @@
     {
         "id": 1,
         "role": "admin",
-        "permissions": [{ "path": "home", "title": "Home", "icon": "dashboard", "class": "" }]
+        "permissions": [{ "path": "home", "title": "Home", "icon": "home", "class": "" }]
     }, {
         "id": 2,
         "role": "teacher",
