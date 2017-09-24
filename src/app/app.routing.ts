@@ -8,14 +8,18 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { TableListComponent } from './table-list/table-list.component';
 import { IconsComponent } from './icons/icons.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { HomeComponent } from './home/home.component';
+
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes =[
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user',   component: UserProfileComponent },
-    { path: 'table-list',     component: TableListComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'notifications',  component: NotificationsComponent },
-    { path: '',          redirectTo: 'dashboard', pathMatch: 'full' }
+  { path: 'home',      component: HomeComponent /*,canActivate:[AuthGuard]*/},  
+    { path: 'dashboard',      component: DashboardComponent /*,canActivate:[AuthGuard]*/},
+    { path: 'user',   component: UserProfileComponent /*,canActivate:[AuthGuard]*/},
+    { path: 'table-list',     component: TableListComponent /*,canActivate:[AuthGuard]*/},
+    { path: 'icons',          component: IconsComponent /*,canActivate:[AuthGuard]*/},
+    { path: 'notifications',  component: NotificationsComponent /*,canActivate:[AuthGuard]*/},
+    { path: '',          redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
