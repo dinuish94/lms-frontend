@@ -6,14 +6,14 @@
     }, {
         "id": 2,
         "role": "teacher",
-        "permissions": [{ "path": "dashboard", "title": "Dashboard", "icon": "dashboard", "class": "" },
+        "permissions": [{ "path": "home", "title": "Home", "icon": "home", "class": "" },
         { "path": "user", "title": "Users", "icon": "person", "class": "" },
         { "path": "table-list", "title": "Table List", "icon": "content_paste", "class": "" }]
     }, {
         "id": 3,
         "role": "student",
         "permissions": [
-            { "path": "notifications", "title": "Notifications", "icon": "notifications", "class": "" }]
+            { "path": "home", "title": "Home", "icon": "home", "class": "" }]
     }
 ]
 
