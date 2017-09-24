@@ -1,0 +1,19 @@
+[
+    {
+        "id": 1,
+        "role": "admin",
+        "permissions": [{ "path": "home", "title": "Home", "icon": "home", "class": "" }]
+    }, {
+        "id": 2,
+        "role": "teacher",
+        "permissions": [{ "path": "home", "title": "Home", "icon": "home", "class": "" },
+        { "path": "user", "title": "Users", "icon": "person", "class": "" },
+        { "path": "table-list", "title": "Table List", "icon": "content_paste", "class": "" }]
+    }, {
+        "id": 3,
+        "role": "student",
+        "permissions": [
+            { "path": "home", "title": "Home", "icon": "home", "class": "" }]
+    }
+]
+
