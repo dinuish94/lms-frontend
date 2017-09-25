@@ -1,0 +1,99 @@
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header" data-background-color="blue">
+          <h4 class="title">Add New Quiz</h4>
+          <p class="category">Complete your profile</p>
+        </div>
+        <div class="card-content">
+          <form (ngSubmit)="addNewQuiz()">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group label-floating is-empty">
+                  <label class="control-label">{{course}}</label>
+                  <input type="text" class="form-control" disabled="">
+                  <span class="material-input"></span>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group label-floating is-empty">
+                  <label class="control-label">Quiz Name</label>
+                  <input type="text" class="form-control" [(ngModel)]="quiz.name" name="quizName">
+                  <span class="material-input"></span>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group label-floating is-empty">
+                  <label class="control-label">Quiz Date</label>
+                  <input type="text" class="form-control" name="quizName">
+                  <span class="material-input"></span>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group label-floating is-empty">
+                  <label class="control-label">Duration</label>
+                  <input type="text" class="form-control" name="quizName">
+                  <span class="material-input"></span>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-info pull-right" [routerLink]="['./questions']">Add Quiz</button>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4" *ngIf="showAnswersDiv==true">
+        <div class="card">
+          <div class="card-header" data-background-color="blue">
+            <h4 class="title">Add New Quiz</h4>
+            <p class="category">Complete your profile</p>
+          </div>
+          <div class="card-content">
+            <form>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group label-floating is-empty">
+                    <label class="control-label">{{course}}</label>
+                    <input type="text" class="form-control" disabled="">
+                    <span class="material-input"></span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group label-floating is-empty">
+                    <label class="control-label">Quiz Name</label>
+                    <input type="text" class="form-control" name="quizName">
+                    <span class="material-input"></span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group label-floating is-empty">
+                    <label class="control-label">Quiz Date</label>
+                    <input type="text" class="form-control" name="quizName">
+                    <span class="material-input"></span>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group label-floating is-empty">
+                    <label class="control-label">Duration</label>
+                    <input type="text" class="form-control" name="quizName">
+                    <span class="material-input"></span>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-info pull-right">Add Quiz</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+          <div class="col-md-12" *ngIf="showAnswersDiv==true">
+              <div class="form-group label-floating is-empty">
+                <label class="control-label">Duration</label>
+                <input type="text" class="form-control" name="quizName">
+                <span class="material-input"></span>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>

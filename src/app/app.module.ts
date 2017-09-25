@@ -15,6 +15,11 @@ import { TableListComponent } from './table-list/table-list.component';
 import { IconsComponent } from './icons/icons.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { HomeComponent } from './home/home.component';
+import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
+import { MyNewComponentComponent } from './my-new-component/my-new-component.component';
+import { TeacherCourseComponent } from './teacher-course/teacher-course.component';
+import { TeacherQuizComponent } from './teacher-quiz/teacher-quiz.component';
+import { QuizQuestionsComponent } from './quiz-questions/quiz-questions.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,11 @@ import { HomeComponent } from './home/home.component';
     IconsComponent,
     NotificationsComponent,
     HomeComponent,
+    TeacherDashboardComponent,
+    MyNewComponentComponent,
+    TeacherCourseComponent,
+    TeacherQuizComponent,
+    QuizQuestionsComponent,
 
   ],
   imports: [
