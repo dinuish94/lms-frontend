@@ -1,99 +1,68 @@
 <div class="main-content">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
       <div class="card">
         <div class="card-header" data-background-color="blue">
-          <h4 class="title">Add New Quiz</h4>
-          <p class="category">Complete your profile</p>
+          <h4 class="title">Add New Question to quiz</h4>
+          <p class="category">Quiz no: {{quizNo}}</p>
         </div>
         <div class="card-content">
-          <form (ngSubmit)="addNewQuiz()">
+          <form>
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group label-floating is-empty">
-                  <label class="control-label">{{course}}</label>
-                  <input type="text" class="form-control" disabled="">
-                  <span class="material-input"></span>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group label-floating is-empty">
-                  <label class="control-label">Quiz Name</label>
-                  <input type="text" class="form-control" [(ngModel)]="quiz.name" name="quizName">
-                  <span class="material-input"></span>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group label-floating is-empty">
-                  <label class="control-label">Quiz Date</label>
-                  <input type="text" class="form-control" name="quizName">
-                  <span class="material-input"></span>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group label-floating is-empty">
-                  <label class="control-label">Duration</label>
-                  <input type="text" class="form-control" name="quizName">
+                  <label class="control-label">Question</label>
+                  <input type="text" class="form-control" name="question" [(ngModel)]="question">
                   <span class="material-input"></span>
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-info pull-right" [routerLink]="['./questions']">Add Quiz</button>
+            <div class="row">
+              <div class="col-md-8">
+                <div class="form-group label-floating is-empty">
+                  <label class="control-label">Add Answer</label>
+                  <input type="text" class="form-control" name="answer" [(ngModel)]="answer">
+                  <span class="material-input"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group label-floating is-empty">
+                  <button class="btn btn-info btn-round" (click)="addAnswer()"><i class="material-icons">add</i><div class="ripple-container"></div></button>
+                </div>
+              </div>
+              <div class="tab-content">
+                <div class="tab-pane active" id="profile">
+                  <table class="table">
+                    <tbody>
+                      <tr *ngFor="let answer of answers;">
+                        <td>
+                        </td>
+                        <td>{{answer}}</td>
+                        <td class="td-actions text-right">
+                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Remove" (click)="removeAnswer(answer)">
+                            <i class="material-icons">close</i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group label-floating is-empty">
+                  <label class="control-label">Correct Answer</label>
+                  <input type="text" class="form-control" [(ngModel)]="quiz.correctAnswer" name="correctAnswer">
+                  <span class="material-input"></span>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-info pull-right" (click)="addQuiz()">Add Question</button>
             <div class="clearfix"></div>
           </form>
         </div>
       </div>
     </div>
-    <div class="col-md-4" *ngIf="showAnswersDiv==true">
-        <div class="card">
-          <div class="card-header" data-background-color="blue">
-            <h4 class="title">Add New Quiz</h4>
-            <p class="category">Complete your profile</p>
-          </div>
-          <div class="card-content">
-            <form>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group label-floating is-empty">
-                    <label class="control-label">{{course}}</label>
-                    <input type="text" class="form-control" disabled="">
-                    <span class="material-input"></span>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group label-floating is-empty">
-                    <label class="control-label">Quiz Name</label>
-                    <input type="text" class="form-control" name="quizName">
-                    <span class="material-input"></span>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group label-floating is-empty">
-                    <label class="control-label">Quiz Date</label>
-                    <input type="text" class="form-control" name="quizName">
-                    <span class="material-input"></span>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group label-floating is-empty">
-                    <label class="control-label">Duration</label>
-                    <input type="text" class="form-control" name="quizName">
-                    <span class="material-input"></span>
-                  </div>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-info pull-right">Add Quiz</button>
-              <div class="clearfix"></div>
-            </form>
-          </div>
-          <div class="col-md-12" *ngIf="showAnswersDiv==true">
-              <div class="form-group label-floating is-empty">
-                <label class="control-label">Duration</label>
-                <input type="text" class="form-control" name="quizName">
-                <span class="material-input"></span>
-              </div>
-            </div>
-        </div>
-      </div>
   </div>
 </div>

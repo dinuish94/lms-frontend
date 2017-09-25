@@ -26,8 +26,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'teacher-dashboard', component: TeacherDashboardComponent },
   { path: 'courses/:id', component: TeacherCourseComponent },
-  { path: 'quiz/:cId', component: TeacherQuizComponent },
-  { path: 'quiz/:cId/questions', component: QuizQuestionsComponent }
+  { path: 'courses/:cId/quiz/:qId', component: TeacherQuizComponent }
   
 ];
 

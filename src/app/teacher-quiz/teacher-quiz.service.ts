@@ -16,8 +16,12 @@ export class TeacherQuizService {
     return this._http.post(this._addquizurl,quiz)
       .map((response: Response) => <Quiz>response.json())
       .do(data => console.log(JSON.stringify(data)));
-    // this.courses.push(new Course({name:'SET'}))
-    // return this.courses;
+  }
+
+  addQuestionsToQuiz(quiz: Quiz): Observable<Quiz> {
+    return this._http.post(this._addquizurl+quiz.quizId+'/questions/',quiz)
+      .map((response: Response) => <Quiz>response.json())
+      .do(data => console.log(JSON.stringify(data)));
   }
 
 }

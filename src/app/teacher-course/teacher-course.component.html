@@ -30,23 +30,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="col-lg-4 col-md-6 col-sm-6">
-      <a [routerLink]="['/quiz']">
-        <div class="card card-stats">
-          <div class="card-header" data-background-color="red">
-            <i class="material-icons">content_copy</i>
-          </div>
-          <div class="card-content">
-            <h3 class="title">Create quiz
-            </h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-            </div>
-          </div>
-        </div>
-      </a>
-    </div> -->
     <div class="col-md-4">
       <div class="card">
         <div class="card-header" data-background-color="blue">
@@ -57,20 +40,34 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group label-floating is-empty">
-                  <label class="control-label">{{cId}}</label>
+                  <label class="control-label">Course ID: {{cId}}</label>
                   <input type="text" class="form-control" disabled="">
-                  <span class="material-input"></span></div>
+                  <span class="material-input"></span>
+                </div>
               </div>
-            </div>
-            <div class="row">
               <div class="col-md-12">
                 <div class="form-group label-floating is-empty">
                   <label class="control-label">Quiz Name</label>
-                  <input type="text" class="form-control">
-                  <span class="material-input"></span></div>
+                  <input type="text" class="form-control" [(ngModel)]="quiz.name" name="quizName">
+                  <span class="material-input"></span>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group label-floating is-empty">
+                  <label class="control-label">Quiz Date</label>
+                  <input type="text" class="form-control" name="quizName">
+                  <span class="material-input"></span>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group label-floating is-empty">
+                  <label class="control-label">Duration</label>
+                  <input type="text" class="form-control" name="quizName">
+                  <span class="material-input"></span>
+                </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-info pull-right" [routerLink]="['/quiz/',cId]">Save and Add Questions</button>
+            <button type="submit" class="btn btn-info pull-right" (click)="addNewQuiz()">Add Quiz</button>
             <div class="clearfix"></div>
           </form>
         </div>
