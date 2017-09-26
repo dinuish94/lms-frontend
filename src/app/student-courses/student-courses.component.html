@@ -23,6 +23,7 @@
                                 <th>Title</th>
                                 <th>Details</th>
                                 <th>Enroll</th>
+                                <th>UnEnroll</th>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let course of courses">
@@ -30,6 +31,7 @@
                                     <td>{{course.title}}</td>
                                     <td><button class="btn btn-success" (click)="getCourse(course.cId)" data-toggle="modal" data-target="#myModal">View Details</button></td>
                                     <td><button class="btn btn-warning" (click)="enrollStudent(course.cId)">Enroll</button></td>
+                                    <td><button class="btn btn-danger" (click)="unEnrollStudent(course.cId)">Un-Enroll</button></td>
                                 </tr>
                             </tbody>
                         </table>

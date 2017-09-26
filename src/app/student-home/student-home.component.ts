@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../services/student/student.service';
 import { Http } from '@angular/http';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-student-home',
@@ -21,6 +22,10 @@ export class StudentHomeComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  test(){
+    swal('Oops...', 'Something went wrong!', 'error');
   }
 
   
