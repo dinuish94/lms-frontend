@@ -27,6 +27,7 @@ import { StudentFeedbackComponent } from './student-feedback/student-feedback.co
 import { StudentEnrolledCoursesComponent } from './student-enrolled-courses/student-enrolled-courses.component';
 import { StudentCoursesComponent } from './student-courses/student-courses.component';
 import { StudentHomeComponent } from './student-home/student-home.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { StudentHomeComponent } from './student-home/student-home.component';
     StudentEnrolledCoursesComponent,
     StudentCoursesComponent,
     StudentHomeComponent,
+    LoginComponent,
 
 
   ],

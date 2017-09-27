@@ -14,14 +14,12 @@ export class StudentHomeComponent implements OnInit {
   students : Student[];
 
   constructor(private studentService:StudentService) { 
-    studentService.getStudents().subscribe(students=>{
-      console.log(students);
-    });
-
-    localStorage.setItem('studentId', '1');
+    
   }
 
   ngOnInit() {
+    let userObj = localStorage.getItem("authUser");
+    let user = JSON.parse(userObj);
   }
 
   test(){
