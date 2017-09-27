@@ -13,7 +13,6 @@ import { HomeComponent } from './home/home.component';
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { TeacherCourseComponent } from './teacher-course/teacher-course.component';
 import { TeacherQuizComponent } from './teacher-quiz/teacher-quiz.component';
-import { QuizQuestionsComponent } from './quiz-questions/quiz-questions.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -27,30 +26,17 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'teacher-dashboard', component: TeacherDashboardComponent },
   { path: 'courses/:id', component: TeacherCourseComponent },
-  { path: 'courses/:cId/quiz/:qId', component: TeacherQuizComponent }
-  
+  { path: 'courses/:cId/quiz/:qId', component: TeacherQuizComponent },
+  { path: 'student-home', component: StudentHomeComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'student-enrolled-courses', component: StudentEnrolledCoursesComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'student-courses', component: StudentCoursesComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'student-feedback', component: StudentFeedbackComponent /*,canActivate:[AuthGuard]*/}
+]
 
 import { StudentHomeComponent } from './student-home/student-home.component';
 import { StudentEnrolledCoursesComponent } from './student-enrolled-courses/student-enrolled-courses.component';
 import { StudentCoursesComponent } from './student-courses/student-courses.component';
 import { StudentFeedbackComponent } from './student-feedback/student-feedback.component';
-
-import { AuthGuard } from './auth/auth.guard';
-
-const routes: Routes =[
-  { path: 'home',      component: HomeComponent /*,canActivate:[AuthGuard]*/},  
-    { path: 'dashboard',      component: DashboardComponent /*,canActivate:[AuthGuard]*/},
-    { path: 'user',   component: UserProfileComponent /*,canActivate:[AuthGuard]*/},
-    { path: 'table-list',     component: TableListComponent /*,canActivate:[AuthGuard]*/},
-    { path: 'icons',          component: IconsComponent /*,canActivate:[AuthGuard]*/},
-    { path: 'notifications',  component: NotificationsComponent /*,canActivate:[AuthGuard]*/},
-    { path: '',          redirectTo: 'home', pathMatch: 'full' },
-    { path: 'student-home', component: StudentHomeComponent /*,canActivate:[AuthGuard]*/},
-    { path: 'student-enrolled-courses', component: StudentEnrolledCoursesComponent /*,canActivate:[AuthGuard]*/},
-    { path: 'student-courses', component: StudentCoursesComponent /*,canActivate:[AuthGuard]*/},
-    { path: 'student-feedback', component: StudentFeedbackComponent /*,canActivate:[AuthGuard]*/}
-
-];
 
 @NgModule({
   imports: [

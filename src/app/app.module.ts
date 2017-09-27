@@ -17,10 +17,10 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { HomeComponent } from './home/home.component';
 
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
-import { MyNewComponentComponent } from './my-new-component/my-new-component.component';
+//import { MyNewComponentComponent } from './my-new-component/my-new-component.component';
 import { TeacherCourseComponent } from './teacher-course/teacher-course.component';
 import { TeacherQuizComponent } from './teacher-quiz/teacher-quiz.component';
-import { QuizQuestionsComponent } from './quiz-questions/quiz-questions.component';
+//import { QuizQuestionsComponent } from './quiz-questions/quiz-questions.component';
 
 import { StudentComponent } from './student/student.component';
 import { StudentFeedbackComponent } from './student-feedback/student-feedback.component';
@@ -40,10 +40,10 @@ import { StudentHomeComponent } from './student-home/student-home.component';
     HomeComponent,
 
     TeacherDashboardComponent,
-    MyNewComponentComponent,
+    //MyNewComponentComponent,
     TeacherCourseComponent,
     TeacherQuizComponent,
-    QuizQuestionsComponent,
+   // QuizQuestionsComponent,
 
     StudentComponent,
     StudentFeedbackComponent,
