@@ -9,6 +9,10 @@ import { TableListComponent } from './table-list/table-list.component';
 import { IconsComponent } from './icons/icons.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { HomeComponent } from './home/home.component';
+import { StudentHomeComponent } from './student-home/student-home.component';
+import { StudentEnrolledCoursesComponent } from './student-enrolled-courses/student-enrolled-courses.component';
+import { StudentCoursesComponent } from './student-courses/student-courses.component';
+import { StudentFeedbackComponent } from './student-feedback/student-feedback.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -19,7 +23,11 @@ const routes: Routes =[
     { path: 'table-list',     component: TableListComponent /*,canActivate:[AuthGuard]*/},
     { path: 'icons',          component: IconsComponent /*,canActivate:[AuthGuard]*/},
     { path: 'notifications',  component: NotificationsComponent /*,canActivate:[AuthGuard]*/},
-    { path: '',          redirectTo: 'home', pathMatch: 'full' }
+    { path: '',          redirectTo: 'home', pathMatch: 'full' },
+    { path: 'student-home', component: StudentHomeComponent /*,canActivate:[AuthGuard]*/},
+    { path: 'student-enrolled-courses', component: StudentEnrolledCoursesComponent /*,canActivate:[AuthGuard]*/},
+    { path: 'student-courses', component: StudentCoursesComponent /*,canActivate:[AuthGuard]*/},
+    { path: 'student-feedback', component: StudentFeedbackComponent /*,canActivate:[AuthGuard]*/}
 ];
 
 @NgModule({

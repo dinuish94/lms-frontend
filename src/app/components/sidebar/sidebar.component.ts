@@ -34,7 +34,7 @@ export class SidebarComponent implements OnInit {
     constructor(private http: Http) { }
 
     ngOnInit() {
-        let role = 1;
+        let role = 3;
         this.getJSON().subscribe(data => {
              this.permissions=data;
              this.permissions.forEach(permission => {
