@@ -10,7 +10,7 @@ export class CourseService {
   }
 
   getCourses(){
-    return this.http.get('http://localhost:8080/courses')
+    return this.http.get('http://localhost:8080/courses/')
     .map(res => res.json());
   }
 

@@ -10,7 +10,7 @@ export class StudentService {
   }
 
   getStudents(){
-    return this.http.get('https://jsonplaceholder.typicode.com/posts')
+    return this.http.get('http://localhost:8080/courses/')
     .map(res => res.json());
   }
 
