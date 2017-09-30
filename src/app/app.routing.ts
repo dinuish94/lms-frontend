@@ -13,7 +13,6 @@ import { HomeComponent } from './home/home.component';
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { TeacherCourseComponent } from './teacher-course/teacher-course.component';
 import { TeacherQuizComponent } from './teacher-quiz/teacher-quiz.component';
-import { QuizQuestionsComponent } from './quiz-questions/quiz-questions.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
