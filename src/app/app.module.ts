@@ -15,11 +15,19 @@ import { TableListComponent } from './table-list/table-list.component';
 import { IconsComponent } from './icons/icons.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { HomeComponent } from './home/home.component';
+
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { TeacherCourseComponent } from './teacher-course/teacher-course.component';
 import { TeacherQuizComponent } from './teacher-quiz/teacher-quiz.component';
 import { EditQuestionModalComponent } from './edit-question-modal/edit-question-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { StudentComponent } from './student/student.component';
+import { StudentFeedbackComponent } from './student-feedback/student-feedback.component';
+import { StudentEnrolledCoursesComponent } from './student-enrolled-courses/student-enrolled-courses.component';
+import { StudentCoursesComponent } from './student-courses/student-courses.component';
+import { StudentHomeComponent } from './student-home/student-home.component';
+
 
 @NgModule({
   declarations: [
@@ -30,10 +38,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     IconsComponent,
     NotificationsComponent,
     HomeComponent,
+
     TeacherDashboardComponent,
     TeacherCourseComponent,
     TeacherQuizComponent,
     EditQuestionModalComponent,
+
+    StudentComponent,
+    StudentFeedbackComponent,
+    StudentEnrolledCoursesComponent,
+    StudentCoursesComponent,
+    StudentHomeComponent,
+
 
   ],
   imports: [

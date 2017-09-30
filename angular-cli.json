@@ -19,7 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "./assets/sass/material-dashboard.scss"
+        "./assets/sass/material-dashboard.scss",
+        "../node_modules/sweetalert2/dist/sweetalert2.css"
       ],
       "scripts": [
           "../node_modules/jquery/dist/jquery.js",
@@ -28,7 +29,8 @@
           "../node_modules/arrive/src/arrive.js",
           "../node_modules/moment/moment.js",
           "../node_modules/bootstrap-notify/bootstrap-notify.js",
-          "../node_modules/chartist/dist/chartist.js"
+          "../node_modules/chartist/dist/chartist.js",
+          "../node_modules/sweetalert2/dist/sweetalert2.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
