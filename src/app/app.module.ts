@@ -17,17 +17,12 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { HomeComponent } from './home/home.component';
 
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
-<<<<<<< HEAD
-//import { MyNewComponentComponent } from './my-new-component/my-new-component.component';
-import { TeacherCourseComponent } from './teacher-course/teacher-course.component';
-import { TeacherQuizComponent } from './teacher-quiz/teacher-quiz.component';
-//import { QuizQuestionsComponent } from './quiz-questions/quiz-questions.component';
-=======
+
 import { TeacherCourseComponent } from './teacher-course/teacher-course.component';
 import { TeacherQuizComponent } from './teacher-quiz/teacher-quiz.component';
 import { EditQuestionModalComponent } from './edit-question-modal/edit-question-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
->>>>>>> master
+
 
 import { StudentComponent } from './student/student.component';
 import { StudentFeedbackComponent } from './student-feedback/student-feedback.component';
@@ -48,16 +43,16 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
 
     TeacherDashboardComponent,
-<<<<<<< HEAD
+
     //MyNewComponentComponent,
     TeacherCourseComponent,
     TeacherQuizComponent,
    // QuizQuestionsComponent,
-=======
+
     TeacherCourseComponent,
     TeacherQuizComponent,
     EditQuestionModalComponent,
->>>>>>> master
+
 
     StudentComponent,
     StudentFeedbackComponent,
