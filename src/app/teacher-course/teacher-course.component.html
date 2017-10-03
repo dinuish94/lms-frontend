@@ -25,11 +25,23 @@
           </h3>
         </div>
         <div class="card-footer">
-          <div class="stats">
+          <div>
+              <form>
+                    <div class="col-md-12">
+                      <div class="form-group label-floating is-empty">
+                        <label class="control-label">Course ID: {{cId}}</label>
+                        <input type="text" class="form-control">
+                        <span class="material-input"></span>
+                      </div>
+                  </div>
+                  <button type="submit" class="btn btn-info pull-right" (click)="addNewQuiz()">Add Quiz</button>
+                  <div class="clearfix"></div>
+                </form>
           </div>
         </div>
       </div>
     </div>
+
     <div class="col-md-4">
       <div class="card">
         <div class="card-header" data-background-color="blue">
@@ -45,6 +57,8 @@
                   <span class="material-input"></span>
                 </div>
               </div>
+            </div>
+            <div class="row">
               <div class="col-md-12">
                 <div class="form-group label-floating is-empty">
                   <label class="control-label">Quiz Name</label>
@@ -52,17 +66,21 @@
                   <span class="material-input"></span>
                 </div>
               </div>
+            </div>
+            <div class="row">
               <div class="col-md-12">
                 <div class="form-group label-floating is-empty">
                   <label class="control-label">Quiz Date</label>
-                  <input type="text" class="form-control" name="quizName">
+                  <input type="text" class="form-control" name="quizDate">
                   <span class="material-input"></span>
                 </div>
               </div>
+            </div>
+            <div class="row">
               <div class="col-md-12">
                 <div class="form-group label-floating is-empty">
                   <label class="control-label">Duration</label>
-                  <input type="text" class="form-control" name="quizName">
+                  <input type="text" class="form-control" name="quizDuration">
                   <span class="material-input"></span>
                 </div>
               </div>
@@ -74,3 +92,64 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-12">
+      <div class="card">
+        <div class="card-header" data-background-color="green">
+          <h4 class="title">Assignments</h4>
+          <p class="category">Existing assignments for this module</p>
+        </div>
+        <div class="card-content table-responsive">
+          <table class="table table-hover">
+            <thead class="text-success">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Salary</th>
+                <th>Country</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Dakota Rice</td>
+                <td>$36,738</td>
+                <td>Niger</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+      <div class="card">
+        <div class="card-header" data-background-color="blue">
+          <h4 class="title">Quizzes</h4>
+          <p class="category">Existing quizzes for this course</p>
+        </div>
+        <div class="card-content table-responsive">
+          <table class="table table-hover">
+            <thead class="text-info">
+              <tr>
+                <th>Quiz ID</th>
+                <th>Quiz Name</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let quiz of quizzes">
+                <td>{{quiz.qId}}</td>
+                <td>{{quiz.name}}</td>
+                <td>
+                  <button type="button" rel="tooltip" title="" class="btn btn-info btn-simple btn-lg" data-original-title="Edit Task" [routerLink]="['./quiz/',quiz.qId]">
+                    <i class="material-icons">launch</i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

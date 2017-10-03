@@ -10,7 +10,11 @@ export class StudentService {
   }
 
   getStudents(){
+<<<<<<< HEAD
     return this.http.get('http://localhost:8080/students')
+=======
+    return this.http.get('http://localhost:8080/courses/')
+>>>>>>> master
     .map(res => res.json());
   }
 

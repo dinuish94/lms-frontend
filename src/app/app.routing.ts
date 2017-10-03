@@ -14,12 +14,12 @@ import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard
 import { TeacherCourseComponent } from './teacher-course/teacher-course.component';
 import { TeacherQuizComponent } from './teacher-quiz/teacher-quiz.component';
 
-
 import { StudentHomeComponent } from './student-home/student-home.component';
 import { StudentEnrolledCoursesComponent } from './student-enrolled-courses/student-enrolled-courses.component';
 import { StudentCoursesComponent } from './student-courses/student-courses.component';
 import { StudentFeedbackComponent } from './student-feedback/student-feedback.component';
 import { LoginComponent } from './login/login.component';
+
 
 import { AuthGuard } from './auth/auth.guard';
 
