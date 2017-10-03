@@ -10,7 +10,7 @@ export class StudentService {
   }
 
   getStudents(){
-    return this.http.get('https://jsonplaceholder.typicode.com/posts')
+    return this.http.get('http://localhost:8080/students')
     .map(res => res.json());
   }
 
@@ -30,6 +30,12 @@ export class StudentService {
 
     return this.http.delete('http://localhost:8080/students/'+sId+'/courses/'+cId)
     .map(res => res);
+  }
+
+  
+  getStudent(studentId){
+    return this.http.get('http://localhost:8080/students/'+studentId)
+    .map(res => res.json());
   }
 
 }

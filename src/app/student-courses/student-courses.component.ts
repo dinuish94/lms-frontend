@@ -92,11 +92,19 @@ export class StudentCoursesComponent implements OnInit {
   ngOnInit() {
    
     this.getCourses();
+    this.getStudent();
+  }
+
+  getStudent(){
+    this.studentService.getStudent(this.studentId).subscribe(student=>{
+      console.log(student.courses);
+
+    });
   }
 
   getCourses(){
     this.courseService.getCourses().subscribe(courses=>{
-      console.log(courses);
+      //console.log(courses);
       this.courses = courses;
       this.tempCourses = courses;
     });

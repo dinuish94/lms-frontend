@@ -38,7 +38,7 @@ const routes: Routes = [
   { path: 'student-enrolled-courses', component: StudentEnrolledCoursesComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-courses', component: StudentCoursesComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-feedback', component: StudentFeedbackComponent /*,canActivate:[AuthGuard]*/},
-  { path: 'login', component: LoginComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'login', component: LoginComponent /*,canActivate:[AuthGuard]*/}
 ]
 
 
