@@ -7,7 +7,7 @@ export class Quiz {
     question: String;
 
     constructor(values: Object = {}) {
-        Object.assign(this, values);
+        (<any>Object).assign(this, values);
     }
 
 }
