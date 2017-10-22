@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
+
 import { RouterModule } from '@angular/router';
 import { DatepickerModule } from 'angular2-material-datepicker';
 
@@ -28,7 +30,9 @@ import { StudentFeedbackComponent } from './student-feedback/student-feedback.co
 import { StudentEnrolledCoursesComponent } from './student-enrolled-courses/student-enrolled-courses.component';
 import { StudentCoursesComponent } from './student-courses/student-courses.component';
 import { StudentHomeComponent } from './student-home/student-home.component';
+import { StudentQuizComponent } from './student-quiz/student-quiz.component';
 
+import { QuizService } from './services/quiz/quiz.service';
 
 @NgModule({
   declarations: [
@@ -50,6 +54,7 @@ import { StudentHomeComponent } from './student-home/student-home.component';
     StudentEnrolledCoursesComponent,
     StudentCoursesComponent,
     StudentHomeComponent,
+    StudentQuizComponent,
 
 
   ],
@@ -61,9 +66,12 @@ import { StudentHomeComponent } from './student-home/student-home.component';
     BrowserAnimationsModule,
     RouterModule,
     AppRoutingModule,
-    DatepickerModule
+    DatepickerModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    QuizService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,7 +10,7 @@ export class Quiz {
     active:boolean;
 
     constructor(values: Object = {}) {
-        Object.assign(this, values);
+        (<any>Object).assign(this, values);
     }
 
 }
