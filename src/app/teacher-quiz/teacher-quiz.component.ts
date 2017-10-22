@@ -35,6 +35,7 @@ export class TeacherQuizComponent implements OnInit {
     this.quiz = new Quiz();
     this.getQuestions();
     this.addQuestion = true;
+    this.getQuizById();
   }
 
   addAnswer() {
@@ -52,7 +53,7 @@ export class TeacherQuizComponent implements OnInit {
     if(this.addQuestion){
       this.quiz.answers = this.answers;
       this.quiz.qId = this.quizNo;
-      this.quiz.question = this.question
+      // this.quiz.question = this.question
       this._teacherQuizService.addQuestionsToQuiz(this.quiz).subscribe(quiz => {
   
         this.getQuestions();
@@ -63,13 +64,12 @@ export class TeacherQuizComponent implements OnInit {
         this.addQuestion = true;
         this.getQuestions();
       })
-
-      this.answers = [];
-      this.quiz.correctAnswer = "";
-      this.quiz.name = "";
-      this.question = "";
-      this.answer = "";
     }
+    this.answers = [];
+    this.quiz.correctAnswer = "";
+    this.quiz.name = "";
+    this.question = "";
+    this.answer = "";
     
   }
 
@@ -89,14 +89,14 @@ export class TeacherQuizComponent implements OnInit {
     this.getQuestion(queId);
     this.quiz.answers = this.answers;
     this.quiz.qId = this.quizNo;
-    this.quiz.question = this.question;
+    // this.quiz.question = this.question;
     this.addQuestion = false;
     this.questionId = queId;
   }
 
   getQuestion(queId: number) {
     this._teacherQuizService.getQuestionById(this.quizNo, queId).subscribe(data => {
-      this.question = data.question;
+      // this.question = data.question;
       this.answers = data.answers;
       this.quiz = data;
     })
@@ -104,6 +104,23 @@ export class TeacherQuizComponent implements OnInit {
 
   editAnswer(answer: String) {
     this.answer = answer;
+  }
+
+  getQuizById() {
+    this._teacherQuizService.getQuizById(this.quizNo).subscribe(data => {
+      console.log(JSON.stringify(data)+"|||||||||||")
+      this.quiz.name = data.name;
+      this.quiz.date = data.date;
+      this.quiz.duration = data.duration;
+      this.questions = data.questions;
+      this.quiz.active = data.active;
+    })
+  }
+
+  markAsActive(){
+    this._teacherQuizService.markQuizAsActive(this.quizNo).subscribe(data => {
+      this.getQuizById();
+    })
   }
 
 

@@ -1,13 +1,21 @@
+import { Question } from './question.model';
 export class Quiz {
     course: number;
-    name: string = '';
+    name: string;
     qId:number;
     answers: String[];
     correctAnswer: String;
-    question: String;
+    question: Question[];
+    duration: number;
+    date: Date;
+    active:boolean;
 
     constructor(values: Object = {}) {
-        (<any>Object).assign(this, values);
+        (Object).assign(this, values);
+    }
+
+    printQuestions() {
+        console.log(this.question);
     }
 
 }
