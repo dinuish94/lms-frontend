@@ -7,6 +7,7 @@ import { QuizService } from '../services/quiz/quiz.service';
   styleUrls: ['./student-quiz.component.css']
 })
 export class StudentQuizComponent implements OnInit {
+  quiz: any;
   question: any = {
     question: 'R+L= ?',
     answers: [
@@ -21,7 +22,8 @@ export class StudentQuizComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._quizService.get();
+    this.quiz = this._quizService.get();
+    console.log(this.quiz);
   }
 
 }

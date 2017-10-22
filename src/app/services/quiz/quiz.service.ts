@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { generateQuizUrl } from '../../config/constants';
 import { Quiz } from '../../models/quiz.model';
 import { AddedQuiz } from '../../models/addedQuiz.model';
@@ -11,8 +11,12 @@ export class QuizService {
   }
 
   get() {
-    this.http.get<AddedQuiz[]>('/api/items').subscribe(data => {
+    let header = new HttpHeaders({'Access-Control-Allow-Origin':'*'});
+    console.log(header);
+    this.http.get<AddedQuiz[]>(generateQuizUrl(),{headers: header}).subscribe(data => {
       return data;
+    },error => {
+      console.log(error);
     });
   }
 
