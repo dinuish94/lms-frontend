@@ -31,9 +31,11 @@ import { StudentEnrolledCoursesComponent } from './student-enrolled-courses/stud
 import { StudentCoursesComponent } from './student-courses/student-courses.component';
 import { StudentHomeComponent } from './student-home/student-home.component';
 import { StudentQuizComponent } from './student-quiz/student-quiz.component';
+import { TeacherAssignmentsComponent } from './teacher-assignments/teacher-assignments.component';
 
 import { QuizService } from './services/quiz/quiz.service';
-import { TeacherAssignmentsComponent } from './teacher-assignments/teacher-assignments.component';
+import { CourseService } from './services/course/course.service';
+import { StudentService } from './services/student/student.service';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { TeacherAssignmentsComponent } from './teacher-assignments/teacher-assig
     HttpClientModule
   ],
   providers: [
-    QuizService
+    QuizService,
+    CourseService,
+    StudentService
   ],
   bootstrap: [AppComponent]
 })
