@@ -18,6 +18,8 @@ import { StudentEnrolledCoursesComponent } from './student-enrolled-courses/stud
 import { StudentCoursesComponent } from './student-courses/student-courses.component';
 import { StudentFeedbackComponent } from './student-feedback/student-feedback.component';
 
+import { StudentQuizComponent } from './student-quiz/student-quiz.component';
+
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
@@ -34,7 +36,8 @@ const routes: Routes = [
   { path: 'student-home', component: StudentHomeComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-enrolled-courses', component: StudentEnrolledCoursesComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-courses', component: StudentCoursesComponent /*,canActivate:[AuthGuard]*/},
-  { path: 'student-feedback', component: StudentFeedbackComponent /*,canActivate:[AuthGuard]*/}
+  { path: 'student-feedback', component: StudentFeedbackComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'student-quiz', component: StudentQuizComponent /*,canActivate:[AuthGuard]*/}
 
 ];
 
