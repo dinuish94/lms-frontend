@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { RouterModule } from '@angular/router';
 import { DatepickerModule } from 'angular2-material-datepicker';
@@ -33,6 +33,7 @@ import { StudentHomeComponent } from './student-home/student-home.component';
 import { StudentQuizComponent } from './student-quiz/student-quiz.component';
 
 import { QuizService } from './services/quiz/quiz.service';
+import { TeacherAssignmentsComponent } from './teacher-assignments/teacher-assignments.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { QuizService } from './services/quiz/quiz.service';
     StudentCoursesComponent,
     StudentHomeComponent,
     StudentQuizComponent,
+    TeacherAssignmentsComponent,
 
 
   ],
