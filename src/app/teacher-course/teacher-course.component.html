@@ -30,11 +30,48 @@
                     <div class="col-md-12">
                       <div class="form-group label-floating is-empty">
                         <label class="control-label">Course ID: {{cId}}</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" disabled>
                         <span class="material-input"></span>
                       </div>
                   </div>
-                  <button type="submit" class="btn btn-info pull-right" (click)="addNewQuiz()">Add Quiz</button>
+                  <div class="col-md-12">
+                      <div class="form-group label-floating is-empty">
+                        <label class="control-label">Assignment Name:</label>
+                        <input type="text" class="form-control" [(ngModel)]="assignment.name" name="assignName">
+                        <span class="material-input"></span>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="form-group label-floating is-empty">
+                        <label class="control-label">Assignment Description:</label>
+                        <input type="text" class="form-control" [(ngModel)]="assignment.description" name="description">
+                        <span class="material-input"></span>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="form-group label-floating is-empty">
+                        <label class="control-label">Start Date:</label>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="form-group label-floating is-empty">
+                        <material-datepicker [(date)]="assignment.startDate"></material-datepicker>
+                        <input type="time" [(ngModel)]="assignment.startTime" name="assignmentStartTime">
+                      </div>
+                  </div>
+                  
+                  <div class="col-md-12">
+                      <div class="form-group label-floating is-empty">
+                        <label class="control-label">End Date:</label>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group label-floating is-empty">
+                      <material-datepicker [(date)]="assignment.endDate"></material-datepicker>
+                      <input type="time" [(ngModel)]="assignment.endTime" name="assignmentEndTime">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-info pull-right" (click)="addNewAssignment()">Add Quiz</button>
                   <div class="clearfix"></div>
                 </form>
           </div>
@@ -105,16 +142,18 @@
               <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Salary</th>
-                <th>Country</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>End Date</th>                
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Dakota Rice</td>
-                <td>$36,738</td>
-                <td>Niger</td>
+              <tr *ngFor="let assignment of assignments">
+                <td>{{assignment.assignId}}</td>
+                <td>{{assignment.name}}</td>
+                <td>{{assignment.description}}</td>
+                <td>{{assignment.startDate | date}}</td>
+                <td>{{assignment.endDate | date}}</td>                
               </tr>
             </tbody>
           </table>
