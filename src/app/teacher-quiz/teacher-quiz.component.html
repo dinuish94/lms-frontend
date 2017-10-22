@@ -1,5 +1,86 @@
 <div class="main-content">
   <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header" data-background-color="blue">
+          <h4 class="title">Quiz Details</h4>
+          <p class="category">Quiz no: {{quizNo}}</p>
+        </div>
+        <div class="card-content">
+          <p class="category">Quiz Name</p>
+          <h4 class="title">{{quiz.name}}</h4>
+        </div>
+        <div class="card-content">
+          <p class="category">Date</p>
+          <h4 class="title">{{quiz.date | date}}</h4>
+        </div>
+        <div class="card-content">
+          <p class="category">Duration</p>
+          <h4 class="title">{{quiz.duration}} hours</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-header" data-background-color="orange">
+          <i class="material-icons">help</i>
+        </div>
+        <div class="card-content">
+          <p class="category">Questions for this quiz</p>
+          <h3 class="title" *ngIf="questions.length==0">0
+            <small>questions</small>
+          </h3>
+          <h3 class="title" *ngIf="questions.length==1">1
+            <small>question</small>
+          </h3>
+          <h3 class="title" *ngIf="questions.length>1">{{questions?.length}}
+            <small>questions</small>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6" *ngIf="quiz.active">
+      <div class="card card-stats">
+        <div class="card-header" data-background-color="green">
+          <i class="material-icons">done</i>
+        </div>
+        <div class="card-content">
+          <p class="category">Quiz is</p>
+          <h3 class="title">Active
+          </h3>
+          <h3 class="title" *ngIf="questions.length==1">1
+            <small>question</small>
+          </h3>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <a (click)="markAsActive()"><i class="material-icons">done</i> Mark quiz as inactive</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6" *ngIf="!quiz.active">
+      <div class="card card-stats">
+        <div class="card-header" data-background-color="red">
+          <i class="material-icons">done</i>
+        </div>
+        <div class="card-content">
+          <p class="category">Quiz is</p>
+          <h3 class="title">Inactive
+          </h3>
+          <h3 class="title" *ngIf="questions.length==1">1
+            <small>question</small>
+          </h3>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <a (click)="markAsActive()"><i class="material-icons">done</i> Activate quiz</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header" data-background-color="blue">
@@ -76,7 +157,7 @@
         </div>
         <div class="card-content table-responsive">
           <table class="table">
-            <thead class="text-primary">
+            <thead class="text-success">
               <tr>
                 <th>Questions</th>
                 <th>Answers</th>
@@ -101,10 +182,6 @@
               </tr>
             </tbody>
           </table>
-          <app-edit-question-modal [(visible)]="showDialog">
-              <h1>Hello World</h1>
-              <button (click)="showDialog = !showDialog" class="btn">Close</button>
-            </app-edit-question-modal>
         </div>
       </div>
     </div>

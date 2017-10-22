@@ -22,12 +22,12 @@ export class TeacherCourseComponent implements OnInit {
 
   ngOnInit() {
     this.cId = this._route.snapshot.params['id'];
-    console.log(JSON.stringify(this.quiz)+")))))))))))))))))")
     this.getAllQuizzes();
   }
 
   addNewQuiz () {
     this.quiz.course = this.cId;
+    console.log(JSON.stringify(this.quiz));
     this._teacherQuizService.addNewQuiz(this.quiz).subscribe(quiz => {
       this._router.navigateByUrl('courses/'+this.cId+'/quiz/'+quiz.qId);
     });

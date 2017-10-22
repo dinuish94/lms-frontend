@@ -28,7 +28,7 @@ export class TeacherQuizService {
   getAllQuestions(quizId: number): Observable<Quiz[]> {
     return this._http.get(this._addquizurl + quizId)
       .map((response: Response) => response.json().questions)
-      // .do(data => data.questions);
+      // .do(data => JSON.stringify(data));
   }
 
   deleteQuestion(quizId: number, queId: number): Observable<String> {
@@ -52,6 +52,18 @@ export class TeacherQuizService {
     return this._http.get(this._addquizurl + '/course/' + cId)
     .map((response) => <AddedQuiz[]>response.json())
     .do(data => console.log(JSON.stringify(data))+"*****************");
+  }
+
+  getQuizById(quizId: number): Observable<AddedQuiz> {
+    return this._http.get(this._addquizurl + quizId)
+      .map((response: Response) => response.json())
+      .do(data => JSON.stringify(data));
+  }
+
+  markQuizAsActive(quizId: number): Observable<AddedQuiz> {
+    return this._http.get(this._addquizurl + quizId + "/active")
+    .map((response: Response) => response.json())
+    .do(data => JSON.stringify(data));
   }
 
 }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { DatepickerModule } from 'angular2-material-datepicker';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
@@ -59,7 +60,8 @@ import { StudentHomeComponent } from './student-home/student-home.component';
     ComponentsModule,
     BrowserAnimationsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

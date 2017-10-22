@@ -35,6 +35,7 @@ export class TeacherQuizComponent implements OnInit {
     this.quiz = new Quiz();
     this.getQuestions();
     this.addQuestion = true;
+    this.getQuizById();
   }
 
   addAnswer() {
@@ -63,13 +64,12 @@ export class TeacherQuizComponent implements OnInit {
         this.addQuestion = true;
         this.getQuestions();
       })
-
-      this.answers = [];
-      this.quiz.correctAnswer = "";
-      this.quiz.name = "";
-      this.question = "";
-      this.answer = "";
     }
+    this.answers = [];
+    this.quiz.correctAnswer = "";
+    this.quiz.name = "";
+    this.question = "";
+    this.answer = "";
     
   }
 
@@ -104,6 +104,23 @@ export class TeacherQuizComponent implements OnInit {
 
   editAnswer(answer: String) {
     this.answer = answer;
+  }
+
+  getQuizById() {
+    this._teacherQuizService.getQuizById(this.quizNo).subscribe(data => {
+      console.log(JSON.stringify(data)+"|||||||||||")
+      this.quiz.name = data.name;
+      this.quiz.date = data.date;
+      this.quiz.duration = data.duration;
+      this.questions = data.questions;
+      this.quiz.active = data.active;
+    })
+  }
+
+  markAsActive(){
+    this._teacherQuizService.markQuizAsActive(this.quizNo).subscribe(data => {
+      this.getQuizById();
+    })
   }
 
 
