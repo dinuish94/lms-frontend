@@ -33,6 +33,9 @@ import { StudentHomeComponent } from './student-home/student-home.component';
 import { StudentQuizComponent } from './student-quiz/student-quiz.component';
 
 import { QuizService } from './services/quiz/quiz.service';
+import { CourseService } from './services/course/course.service';
+import { StudentService } from './services/student/student.service';
+
 
 @NgModule({
   declarations: [
@@ -70,7 +73,9 @@ import { QuizService } from './services/quiz/quiz.service';
     HttpClientModule
   ],
   providers: [
-    QuizService
+    QuizService,
+    CourseService,
+    StudentService
   ],
   bootstrap: [AppComponent]
 })

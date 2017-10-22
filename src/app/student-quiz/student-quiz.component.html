@@ -1,5 +1,5 @@
 <div class="main-content">
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header" data-background-color="green">
@@ -22,7 +22,7 @@
                 </td>
                 <td>{{question.correctAnswer}}</td>
                 <td class="td-actions text-right">
-                  <button type="button" rel="tooltip" title="" class="btn btn-info btn-simple btn-xs" data-original-title="Edit Task" (click)="editQuestion(question.queId)"><!--(click)="showDialog = !showDialog"-->
+                  <button type="button" rel="tooltip" title="" class="btn btn-info btn-simple btn-xs" data-original-title="Edit Task" (click)="editQuestion(question.queId)">(click)="showDialog = !showDialog
                                       <i class="material-icons">edit</i>
                                   </button>
                   <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Remove" (click)=deleteQuestion(question.queId)>
@@ -39,12 +39,12 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header" data-background-color="blue">
-          <h4 class="title">Add New Question to quiz</h4>
+          <h4 class="title">{{course}}</h4>
           <p class="category">Quiz no: {{quizNo}}</p>
         </div>
         <div class="card-content">
@@ -61,13 +61,14 @@
                 <div [ngClass]="i%2==0?row:''">
                   <div class="col-md-6">
                     <div class="form-group">
-                    <label><input type="radio" class="form-control" name="answer" value="answer"/>{{answer}}</label>
+                    <label><input type="radio" class="form-control" [name]="answer" [(ngModel)]="selectedAnswer" [value]="answer"/>{{answer}}</label>
                     </div>
                   </div>
                 </div>
               </ng-container>
             </div>
-            <button type="submit" class="btn btn-info pull-right" (click)="addQuiz()">{{ addQuestion ? "Add Question" : "Edit Question"}}</button>
+            <button class="pull-right" (click)="last()?submit():next()" [ngClass]="last()?'btn btn-success':'btn btn-info'">{{last()?"submit":"next"}}</button>
+            <button class="btn btn-info pull-right" (click)="prev()" [disabled]="index===0">prev</button>            
             <div class="clearfix"></div>
           </form>
         </div>
