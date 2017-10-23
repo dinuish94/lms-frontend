@@ -20,16 +20,19 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { HomeComponent } from './home/home.component';
 
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
+
 import { TeacherCourseComponent } from './teacher-course/teacher-course.component';
 import { TeacherQuizComponent } from './teacher-quiz/teacher-quiz.component';
 import { EditQuestionModalComponent } from './edit-question-modal/edit-question-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { StudentComponent } from './student/student.component';
 import { StudentFeedbackComponent } from './student-feedback/student-feedback.component';
 import { StudentEnrolledCoursesComponent } from './student-enrolled-courses/student-enrolled-courses.component';
 import { StudentCoursesComponent } from './student-courses/student-courses.component';
 import { StudentHomeComponent } from './student-home/student-home.component';
+import { LoginComponent } from './login/login.component';
 import { StudentQuizComponent } from './student-quiz/student-quiz.component';
 import { TeacherAssignmentsComponent } from './teacher-assignments/teacher-assignments.component';
 
@@ -48,15 +51,23 @@ import { StudentService } from './services/student/student.service';
     HomeComponent,
 
     TeacherDashboardComponent,
+
+    //MyNewComponentComponent,
+    TeacherCourseComponent,
+    TeacherQuizComponent,
+   // QuizQuestionsComponent,
+
     TeacherCourseComponent,
     TeacherQuizComponent,
     EditQuestionModalComponent,
+
 
     StudentComponent,
     StudentFeedbackComponent,
     StudentEnrolledCoursesComponent,
     StudentCoursesComponent,
     StudentHomeComponent,
+    LoginComponent,
     StudentQuizComponent,
     TeacherAssignmentsComponent,
 

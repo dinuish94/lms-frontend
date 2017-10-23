@@ -13,10 +13,13 @@ import { HomeComponent } from './home/home.component';
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { TeacherCourseComponent } from './teacher-course/teacher-course.component';
 import { TeacherQuizComponent } from './teacher-quiz/teacher-quiz.component';
+
 import { StudentHomeComponent } from './student-home/student-home.component';
 import { StudentEnrolledCoursesComponent } from './student-enrolled-courses/student-enrolled-courses.component';
 import { StudentCoursesComponent } from './student-courses/student-courses.component';
 import { StudentFeedbackComponent } from './student-feedback/student-feedback.component';
+import { LoginComponent } from './login/login.component';
+
 
 import { StudentQuizComponent } from './student-quiz/student-quiz.component';
 
@@ -37,9 +40,9 @@ const routes: Routes = [
   { path: 'student-enrolled-courses', component: StudentEnrolledCoursesComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-courses', component: StudentCoursesComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-feedback', component: StudentFeedbackComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'login', component: LoginComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-quiz', component: StudentQuizComponent /*,canActivate:[AuthGuard]*/}
-
-];
+]
 
 @NgModule({
   imports: [
