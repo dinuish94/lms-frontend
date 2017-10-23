@@ -35,11 +35,14 @@ import { StudentHomeComponent } from './student-home/student-home.component';
 import { LoginComponent } from './login/login.component';
 import { StudentQuizComponent } from './student-quiz/student-quiz.component';
 import { TeacherAssignmentsComponent } from './teacher-assignments/teacher-assignments.component';
+import { QuizPanelComponent } from './student-quiz/quiz-panel/quiz-panel.component';
 
 import { QuizService } from './services/quiz/quiz.service';
 import { CourseService } from './services/course/course.service';
 import { StudentService } from './services/student/student.service';
-import { AppTimePipe } from './appTimePipe/app-time.pipe';
+import { MarkQuizService } from './services/mark-quiz/mark-quiz.service';
+
+import { AppTimePipe } from './pipes/appTimePipe/app-time.pipe';
 
 @NgModule({
   declarations: [
@@ -71,9 +74,8 @@ import { AppTimePipe } from './appTimePipe/app-time.pipe';
     LoginComponent,
     StudentQuizComponent,
     TeacherAssignmentsComponent,
-    AppTimePipe,
-
-
+    QuizPanelComponent,
+    AppTimePipe
   ],
   imports: [
     BrowserModule,
@@ -89,7 +91,8 @@ import { AppTimePipe } from './appTimePipe/app-time.pipe';
   providers: [
     QuizService,
     CourseService,
-    StudentService
+    StudentService,
+    MarkQuizService
   ],
   bootstrap: [AppComponent]
 })

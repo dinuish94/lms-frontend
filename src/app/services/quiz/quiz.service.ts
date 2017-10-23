@@ -20,43 +20,4 @@ export class QuizService {
   post(quizMark) {
     return this.http.post(generateQuizMarksUrl(quizMark.quiz),quizMark);
   }
-
-  submitQuiz(quiz: Quiz,questions: Question[],answers: Answer[]) {
-    let marks = this.markQuiz(questions,answers);
-    let quizMark = this.generateMarkQuizResponse(quiz.qId,marks.correctQuestions,marks.totalMarks);
-    console.log(quizMark);
-    return this.post(quizMark);
-  }
-
-  markQuiz(questions: Question[],answers: Answer[]) {
-    let correctQuestions: number[] = new Array();
-    let correctQuestionCount = 0;
-
-    questions.forEach(question => {
-      let answerId = answers.findIndex(result => result.question === question.queId);
-      if (question.correctAnswer === answers[answerId].selectedAnswer) {
-        correctQuestions.push(question.queId);
-        correctQuestionCount++;
-      }
-    });
-    return this.calculateMarks(correctQuestions,correctQuestionCount);
-  }
-
-  calculateMarks(correctQuestions,correctQuestionCount) {
-    return {
-      correctQuestions: correctQuestions,
-      totalMarks: correctQuestionCount * 1
-    };
-  }
-
-  generateMarkQuizResponse(quizId: number,correctQuestions: number[], marks: number) {
-    let quizMarks = new QuizMark();
-    
-    quizMarks.quiz = quizId;
-    quizMarks.student = 1;//get from session;
-    quizMarks.marks = marks;
-    quizMarks.correctQuestions = correctQuestions;
-
-    return quizMarks;
-  }
 }
