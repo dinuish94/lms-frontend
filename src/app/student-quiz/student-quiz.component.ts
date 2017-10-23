@@ -8,6 +8,7 @@ import { Question } from '../models/question.model';
 import { Answer } from '../models/answer.model';
 
 import { Observable } from 'rxjs';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -81,12 +82,7 @@ export class StudentQuizComponent implements OnInit {
 
   submit() {
     this.addAnswer();
-
-    this._quizService.submitQuiz(this.quiz, this.questions, this.answers).subscribe(response => {
-      console.log(response);
-    }, error => {
-      console.log(error);
-    });
+    this.submitAlert()
   }
 
   flag() {
@@ -96,5 +92,28 @@ export class StudentQuizComponent implements OnInit {
   navigate(index) {
     this.question = this.questions[index];
     this.index = index;
+  }
+
+  submitAlert() {
+    swal({
+      title: 'Are you sure?',
+      text: "You won't be able to attempt the quiz again",
+      type: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'submit',
+      cancelButtonText: 'cancel'
+    }).then(()=> {
+      this._quizService.submitQuiz(this.quiz, this.questions, this.answers).subscribe(response => {
+        swal(
+          'Success!',
+          'your answers have been submitted',
+          'success'
+        )
+      });      
+    }, function(dismiss) {
+      // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+      if (dismiss === 'cancel') {
+      }
+    })
   }
 }
