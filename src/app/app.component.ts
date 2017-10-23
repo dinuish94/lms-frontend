@@ -9,8 +9,13 @@ declare const $: any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  fullPage: boolean = false;
 
-  constructor(public location: Location) {}
+  constructor(public location: Location) {
+    if (this.location.path() === '/student-quiz') {
+      this.fullPage = true;
+    }
+  }
 
   ngOnInit() {
       $.material.options.autofill = true;

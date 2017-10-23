@@ -13,23 +13,17 @@ export class StudentHomeComponent implements OnInit {
 
   students : Student[];
 
-  constructor(private studentService:StudentService) { 
-    studentService.getStudents().subscribe(students=>{
-      console.log(students);
-    });
-
-    localStorage.setItem('studentId', '1');
-  }
+  constructor(private studentService:StudentService) { }
 
   ngOnInit() {
+    let userObj = localStorage.getItem("authUser");
+    let user = JSON.parse(userObj);
   }
 
   test(){
-    swal('Oops...', 'Something went wrong!', 'error');
+    alert("remove");
+    localStorage.removeItem("authUser");
   }
-
-  
-
 }
 
 interface Student{
