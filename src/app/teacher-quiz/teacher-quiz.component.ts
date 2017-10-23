@@ -108,7 +108,6 @@ export class TeacherQuizComponent implements OnInit {
 
   getQuizById() {
     this._teacherQuizService.getQuizById(this.quizNo).subscribe(data => {
-      console.log(JSON.stringify(data)+"|||||||||||")
       this.quiz.name = data.name;
       this.quiz.date = data.date;
       this.quiz.duration = data.duration;
