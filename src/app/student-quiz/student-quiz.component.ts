@@ -88,4 +88,13 @@ export class StudentQuizComponent implements OnInit {
       console.log(error);
     });
   }
+
+  flag() {
+    this.question.flagged = !this.question.flagged;
+  }
+
+  navigate(index) {
+    this.question = this.questions[index];
+    this.index = index;
+  }
 }

@@ -39,6 +39,7 @@ import { TeacherAssignmentsComponent } from './teacher-assignments/teacher-assig
 import { QuizService } from './services/quiz/quiz.service';
 import { CourseService } from './services/course/course.service';
 import { StudentService } from './services/student/student.service';
+import { AppTimePipe } from './appTimePipe/app-time.pipe';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { StudentService } from './services/student/student.service';
     LoginComponent,
     StudentQuizComponent,
     TeacherAssignmentsComponent,
+    AppTimePipe,
 
 
   ],
