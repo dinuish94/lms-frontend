@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+
 import { QuizService } from '../services/quiz/quiz.service';
-import { CourseService } from '../services/course/course.service';
-import { StudentService } from '../services/student/student.service';
+import { MarkQuizService } from '../services/mark-quiz/mark-quiz.service';
 
 import { Quiz } from '../models/quizDTO.model';
 import { Question } from '../models/question.model';
 import { Answer } from '../models/answer.model';
+import { QuizMark } from '../models/quizMarks.model';
 
 import { Observable } from 'rxjs';
 import swal from 'sweetalert2';
@@ -30,8 +31,9 @@ export class StudentQuizComponent implements OnInit {
   count: number = 3600;
   countDown;
   showPanel: boolean = false;
+  quizMark: QuizMark = new QuizMark();
 
-  constructor(private _quizService: QuizService) {
+  constructor(private _quizService: QuizService, private _quizMarkService: MarkQuizService) {
     this.countDown = Observable.timer(0,1000)
     .take(this.count)
     .map(()=> --this.count);
@@ -99,9 +101,9 @@ export class StudentQuizComponent implements OnInit {
     return this.index === this.questions.length - 1;
   }
 
-  submit() {
+  onSubmit() {
     this.addAnswer();
-    this.submitAlert()
+    this.submitAlert();
   }
 
   flag() {
@@ -115,6 +117,14 @@ export class StudentQuizComponent implements OnInit {
     this.setAnswer();
   }
 
+  submitQuiz() {
+    this._quizMarkService.submitQuiz(this.quiz,this.answers);
+    this._quizMarkService.markQuiz();
+    this._quizMarkService.setStudentMark();
+    this.quizMark = this._quizMarkService.getStudentMark();
+
+  }
+
   submitAlert() {
     swal({
       title: 'Are you sure?',
@@ -124,13 +134,15 @@ export class StudentQuizComponent implements OnInit {
       confirmButtonText: 'submit',
       cancelButtonText: 'cancel'
     }).then(()=> {
-      this._quizService.submitQuiz(this.quiz, this.questions, this.answers).subscribe(response => {
+      this.submitQuiz();
+      this._quizService.post(this.quizMark).subscribe(any => {
+        console.log("any",any);
         swal(
           'Success!',
           'your answers have been submitted',
           'success'
-        )
-      });      
+        );
+      });    
     }, function(dismiss) {
       // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
       if (dismiss === 'cancel') {

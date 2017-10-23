@@ -33,7 +33,7 @@
                 </ng-container>
               </div>
               <button class="pull-left" (click)="flag()" [ngClass]="question.flagged?'btn btn-warning':'btn btn-default'">{{question.flagged?"unflag":"flag"}}</button>              
-              <button class="pull-right" (click)="last()?submit():next()" [ngClass]="last()?'btn btn-success':'btn btn-info'">{{last()?"submit":"next"}}</button>
+              <button class="pull-right" (click)="last()?onSubmit():next()" [ngClass]="last()?'btn btn-success':'btn btn-info'">{{last()?"submit":"next"}}</button>
               <button class="btn btn-info pull-right" (click)="prev()" [disabled]="index===0">prev</button>
               <div class="clearfix"></div>
             </form>
