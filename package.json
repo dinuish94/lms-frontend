@@ -12,7 +12,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^4.4.4",
+    "@angular/animations": "^4.4.6",
     "@angular/cdk": "2.0.0-beta.10",
     "@angular/common": "4.3.1",
     "@angular/compiler": "4.3.1",
@@ -23,6 +23,7 @@
     "@angular/platform-browser": "4.3.1",
     "@angular/platform-browser-dynamic": "4.3.1",
     "@angular/router": "4.3.1",
+    "angular2-material-datepicker": "^0.5.0",
     "arrive": "2.4.1",
     "bootstrap": "3.3.7",
     "bootstrap-material-design": "0.5.10",
@@ -32,6 +33,7 @@
     "googleapis": "19.0.0",
     "jquery": "3.2.1",
     "moment": "2.18.1",
+    "ng2-datepicker": "^2.1.0",
     "rxjs": "5.1.0",
     "sweetalert2": "^6.9.1",
     "zone.js": "0.8.4"
