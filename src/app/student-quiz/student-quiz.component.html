@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-content">
-          <h2>{{countDown | async | date: jm}}</h2>
+          <h2>{{countDown | async | appTime}}</h2>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
         <div class="card-content">
           <form>
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-lg-12 col-md-12">
                 <div class="form-group label-floating is-empty">
                   <label class="control-label">{{question.question}}</label>
                 </div>
@@ -27,16 +27,24 @@
             <div class="row">
               <ng-container *ngFor="let answer of question.answers;let index=index">
                 <div [ngClass]="i%2==0?row:''">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                    <label><input type="radio" class="form-control" [name]="answer" [(ngModel)]="selectedAnswer" [value]="answer"/>{{answer}}</label>
+                  <div class="col-lg-6 col-md-6">
+                    <div class="form-group col-md-12">
+                    <p><input style="margin-right:5%" type="radio" [name]="answer" [(ngModel)]="selectedAnswer" [value]="answer"/>{{answer}}</p>
                     </div>
                   </div>
                 </div>
               </ng-container>
             </div>
+            <div class="row">
+              <ng-container *ngFor="let q of questions;let i=index">
+              <ng-container *ngIf="q.flagged">
+                <button [ngClass]="(q.queId===question.queId)?'btn-dark':'btn-info'" class="btn-sm" (click)="navigate(i)">{{i+1}}</button>
+              </ng-container>
+              </ng-container>
+            </div>
             <button class="pull-right" (click)="last()?submit():next()" [ngClass]="last()?'btn btn-success':'btn btn-info'">{{last()?"submit":"next"}}</button>
-            <button class="btn btn-info pull-right" (click)="prev()" [disabled]="index===0">prev</button>            
+            <button class="btn btn-info pull-right" (click)="prev()" [disabled]="index===0">prev</button> 
+            <button class="pull-right" (click)="flag()" [ngClass]="question.flagged?'btn btn-warning':'btn btn-info'">{{question.flagged?"unflag":"flag"}}</button>                        
             <div class="clearfix"></div>
           </form>
         </div>
