@@ -1,3 +1,27 @@
-<p>
-  student-enrolled-courses works!
-</p>
+<div class="content" style="margin-top:5%">
+  <div class="container-fluid">
+    <div class="card">
+        <div class="card-header" data-background-color="orange">
+            <h4 class="title">Enrolled Courses</h4>
+            <p class="category">New employees on 15th September, 2016</p>
+        </div>
+        <div class="card-content table-responsive">
+            <table class="table table-hover">
+                <thead class="text-warning">
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                </thead>
+                <tbody>
+                
+                      <tr *ngFor="let course of courses" [routerLink]="['./',course.cId]">
+                          <td>{{course.cId}}</td>
+                          <td>{{course.title}}</td>
+                      </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
+</div>
+

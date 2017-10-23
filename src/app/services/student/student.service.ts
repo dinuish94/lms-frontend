@@ -33,7 +33,7 @@ export class StudentService {
   }
 
   
-  getStudent(studentId){
+  getStudent(studentId : number){
     return this.http.get('http://localhost:8080/students/'+studentId)
     .map(res => res.json());
   }

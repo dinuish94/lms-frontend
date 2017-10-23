@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../services/course/course.service';
 import { StudentService } from '../services/student/student.service';
+// import { Course } from '../models/course.model';
 import { Http } from '@angular/http';
 import swal from 'sweetalert2';
 
@@ -104,7 +105,7 @@ export class StudentCoursesComponent implements OnInit {
 
   getCourses(){
     this.courseService.getCourses().subscribe(courses=>{
-      //console.log(courses);
+      console.log(courses);
       this.courses = courses;
       this.tempCourses = courses;
     });
