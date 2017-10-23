@@ -1,45 +1,13 @@
 <div class="main-content">
-  <!-- <div class="row">
+  <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header" data-background-color="green">
-          <h4 class="title">Questions</h4>
-        </div>
-        <div class="card-content table-responsive">
-          <table class="table">
-            <thead class="text-primary">
-              <tr>
-                <th>Questions</th>
-                <th>Answers</th>
-                <th>Correct Answer</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let question of questions;">
-                <td>{{question.question}}</td>
-                <td>
-                  <p *ngFor="let answer of question.answers;">{{answer}}</p>
-                </td>
-                <td>{{question.correctAnswer}}</td>
-                <td class="td-actions text-right">
-                  <button type="button" rel="tooltip" title="" class="btn btn-info btn-simple btn-xs" data-original-title="Edit Task" (click)="editQuestion(question.queId)">(click)="showDialog = !showDialog
-                                      <i class="material-icons">edit</i>
-                                  </button>
-                  <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Remove" (click)=deleteQuestion(question.queId)>
-                                      <i class="material-icons">close</i>
-                                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <app-edit-question-modal [(visible)]="showDialog">
-            <h1>Hello World</h1>
-            <button (click)="showDialog = !showDialog" class="btn">Close</button>
-          </app-edit-question-modal>
+        <div class="card-content">
+          <h2>{{countDown | async | date: jm}}</h2>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
   <div class="row">
     <div class="col-md-12">
       <div class="card">

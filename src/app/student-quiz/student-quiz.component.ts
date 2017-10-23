@@ -7,6 +7,8 @@ import { Quiz } from '../models/quizDTO.model';
 import { Question } from '../models/question.model';
 import { Answer } from '../models/answer.model';
 
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-student-quiz',
@@ -23,9 +25,14 @@ export class StudentQuizComponent implements OnInit {
   answer; Answer;
   course: string;
   quizNo: number;
+  count: number = 3600;
+  countDown;
 
   constructor(private _quizService: QuizService) {
-  }
+    this.countDown = Observable.timer(0,1000)
+    .take(this.count)
+    .map(()=> --this.count);
+}
 
   ngOnInit() {
     this.getQuiz();
