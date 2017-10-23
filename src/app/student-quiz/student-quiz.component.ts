@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { QuizService } from '../services/quiz/quiz.service';
 import { MarkQuizService } from '../services/mark-quiz/mark-quiz.service';
@@ -33,7 +34,7 @@ export class StudentQuizComponent implements OnInit {
   showPanel: boolean = false;
   quizMark: QuizMark = new QuizMark();
 
-  constructor(private _quizService: QuizService, private _quizMarkService: MarkQuizService) {
+  constructor(private _quizService: QuizService, private _quizMarkService: MarkQuizService, private _router: Router) {
     this.countDown = Observable.timer(0,1000)
     .take(this.count)
     .map(()=> --this.count);
@@ -136,17 +137,21 @@ export class StudentQuizComponent implements OnInit {
     }).then(()=> {
       this.submitQuiz();
       this._quizService.post(this.quizMark).subscribe(any => {
-        console.log("any",any);
-        swal(
-          'Success!',
-          'your answers have been submitted',
-          'success'
-        );
+        this.submittedAlert();
       });    
     }, function(dismiss) {
       // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
       if (dismiss === 'cancel') {
       }
     })
+  }
+
+  submittedAlert() {
+    swal(
+      'Success!',
+      'your answers have been submitted',
+      'success'
+    );
+    this._router.navigate(['review-quiz']); 
   }
 }

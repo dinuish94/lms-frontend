@@ -17,8 +17,6 @@ export class MarkQuizService implements OnInit {
   marks: number;
   quizMark: QuizMark = new QuizMark();
 
-
-
   constructor() { }
 
   ngOnInit() {
@@ -57,9 +55,10 @@ export class MarkQuizService implements OnInit {
   markQuiz() {
     let answeredQuestion: Question;
     let correctCount: number = 0;
-    console.log('student',this.student);
+
     this.answers.forEach(answer => {
       answeredQuestion = this.getQuestionById(answer.question);
+
       if (answer.selectedAnswer === answeredQuestion.correctAnswer) {
         this.correctQuestions.push(answeredQuestion);
         this.correctQuestionIds.push(answeredQuestion.queId);
@@ -67,6 +66,7 @@ export class MarkQuizService implements OnInit {
       } else {
         this.incorrectQuestions.push(answeredQuestion);
       }
+      
       this.marks = this.calculateMarks(correctCount);
     });
   }
