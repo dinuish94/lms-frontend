@@ -38,6 +38,8 @@ import { CourseService } from './services/course/course.service';
 import { StudentService } from './services/student/student.service';
 import { QuizPanelComponent } from './student-quiz/quiz-panel/quiz-panel.component';
 
+import { AppTimePipe } from './appTimePipe/app-time.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +64,7 @@ import { QuizPanelComponent } from './student-quiz/quiz-panel/quiz-panel.compone
     TeacherAssignmentsComponent,
     QuizPanelComponent,
 
-
+    AppTimePipe
   ],
   imports: [
     BrowserModule,

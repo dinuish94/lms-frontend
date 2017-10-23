@@ -8,5 +8,10 @@
             <button [ngClass]="setButtonClass(index)" style="width:30px;margin-bottom:20%">{{index+1}}</button>              
         </div>          
     </ng-container>
+    <div class="col-md-12">
+        <div class="row">
+            <label style="margin-left:10%"><h4>{{countDown | async | appTime}}</h4></label>        
+        </div>   
+    </div>  
   </div>
 </div>

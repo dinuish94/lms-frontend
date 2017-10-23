@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Question } from '../../models/question.model';
 
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-quiz-panel',
   templateUrl: './quiz-panel.component.html',
@@ -11,6 +13,8 @@ export class QuizPanelComponent implements OnInit {
   @Input() answeredQuestions: Question[];
   @Input() currentQuestion: Question;
   @Input() currentIndex: number;
+  count: number = 3600;
+  countDown;
   constructor() { 
   }
 
@@ -25,7 +29,9 @@ export class QuizPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.countDown = Observable.timer(0,1000)
+    .take(this.count)
+    .map(()=> --this.count);
   }
 
 }
