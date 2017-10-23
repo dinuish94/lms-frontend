@@ -8,6 +8,7 @@ import { Question } from '../models/question.model';
 import { Answer } from '../models/answer.model';
 
 import { Observable } from 'rxjs';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -55,25 +56,39 @@ export class StudentQuizComponent implements OnInit {
   next() {
     this.addAnswer();
     this.question = this.questions[++this.index];
+    this.setAnswer();
   }
 
   prev() {
     this.addAnswer();
     this.question = this.questions[--this.index];
+    this.setAnswer();
   }
 
   disable() {
     return this.index <= this.questions.length;
   }
 
+  setAnswer() {
+    let index = this.answers.findIndex(result => result.question === this.question.queId);
+
+    if (index !== -1) {
+      this.selectedAnswer = this.answers[index].selectedAnswer;
+      console.log('answer is ',this.selectedAnswer);
+    }
+  }
+
   addAnswer() {
-    console.log(this.selectedAnswer);
     if (this.answered() != -1) {
       this.answers.splice(this.answered(), 1);
     }
-    this.answeredQuestions.push(this.question);
-    console.log('answered questions',this.answeredQuestions);
-    this.answers.push(new Answer(this.question.queId, this.selectedAnswer));
+
+    if ((this.selectedAnswer !== '') && (this.selectedAnswer !== undefined)) {
+      this.answeredQuestions.push(this.question);
+      this.answers.push(new Answer(this.question.queId, this.selectedAnswer));
+      this.selectedAnswer='';
+    }
+    
   }
 
   private answered() {
@@ -86,11 +101,40 @@ export class StudentQuizComponent implements OnInit {
 
   submit() {
     this.addAnswer();
+    this.submitAlert()
+  }
 
-    this._quizService.submitQuiz(this.quiz, this.questions, this.answers).subscribe(response => {
-      console.log(response);
-    }, error => {
-      console.log(error);
-    });
+  flag() {
+    this.question.flagged = !this.question.flagged;
+  }
+
+  navigateCallback(index) {
+    console.log('did index come',index);
+    this.question = this.questions[index];
+    this.index = index;
+    this.setAnswer();
+  }
+
+  submitAlert() {
+    swal({
+      title: 'Are you sure?',
+      text: "You won't be able to attempt the quiz again",
+      type: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'submit',
+      cancelButtonText: 'cancel'
+    }).then(()=> {
+      this._quizService.submitQuiz(this.quiz, this.questions, this.answers).subscribe(response => {
+        swal(
+          'Success!',
+          'your answers have been submitted',
+          'success'
+        )
+      });      
+    }, function(dismiss) {
+      // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+      if (dismiss === 'cancel') {
+      }
+    })
   }
 }

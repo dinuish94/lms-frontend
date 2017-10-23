@@ -5,7 +5,7 @@
   <div class="card-content">
     <ng-container *ngFor="let question of questions;let index=index">
         <div class="col-md-2" style="padding-right:11%;padding-bottom:3%">
-            <button [ngClass]="setButtonClass(index)" style="width:30px;margin-bottom:20%">{{index+1}}</button>              
+            <button [ngClass]="setButtonClass(index)" style="width:30px;margin-bottom:20%" (click)="goTo(index)">{{index+1}}</button>              
         </div>          
     </ng-container>
     <div class="col-md-12">

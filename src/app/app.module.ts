@@ -63,7 +63,6 @@ import { AppTimePipe } from './appTimePipe/app-time.pipe';
     StudentQuizComponent,
     TeacherAssignmentsComponent,
     QuizPanelComponent,
-
     AppTimePipe
   ],
   imports: [

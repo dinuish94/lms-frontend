@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Question } from '../../models/question.model';
 
 import { Observable } from 'rxjs';
@@ -13,6 +13,8 @@ export class QuizPanelComponent implements OnInit {
   @Input() answeredQuestions: Question[];
   @Input() currentQuestion: Question;
   @Input() currentIndex: number;
+  @Output() navigate: EventEmitter<number> = new EventEmitter<number>();
+
   count: number = 3600;
   countDown;
   constructor() { 
@@ -23,6 +25,8 @@ export class QuizPanelComponent implements OnInit {
       return 'btn-primary';
     } else if (this.answeredQuestions.indexOf(this.questions[index]) !== -1) {
       return 'btn-info';
+    } else if(this.questions[index].flagged) {
+      return 'btn-warning';
     } else {
       return 'btn-default';
     }
@@ -33,5 +37,11 @@ export class QuizPanelComponent implements OnInit {
     .take(this.count)
     .map(()=> --this.count);
   }
+
+  goTo(index) {
+    console.log(index);
+    this.navigate.emit(index);
+  }
+
 
 }
