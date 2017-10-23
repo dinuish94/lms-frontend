@@ -20,9 +20,21 @@ export class TeacherAssignmentsService {
         .map((response: Response) => <Assignment>response.json())
     }
 
-    getAllQuestions(courseId: number): Observable<Assignment[]> {
+    getAllAssignments(courseId: number): Observable<Assignment[]> {
       return this._http.get(this._getAssignmentsForCourseURL + courseId + '/assignments')
         .map((response: Response) => response.json())
         .do(data => console.log(JSON.stringify(data)));
     }
+
+    getAssignmentbyId(assignId: number): Observable<Assignment> {
+      return this._http.get(this._addAssignmentURL + assignId)
+        .map((response: Response) => response.json())
+        .do(data => console.log(JSON.stringify(data)));
+    }
+
+    updateAssignment(assignId: number, assignment: Assignment): Observable<Assignment> {
+      return this._http.put(this._addAssignmentURL + assignId, assignment)
+        .map((response: Response) => response.json())
+        .do(data => console.log(JSON.stringify(data)));
+    } 
 }

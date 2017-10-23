@@ -13,6 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { TeacherCourseComponent } from './teacher-course/teacher-course.component';
 import { TeacherQuizComponent } from './teacher-quiz/teacher-quiz.component';
+import { TeacherAssignmentsComponent } from './teacher-assignments/teacher-assignments.component';
+
 import { StudentHomeComponent } from './student-home/student-home.component';
 import { StudentEnrolledCoursesComponent } from './student-enrolled-courses/student-enrolled-courses.component';
 import { StudentCoursesComponent } from './student-courses/student-courses.component';
@@ -30,9 +32,14 @@ const routes: Routes = [
   { path: 'icons', component: IconsComponent /*,canActivate:[AuthGuard]*/ },
   { path: 'notifications', component: NotificationsComponent /*,canActivate:[AuthGuard]*/ },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+
+  //Teacher Dashboard routes
   { path: 'teacher-dashboard', component: TeacherDashboardComponent },
   { path: 'courses/:id', component: TeacherCourseComponent },
   { path: 'courses/:cId/quiz/:qId', component: TeacherQuizComponent },
+  { path: 'courses/:cId/assignments/:assignId', component: TeacherAssignmentsComponent },
+
+  // Student Routes
   { path: 'student-home', component: StudentHomeComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-enrolled-courses', component: StudentEnrolledCoursesComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-courses', component: StudentCoursesComponent /*,canActivate:[AuthGuard]*/},

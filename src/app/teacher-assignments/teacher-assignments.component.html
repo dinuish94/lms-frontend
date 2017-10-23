@@ -1,3 +1,238 @@
-<p>
-  teacher-assignments works!
-</p>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card card-profile">
+        <div class="card-avatar">
+          <a href="#pablo">
+            <img class="img" src="../assets/img/task-icon.png">
+          </a>
+        </div>
+        <div class="content">
+          <h6 class="category text-gray">Assignment Summary</h6>
+          <h4 class="card-title">{{assignment.name}}</h4>
+          <p class="card-content">
+            {{assignment.description}}
+          </p>
+          <form>
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-8">
+                <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx">
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+          <a href="#pablo" class="btn btn-success btn-round" data-toggle="modal" data-target="#editModal">Edit</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-header" data-background-color="orange">
+          <i class="material-icons">supervisor_account</i>
+        </div>
+        <div class="card-content">
+          <p class="category">Students Enrolled</p>
+          <h3 class="title">50
+            <small>students</small>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-header" data-background-color="red">
+          <i class="material-icons">archive</i>
+        </div>
+        <div class="card-content">
+          <p class="category">Submissions</p>
+          <h3 class="title">40/50
+            <small>submissions</small>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-content table-responsive">
+          <table class="table table-hover">
+            <thead class="text-success">
+              <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Submission</th>
+                <th>Submitted Date and Time</th>
+                <th>Download</th>
+                <th>Grade</th>
+                <th>Feedback</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let assignment of assignments">
+                <td>{{assignment.assignId}}</td>
+                <td>{{assignment.name}}</td>
+                <td>{{assignment.description}}</td>
+                <td>{{assignment.name}}</td>
+                <td>
+                  <button type="button" rel="tooltip" title="" class="btn btn-success btn-simple btn-lg" data-original-title="Edit Task">
+                    <i class="material-icons">file_download</i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-lg" data-original-title="Edit Task" data-toggle="modal"
+                    data-target="#gradeModal">
+                    <i class="material-icons">grade</i>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" rel="tooltip" title="" class="btn btn-warning btn-simple btn-lg" data-original-title="Edit Task" data-toggle="modal"
+                    data-target="#feedbackModal">
+                    <i class="material-icons">feedback</i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Feedback Modal -->
+<div id="feedbackModal" class="modal fade" role="dialog" data-backdrop="false" style="overflow: auto;" tabindex="-1">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Assignment feedback</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group label-floating is-empty">
+                <label class="control-label">Provide feedback</label>
+                <textarea class="form-control" name="quizName" rows="5"></textarea>
+                <span class="material-input"></span>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Save </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Grade Modal -->
+<div id="gradeModal" class="modal fade" role="dialog" data-backdrop="false" style="overflow: auto;" tabindex="-1">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Assignment Grade</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group label-floating is-empty">
+                <label class="control-label">Marks</label>
+                <input type="number" class="form-control" name="marks">
+                <span class="material-input"></span>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-info" (click)="addNewQuiz()"> Save </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- Edit Assignment Modal -->
+<div id="editModal" class="modal fade" role="dialog" data-backdrop="false" style="overflow: auto;" tabindex="-1">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Assignment</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group label-floating is-empty">
+                <label class="control-label">Assignment Name</label>
+                <input type="text" class="form-control" name="marks" [(ngModel)]="assignment.name">
+                <span class="material-input"></span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group label-floating is-empty">
+                <label class="control-label">Assignment Description</label>
+                <input type="text" class="form-control" name="marks" [(ngModel)]="assignment.description">
+                <span class="material-input"></span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group label-floating is-empty">
+                <label class="control-label" >Start Date:</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group label-floating is-empty">
+                <material-datepicker [(date)]="assignment.startDate"></material-datepicker>
+                <input type="time" [(ngModel)]="assignment.startTime" name="assignmentStartTime">
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group label-floating is-empty">
+                <label class="control-label" >End Date:</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group label-floating is-empty">
+                <material-datepicker [(date)]="assignment.endDate"></material-datepicker>
+                <input type="time" [(ngModel)]="assignment.endTime" name="assignmentEndTime">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group label-floating is-empty">
+                <label class="control-label">Update Document</label>
+                <input type="file" class="form-control" name="marks">
+                <span class="material-input"></span>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-info" (click)="editAssignment()"> Save </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

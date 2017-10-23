@@ -117,7 +117,7 @@
               <div class="col-md-12">
                 <div class="form-group label-floating is-empty">
                   <label class="control-label">Duration in hours</label>
-                  <input type="text" class="form-control" [(ngModel)]="quiz.duration" name="quizDuration">
+                  <input type="number" class="form-control" [(ngModel)]="quiz.duration" name="quizDuration">
                   <span class="material-input"></span>
                 </div>
               </div>
@@ -153,7 +153,12 @@
                 <td>{{assignment.name}}</td>
                 <td>{{assignment.description}}</td>
                 <td>{{assignment.startDate | date}}</td>
-                <td>{{assignment.endDate | date}}</td>                
+                <td>{{assignment.endDate | date}}</td>    
+                <td>
+                  <button type="button" rel="tooltip" title="" class="btn btn-success btn-simple btn-lg" data-original-title="Edit Task" [routerLink]="['./assignments/',assignment.assignId]">
+                    <i class="material-icons">launch</i>
+                  </button>
+                </td>            
               </tr>
             </tbody>
           </table>
