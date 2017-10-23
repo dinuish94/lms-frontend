@@ -18,6 +18,7 @@ import { Observable } from 'rxjs';
 export class StudentQuizComponent implements OnInit {
   quiz: Quiz;
   questions: Question[] = new Array();
+  answeredQuestions: Question[] = new Array();
   question: Question = new Question();
   index: number = 0;
   answers: Answer[] = new Array();
@@ -27,6 +28,7 @@ export class StudentQuizComponent implements OnInit {
   quizNo: number;
   count: number = 3600;
   countDown;
+  showPanel: boolean = false;
 
   constructor(private _quizService: QuizService) {
     this.countDown = Observable.timer(0,1000)
@@ -43,6 +45,7 @@ export class StudentQuizComponent implements OnInit {
       this.quiz = response;
       console.log(this.quiz);
       this.questions = this.quiz.questions;
+      this.showPanel = true;
       this.question = this.questions[0];
       this.course = this.quiz.course.name;
       this.quizNo = this.quiz.qId;
@@ -68,6 +71,8 @@ export class StudentQuizComponent implements OnInit {
     if (this.answered() != -1) {
       this.answers.splice(this.answered(), 1);
     }
+    this.answeredQuestions.push(this.question);
+    console.log('answered questions',this.answeredQuestions);
     this.answers.push(new Answer(this.question.queId, this.selectedAnswer));
   }
 

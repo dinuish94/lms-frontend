@@ -1,46 +1,53 @@
 <div class="main-content">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-content">
-          <h2>{{countDown | async | date: jm}}</h2>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header" data-background-color="blue">
-          <h4 class="title">{{course}}</h4>
-          <p class="category">Quiz no: {{quizNo}}</p>
-        </div>
-        <div class="card-content">
-          <form>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group label-floating is-empty">
-                  <label class="control-label">{{question.question}}</label>
-                </div>
+  <div class="col-md-12">
+      <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-content">
+                <h2>{{countDown | async | date: jm}}</h2>
               </div>
             </div>
-            <div class="row">
-              <ng-container *ngFor="let answer of question.answers;let index=index">
-                <div [ngClass]="i%2==0?row:''">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                    <label><input type="radio" class="form-control" [name]="answer" [(ngModel)]="selectedAnswer" [value]="answer"/>{{answer}}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <ng-container *ngIf="showPanel">
+                <app-quiz-panel [(questions)]="questions" [(currentIndex)]="index" [(currentQuestion)]="question" [(answeredQuestions)]="answeredQuestions"></app-quiz-panel>                
+            </ng-container>
+          </div>
+          <div class="col-md-9">
+            <div class="card">
+              <div class="card-header" data-background-color="blue">
+                <h4 class="title">{{course}}</h4>
+                <p class="category">Quiz no: {{quizNo}}</p>
+              </div>
+              <div class="card-content">
+                <form>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group label-floating is-empty">
+                        <label class="control-label">{{question.question}}</label>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </ng-container>
+                  <div class="row">
+                    <ng-container *ngFor="let answer of question.answers;let index=index">
+                      <div [ngClass]="i%2==0?row:''">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                          <label><input type="radio" class="form-control" [name]="answer" [(ngModel)]="selectedAnswer" [value]="answer"/>{{answer}}</label>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                  <button class="pull-right" (click)="last()?submit():next()" [ngClass]="last()?'btn btn-success':'btn btn-info'">{{last()?"submit":"next"}}</button>
+                  <button class="btn btn-info pull-right" (click)="prev()" [disabled]="index===0">prev</button>            
+                  <div class="clearfix"></div>
+                </form>
+              </div>
             </div>
-            <button class="pull-right" (click)="last()?submit():next()" [ngClass]="last()?'btn btn-success':'btn btn-info'">{{last()?"submit":"next"}}</button>
-            <button class="btn btn-info pull-right" (click)="prev()" [disabled]="index===0">prev</button>            
-            <div class="clearfix"></div>
-          </form>
+          </div>
         </div>
-      </div>
-    </div>
   </div>
 </div>
