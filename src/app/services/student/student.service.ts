@@ -38,4 +38,13 @@ export class StudentService {
     .map(res => res.json());
   }
 
+  uploadAssignment(file : File, assignId, sId){
+    let formData = new FormData();
+    formData.append('file', file);
+    formData.append('assignId',assignId);
+    formData.append('sId',sId);
+    console.log(formData);
+    return this.http.post('http://localhost:8080/assignments/student',formData)
+    .map(res => res);
+  }
 }

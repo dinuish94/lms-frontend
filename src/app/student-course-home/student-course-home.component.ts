@@ -23,6 +23,8 @@ export class StudentCourseHomeComponent implements OnInit {
   uploadedAssignments : Assignment[];
   file : File;
   uploadAssignment : UploadAssignment;
+  assignIds : number[] =[];
+  b : any;
 
 
   constructor(private route: ActivatedRoute, private courseService:CourseService, private studentService : StudentService) {
@@ -37,38 +39,56 @@ export class StudentCourseHomeComponent implements OnInit {
     });
 
     this.getCourse();
+    //this.getStudent();
   }
 
   getCourse(){
     this.courseService.getCourseById(this.courseId).subscribe(course=>{
-       // console.log(course);
         this.course = course;
         this.assignments = course.assignments;
-        console.log(this.assignments);
+        return this.getStudent();
     });
   }
 
   getStudent(){
     this.studentService.getStudent(this.studentId).subscribe(student=>{
         this.student = student;
-        this.uploadedAssignments = student.assignments;
-        console.log(this.uploadedAssignments);
+        this.uploadedAssignments = student.studentAssignment;
+       //  return this.disableAssignment();
     });
+  }
+
+  disableAssignment(){
+    this.compArray(this.assignments, this.uploadedAssignments);
+  }
+
+  compArray(a : Assignment[], b){
+    console.log("COMP ARR");
+    for(let i=0;i<a.length;i++){
+      for(let k=0;k<b.length;k++){
+        console.log(a);
+        console.log(b[k].assignment);
+        
+        if(a[i].assignId == b[k].assignment.assignId){
+          this.assignIds.push(a[i].assignId);
+        }
+       
+      }
+    }
+
+    console.log(this.assignIds);
+   
   }
 
 
   uploadAssignmentFile(assignId){
-    console.log(assignId);
-
-    this.uploadAssignment.assignId= assignId;
-    this.uploadAssignment.courseId = this.courseId;
-    this.uploadAssignment.studentId = this.studentId;
-    this.uploadAssignment.file = this.file;
-
-    console.log(this.uploadAssignment);
-
-
-
+   // console.log("Inside UploadAssFile Component");
+    let sId = this.studentId.toString();
+    let aId = assignId.toString();
+    this.studentService.uploadAssignment(this.file,aId,sId).subscribe(()=>{
+      console.log("Success");
+    });
+  
 
   }
 
