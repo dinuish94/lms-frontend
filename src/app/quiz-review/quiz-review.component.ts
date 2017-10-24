@@ -5,7 +5,7 @@ import { QuizService } from '../services/quiz/quiz.service';
 import { MarkQuizService } from '../services/mark-quiz/mark-quiz.service';
 
 import { QuizMark1 } from '../models/quizMarks/quizMark.model';
-import { answeredQuestion } from '../models/answeredQuestion.model';
+import { AnsweredQuestion } from '../models/answeredQuestion.model';
 
 @Component({
   selector: 'app-quiz-review',
@@ -13,18 +13,19 @@ import { answeredQuestion } from '../models/answeredQuestion.model';
   styleUrls: ['./quiz-review.component.css']
 })
 export class QuizReviewComponent implements OnInit {
-  answeredQuestions: answeredQuestion[] = new Array();
-  quiz: QuizMark1;
+  answeredQuestions: AnsweredQuestion[] = new Array();
+  quiz: QuizMark1 = new QuizMark1();
   quizId: number;
-  questionCount: any;
+  all: number=0;
+  correct: number=0;
 
   constructor(private _quizMarkService: MarkQuizService, private _quizService: QuizService, private _router: ActivatedRoute) { }
 
   ngOnInit() {
     this.quizId = this._router.snapshot.params['quizId'];
     this._quizService.getMark(1,1).subscribe(quizMark => {
-      this.quiz = new QuizMark1(quizMark);
-      this.answeredQuestions = this.quiz.correctQuestions;
+      this.quiz = quizMark;
+      this.answeredQuestions = this.quiz.answeredQuestions;
       this.getquestionCount();
     });
   }
@@ -38,10 +39,8 @@ export class QuizReviewComponent implements OnInit {
       }
       all++;
     });
-    this.questionCount = {
-      all: all,
-      correct: correct
-    }
+    this.all = all;
+    this.correct = correct;
   }
 
   isCorrect(index) {

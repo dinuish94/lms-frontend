@@ -1,12 +1,11 @@
 import { Quiz } from '../quizDTO.model';
-import { answeredQuestion } from '../answeredQuestion.model';
+import { AnsweredQuestion } from '../answeredQuestion.model';
 
 export class QuizMark1  {
-    qmId: number;
     marks: number;
-    quiz: Quiz;
+    quiz: any;
     student: any;
-    correctQuestions: answeredQuestion[];
+    answeredQuestions: AnsweredQuestion[];
 
     constructor(value:Object={}) {
         Object.assign(this,value);

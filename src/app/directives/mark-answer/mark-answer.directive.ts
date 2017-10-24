@@ -1,11 +1,11 @@
 import { Directive, Input, ElementRef } from '@angular/core';
-import { answeredQuestion } from '../../models/answeredQuestion.model';
+import { AnsweredQuestion } from '../../models/answeredQuestion.model';
 
 @Directive({
   selector: '[appMarkAnswer]'
 })
 export class MarkAnswerDirective {
-  @Input() answeredQuestion: answeredQuestion;
+  @Input() answeredQuestion: AnsweredQuestion;
 
   constructor(private _el: ElementRef) { }
 

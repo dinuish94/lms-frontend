@@ -1,7 +1,7 @@
 import { Question } from './question.model';
 
-export class answeredQuestion {
-     question: Question;
+export class AnsweredQuestion {
+     question: any;
      selectedAnswer: string;
 
      constructor(value:Object={}) {

@@ -25,10 +25,12 @@ export class AppComponent implements OnInit,AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    if (this.location.path() === '/student-quiz') {
+    setTimeout(() => {
+      if (this.location.path() === '/student-quiz') {
       this.fullPage = true;
     } else {
       this.fullPage = false;
     }
+  },0);
   }
 }

@@ -1,22 +1,19 @@
 import { Injectable, OnInit } from '@angular/core';
 
 import { Question } from '../../models/question.model';
-import { Answer } from '../../models/answer.model';
 import { Quiz } from '../../models/quizDTO.model';
-import { QuizMark } from '../../models/quizMarks.model';
+import { QuizMark1 } from '../../models/quizMarks/quizMark.model';
+import { AnsweredQuestion } from '../../models/answeredQuestion.model';
 
 @Injectable()
 export class MarkQuizService implements OnInit {
   quiz: Quiz;
   questions: Question[];
-  correctQuestions: Question[] = new Array();
-  correctQuestionIds: number[] = new Array();
-  incorrectQuestions: Question[] = new Array();
-  allQuestions: Question[] = new Array();
+  answeredQuestions: AnsweredQuestion[] = new Array();
+  AnsweredQuestionDTO: AnsweredQuestion[] = new Array();
   student: any;
-  answers: Answer[];
   marks: number;
-  quizMark: QuizMark = new QuizMark();
+  quizMark: QuizMark1 = new QuizMark1();
 
   constructor() { }
 
@@ -38,37 +35,34 @@ export class MarkQuizService implements OnInit {
     this.questions = questions;
   }
 
-  setCorrectquestions(correctQuestions: Question[]) {
-    this.correctQuestions = correctQuestions;
+  setAnsweredQuestions(answeredQuestions: AnsweredQuestion[]) {
+    this.answeredQuestions = answeredQuestions; 
   }
 
-  setAnswers(answers: Answer[]) {
-    this.answers = answers;
-  }
-
-  submitQuiz(quiz: Quiz, answers: Answer[]) {
+  submitQuiz(quiz: Quiz, answeredQuestions: AnsweredQuestion[]) {
     this.setStudent();
     this.setQuiz(quiz);
-    this.setQuestions(quiz.questions);
-    this.setAnswers(answers);
+    this.setAnsweredQuestions(answeredQuestions);
   }
 
   markQuiz() {
-    let answeredQuestion: Question;
+    let answeredQuestion: AnsweredQuestion;
     let correctCount: number = 0;
 
-    this.answers.forEach(answer => {
-      answeredQuestion = this.getQuestionById(answer.question);
-      answeredQuestion.selectedAnswer = answer.selectedAnswer;
-      if (answer.selectedAnswer === answeredQuestion.correctAnswer) {
-        this.correctQuestions.push(answeredQuestion);
-        this.correctQuestionIds.push(answeredQuestion.queId);
+    this.answeredQuestions.forEach(answeredQuestion => {
+      if (answeredQuestion.question.correctAnswer === answeredQuestion.selectedAnswer) {
         correctCount++;
-      } else {
-        this.incorrectQuestions.push(answeredQuestion);
       }
-      this.allQuestions.push(answeredQuestion);
-      this.marks = this.calculateMarks(correctCount);
+      this.pushToDto(answeredQuestion);
+    });
+    
+    this.calculateMarks(correctCount);
+  }
+
+  pushToDto(answeredQuestion: AnsweredQuestion) {
+    this.AnsweredQuestionDTO.push({
+      question: answeredQuestion.question.queId,
+      selectedAnswer: answeredQuestion.selectedAnswer
     });
   }
 
@@ -78,13 +72,13 @@ export class MarkQuizService implements OnInit {
   }
 
   calculateMarks(correctCount) {
-    return correctCount * 1;
+    this.marks = correctCount*1;
   }
 
   setStudentMark() {
     this.quizMark.quiz = this.quiz.qId;
     this.quizMark.student = this.student.id;
-    this.quizMark.correctQuestions = this.correctQuestionIds;
+    this.quizMark.answeredQuestions = this.AnsweredQuestionDTO;
     this.quizMark.marks = this.marks;
   }
 
