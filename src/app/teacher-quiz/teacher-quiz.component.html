@@ -54,7 +54,7 @@
         </div>
         <div class="card-footer">
           <div class="stats">
-            <a (click)="markAsActive()"><i class="material-icons">done</i> Mark quiz as inactive</a>
+            <a (click)="markAsActive()"><i class="material-icons">close</i> Mark quiz as inactive</a>
           </div>
         </div>
       </div>
@@ -62,7 +62,7 @@
     <div class="col-lg-4 col-md-6 col-sm-6" *ngIf="!quiz.active">
       <div class="card card-stats">
         <div class="card-header" data-background-color="red">
-          <i class="material-icons">done</i>
+          <i class="material-icons">close</i>
         </div>
         <div class="card-content">
           <p class="category">Quiz is</p>
@@ -79,6 +79,18 @@
         </div>
       </div>
     </div>
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header" data-background-color="red">
+            <i class="material-icons">assignment_turned_in</i>
+          </div>
+          <div class="card-content">
+            <h3 class="title">
+              <a><small>Generate grading sheet</small></a>
+            </h3>
+          </div>
+        </div>
+      </div>
   </div>
   <div class="row">
     <div class="col-md-12">

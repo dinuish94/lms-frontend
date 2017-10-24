@@ -12,13 +12,18 @@ import swal from 'sweetalert2';
 })
 export class StudentCoursesComponent implements OnInit {
 
+  studentId : number;
   courses : Course[];
   selectedCourse : Course;
   searchCourses : Course[];
   tempCourses : Course[];
   // private studentService : StudentService;
   
-    constructor(private courseService:CourseService, private studentService : StudentService) {}
+    constructor(private courseService:CourseService, private studentService : StudentService) {
+      let userObj = localStorage.getItem("authUser");
+      let user = JSON.parse(userObj);
+      this.studentId = user.id;
+    }
 
     enrollStudent(courseId){
 
@@ -30,8 +35,7 @@ export class StudentCoursesComponent implements OnInit {
         confirmButtonText: 'Yes, Enroll Me!',
         cancelButtonText: 'No thanks!'
       }).then(()=> {
-        let studentId = localStorage.getItem("studentId");
-        let enrollmentObj = {"cId":courseId, "sId":studentId};
+        let enrollmentObj = {"cId":courseId, "sId":this.studentId};
         this.studentService.enrollStudent(enrollmentObj).subscribe(()=>{
          // console.log(data);
           swal(
@@ -60,8 +64,7 @@ export class StudentCoursesComponent implements OnInit {
         confirmButtonText: 'Yes, UnEnroll Me!',
         cancelButtonText: 'Cancel!'
       }).then(()=> {
-        let studentId = localStorage.getItem("studentId");
-        let enrollmentObj = {"cId":courseId, "sId":studentId};
+        let enrollmentObj = {"cId":courseId, "sId":this.studentId};
         this.studentService.unEnrollStudent(enrollmentObj).subscribe(()=>{
          // console.log(data);
           swal(
@@ -76,8 +79,6 @@ export class StudentCoursesComponent implements OnInit {
         if (dismiss === 'cancel') {
         }
       })
-
-
     }
 
     getCourse(courseId){
@@ -91,11 +92,19 @@ export class StudentCoursesComponent implements OnInit {
   ngOnInit() {
    
     this.getCourses();
+    this.getStudent();
+  }
+
+  getStudent(){
+    this.studentService.getStudent(this.studentId).subscribe(student=>{
+      console.log(student.courses);
+
+    });
   }
 
   getCourses(){
     this.courseService.getCourses().subscribe(courses=>{
-      console.log(courses);
+      //console.log(courses);
       this.courses = courses;
       this.tempCourses = courses;
     });
