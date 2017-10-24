@@ -17,7 +17,11 @@ export class QuizService {
     return this.http.get<Quiz>(generateQuizUrl(id));
   }
 
+  getMark(quizId: number,studentId: number) {
+    return this.http.get(generateQuizMarksUrl(quizId,studentId));
+  }
+
   post(quizMark) {
-    return this.http.post(generateQuizMarksUrl(quizMark.quiz),quizMark);
+    return this.http.post(generateQuizMarksUrl(quizMark.quiz,quizMark.studentId),quizMark);
   }
 }

@@ -12,6 +12,7 @@ export class MarkQuizService implements OnInit {
   correctQuestions: Question[] = new Array();
   correctQuestionIds: number[] = new Array();
   incorrectQuestions: Question[] = new Array();
+  allQuestions: Question[] = new Array();
   student: any;
   answers: Answer[];
   marks: number;
@@ -58,7 +59,7 @@ export class MarkQuizService implements OnInit {
 
     this.answers.forEach(answer => {
       answeredQuestion = this.getQuestionById(answer.question);
-
+      answeredQuestion.selectedAnswer = answer.selectedAnswer;
       if (answer.selectedAnswer === answeredQuestion.correctAnswer) {
         this.correctQuestions.push(answeredQuestion);
         this.correctQuestionIds.push(answeredQuestion.queId);
@@ -66,7 +67,7 @@ export class MarkQuizService implements OnInit {
       } else {
         this.incorrectQuestions.push(answeredQuestion);
       }
-      
+      this.allQuestions.push(answeredQuestion);
       this.marks = this.calculateMarks(correctCount);
     });
   }
