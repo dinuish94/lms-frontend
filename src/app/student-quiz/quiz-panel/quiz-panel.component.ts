@@ -16,7 +16,7 @@ export class QuizPanelComponent implements OnInit {
   @Input() answeredQuestions: AnsweredQuestion[];
   @Input() currentQuestion: Question;
   @Input() currentIndex: number;
-  @Output() navigate: EventEmitter<number> = new EventEmitter<number>();
+  @Output() navigate: EventEmitter<any> = new EventEmitter<any>();
 
   count: number = 3600;
   countDown;
@@ -52,8 +52,11 @@ export class QuizPanelComponent implements OnInit {
   }
 
   goTo(index) {
-    console.log(index);
-    this.navigate.emit(index);
+    let indexes = {
+      currentIndex: this.currentIndex,
+      newIndex: index
+    }
+    this.navigate.emit(indexes);
   }
 
 
