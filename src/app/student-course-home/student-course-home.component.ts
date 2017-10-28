@@ -24,6 +24,7 @@ export class StudentCourseHomeComponent implements OnInit {
   file : File;
   uploadAssignment : UploadAssignment;
   assignIds : number[] =[];
+  currentDate : number;
   b : any;
 
 
@@ -31,34 +32,55 @@ export class StudentCourseHomeComponent implements OnInit {
     let userObj = localStorage.getItem("authUser");
     let user = JSON.parse(userObj);
     this.studentId = user.id;
+    this.currentDate = Date.now();
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.courseId = params['cId']; // --> Name must match wanted parameter
+      this.courseId = params['cId'];
     });
 
-    this.getCourse();
+    this.getAssignmentsForCourse();
+    //this.getCourse();
     //this.getStudent();
   }
 
-  getCourse(){
-    this.courseService.getCourseById(this.courseId).subscribe(course=>{
-        this.course = course;
-        this.assignments = course.assignments;
-        return this.getStudent();
-    });
+  // getCourse(){
+  //   this.courseService.getCourseById(this.courseId).subscribe(course=>{
+  //       this.course = course;
+  //       this.assignments = course.assignments;
+  //       console.log(course);
+  //       return this.getStudent();
+  //   });
+  // } 
+
+  getAssignmentsForCourse(){
+    this.courseService.getAssignments(this.courseId).subscribe(assignments=>{
+      this.assignments = assignments;
+      //return this.getStudent();
+      return this.getAssignmentsForStudent();
+    }); 
+  }
+
+  getAssignmentsForStudent(){
+    this.studentService.getAssignments(this.studentId).subscribe(assignments=>{
+      console.log(assignments.length);
+    }); 
   }
 
   getStudent(){
     this.studentService.getStudent(this.studentId).subscribe(student=>{
         this.student = student;
+        console.log("SID");
+        console.log(student.studentAssignment);
         this.uploadedAssignments = student.studentAssignment;
-       //  return this.disableAssignment();
+        // return this.disableAssignment();
     });
   }
 
   disableAssignment(){
+    console.log("cdscdscdscdscds");
+    console.log(this.assignments);
     this.compArray(this.assignments, this.uploadedAssignments);
   }
 
@@ -81,7 +103,7 @@ export class StudentCourseHomeComponent implements OnInit {
   }
 
 
-  uploadAssignmentFile(assignId){
+  uploadAssignmentFiles(assignId){
    // console.log("Inside UploadAssFile Component");
     let sId = this.studentId.toString();
     let aId = assignId.toString();
@@ -91,6 +113,53 @@ export class StudentCourseHomeComponent implements OnInit {
   
 
   }
+
+
+  uploadAssignmentFile(assignId){
+    // console.log("Inside UploadAssFile Component");
+     let sId = this.studentId.toString();
+     let aId = assignId.toString();
+     let assignmentFile : File = this.file;
+     this.file=null;
+
+     if(assignmentFile == null){
+        swal(
+              'File Not Found!',
+              'Choose File to Upload',
+              'error'
+            )
+        return;
+     }
+     
+     swal({
+      title: 'Are you sure?',
+      text: 'Your Assignment will be submitted!',
+      type: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Submit Assignment!',
+      cancelButtonText: 'Cancel!'
+    }).then(()=> {
+      this.studentService.uploadAssignment(assignmentFile,aId,sId).subscribe(()=>{
+        console.log("Success");
+        swal(
+          'Success!',
+          ' You are now Enrolled to the course',
+          'success'
+        );
+        window.location.reload();
+      });
+    }, function(dismiss) {
+      // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+      if (dismiss === 'cancel') {
+      }
+    })
+   
+ 
+   }
+
+
+
+  
 
   fileChange(event){
     let uploadAssignment : UploadAssignment;

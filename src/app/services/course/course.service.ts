@@ -19,4 +19,9 @@ export class CourseService {
     .map(res => res.json());
   }
 
+  getAssignments(courseId){
+    return this.http.get('http://localhost:8080/courses/'+courseId+'/assignments')
+    .map(res => res.json());
+  }
+
 }

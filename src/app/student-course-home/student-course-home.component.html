@@ -6,16 +6,18 @@
               <h4 class="title">Enrolled Courses</h4>
               <p class="category">New employees on 15th September, 2016</p>
           </div>
-          <div class="row" style="margin-top:2%" *ngFor="let assignment of assignments">
-              <div class="col-md-8">
-                <div class="alert">
-                  <form enctype="multipart/form-data">
-                    <h1 class="title"><b> {{assignment.name}} </b> </h1>
-                    <p> {{assignment.description}}</p>
-                    <p> Deadline : {{assignment.endDate}}</p>
-                      <input type="file" name="assignmentFile" (change)="fileChange($event)" #assignmentFile/>     
-                      <input type="button" class="btn btn-info" value="Upload Assignment" (click)="uploadAssignmentFile(assignment.assignId)"/>
-                  </form>    
+          <div *ngFor="let assignment of assignments"  >
+            <div class="row" style="margin-top:2%" *ngIf="assignment.endDate>currentDate" disabled>
+                <div class="col-md-8">
+                  <div class="alert">
+                    <form enctype="multipart/form-data">
+                      <h1 class="title"><b> {{assignment.name}} </b> </h1>
+                      <p> {{assignment.description}}</p>
+                      <p> Deadline : {{assignment.endDate | date}} 12.00 A.M</p>
+                        <input type="file" name="assignmentFile" (change)="fileChange($event)" #assignmentFile/>     
+                        <input type="button" class="btn btn-info" value="Upload Assignment" (click)="uploadAssignmentFile(assignment.assignId)"/>
+                    </form>    
+                </div>
               </div>
             </div>
           </div>
