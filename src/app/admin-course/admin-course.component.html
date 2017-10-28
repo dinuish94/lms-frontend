@@ -1,67 +1,121 @@
 <div class="main-content">
-  <div class="row">
-      <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
-      
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header" data-background-color="blue">
-          <h4 class="title">Department</h4>
-          <p class="category">Department Information</p>
-        </div>
-        <div class="card-content table-responsive">
-          <table class="table">
-            <thead class="text-infor">
-              <tr>
-                <th>Department ID</th>
-                <th>Department Name</th>
-                <th>Description</th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Dakota Rice</td>
-                <td>Niger</td>
-                <td>Oud-Turnhout</td>
-                <td class="text-info">$36,738</td>
-              </tr>
-              <tr>
-                <td>Minerva Hooper</td>
-                <td>Curaçao</td>
-                <td>Sinaai-Waas</td>
-                <td class="text-primary">$23,789</td>
-              </tr>
-              <tr>
-                <td>Sage Rodriguez</td>
-                <td>Netherlands</td>
-                <td>Baileux</td>
-                <td class="text-primary">$56,142</td>
-              </tr>
-              <tr>
-                <td>Philip Chaney</td>
-                <td>Korea, South</td>
-                <td>Overland Park</td>
-                <td class="text-primary">$38,735</td>
-              </tr>
-              <tr>
-                <td>Doris Greene</td>
-                <td>Malawi</td>
-                <td>Feldkirchen in Kärnten</td>
-                <td class="text-primary">$63,542</td>
-              </tr>
-              <tr>
-                <td>Mason Porter</td>
-                <td>Chile</td>
-                <td>Gloucester</td>
-                <td class="text-primary">$78,615</td>
-              </tr>
-            </tbody>
-          </table>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header" data-background-color="orange">
+            <button class="btn btn-white pull-right" data-toggle="modal" data-target="#myModal">
+              <i class="material-icons">add</i>
+            </button>
+            <h4 class="title">Courses</h4>
+            <p class="category">Course Information</p>
+          </div>
+          <div class="card-content table-responsive">
+            <table class="table">
+              <thead class="text-infor">
+                <tr>
+                  <th>Course ID</th>
+                  <th>Course Title</th>  
+                  <th>Course Name</th>                
+                  <th>Description</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Dakota Rice</td>
+                  <td>Niger</td>
+                  <td>Oud-Turnhout</td>
+                  <td class="text-info">$36,738</td>
+                  <td>
+                    <button class="btn btn-danger btn-simple btn-lg" data-original-title="Remove" title="" type="button">
+                      <i  class="material-icons">close</i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Minerva Hooper</td>
+                  <td>Curaçao</td>
+                  <td>Sinaai-Waas</td>
+                  <td class="text-primary">$23,789</td>
+                </tr>
+                <tr>
+                  <td>Sage Rodriguez</td>
+                  <td>Netherlands</td>
+                  <td>Baileux</td>
+                  <td class="text-primary">$56,142</td>
+                </tr>
+                <tr>
+                  <td>Philip Chaney</td>
+                  <td>Korea, South</td>
+                  <td>Overland Park</td>
+                  <td class="text-primary">$38,735</td>
+                </tr>
+                <tr>
+                  <td>Doris Greene</td>
+                  <td>Malawi</td>
+                  <td>Feldkirchen in Kärnten</td>
+                  <td class="text-primary">$63,542</td>
+                </tr>
+                <tr>
+                  <td>Mason Porter</td>
+                  <td>Chile</td>
+                  <td>Gloucester</td>
+                  <td class="text-primary">$78,615</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  
+  <div id="myModal" class="modal fade" role="dialog" data-backdrop="false" style="overflow: auto;" tabindex="-1">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add New Course</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+              <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group label-floating is-empty">
+                      <label class="control-label">Course Title: </label>
+                      <input class="form-control" name="quizName" rows="5">
+                      <span class="material-input"></span>
+                    </div>
+                  </div>
+                </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group label-floating is-empty">
+                  <label class="control-label">Course Name: </label>
+                  <input class="form-control" name="quizName" rows="5">
+                  <span class="material-input"></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group label-floating is-empty">
+                  <label class="control-label">Course Description</label>
+                  <input class="form-control" name="quizName" rows="5">
+                  <span class="material-input"></span>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="clearfix"></div> -->
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Save </button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
