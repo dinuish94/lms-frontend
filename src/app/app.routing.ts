@@ -25,6 +25,11 @@ import { LoginComponent } from './login/login.component';
 import { StudentQuizComponent } from './student-quiz/student-quiz.component';
 import { QuizReviewComponent } from './quiz-review/quiz-review.component';
 
+import { AdminCourseComponent } from './admin-course/admin-course.component';
+import { AdminDepartmentComponent } from './admin-department/admin-department.component';
+import { AdminStudentComponent } from './admin-student/admin-student.component';
+import { AdminTeacherComponent } from './admin-teacher/admin-teacher.component';
+
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
@@ -49,8 +54,13 @@ const routes: Routes = [
   { path: 'student-courses', component: StudentCoursesComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-feedback', component: StudentFeedbackComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-quiz', component: StudentQuizComponent /*,canActivate:[AuthGuard]*/},
-  { path: 'review-quiz/:quizId', component: QuizReviewComponent /*,canActivate:[AuthGuard]*/}
+  { path: 'review-quiz/:quizId', component: QuizReviewComponent /*,canActivate:[AuthGuard]*/},
 
+  //Course Routes
+  { path: 'admin/courses', component: AdminCourseComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'admin/students', component: AdminStudentComponent },
+  { path: 'admin/departments', component: AdminDepartmentComponent },
+  { path: 'admin/teachers', component: AdminTeacherComponent }
 ];
 
 @NgModule({
