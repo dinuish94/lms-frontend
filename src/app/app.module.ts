@@ -43,6 +43,7 @@ import { StudentService } from './services/student/student.service';
 import { MarkQuizService } from './services/mark-quiz/mark-quiz.service';
 
 import { AppTimePipe } from './pipes/appTimePipe/app-time.pipe';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { AppTimePipe } from './pipes/appTimePipe/app-time.pipe';
     StudentQuizComponent,
     TeacherAssignmentsComponent,
     QuizPanelComponent,
-    AppTimePipe
+    AppTimePipe,
+    UpdateProfileComponent
   ],
   imports: [
     BrowserModule,

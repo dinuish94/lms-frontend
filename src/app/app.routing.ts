@@ -21,6 +21,7 @@ import { StudentCoursesComponent } from './student-courses/student-courses.compo
 import { StudentFeedbackComponent } from './student-feedback/student-feedback.component';
 import { LoginComponent } from './login/login.component';
 
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 import { StudentQuizComponent } from './student-quiz/student-quiz.component';
 
@@ -47,7 +48,8 @@ const routes: Routes = [
   { path: 'student-courses', component: StudentCoursesComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-feedback', component: StudentFeedbackComponent /*,canActivate:[AuthGuard]*/},
   { path: 'login', component: LoginComponent /*,canActivate:[AuthGuard]*/},
-  { path: 'student-quiz', component: StudentQuizComponent /*,canActivate:[AuthGuard]*/}
+  { path: 'student-quiz', component: StudentQuizComponent /*,canActivate:[AuthGuard]*/},
+  {path: 'update-profile/:userId', component: UpdateProfileComponent /*,canActivate:[AuthGuard]*/}
 ]
 
 @NgModule({

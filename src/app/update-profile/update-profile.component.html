@@ -1,0 +1,34 @@
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-3"> </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4>Update Profile</h4>
+        </div>
+        <div class="card-content">
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+              <div class="form-group" style="margin:0%">
+                <label style="color:black"><b>Name</b></label>
+              </div>
+            </div>
+            <div class="form-group col-md-5" style="margin:0%">
+              <label *ngIf="!isEditName" (click)="toggle()" style="cursor:pointer">{{name}}</label>
+              <input *ngIf="isEditName" type="text" class="form-control" style="margin-top:-10px" [(ngModel)]="name"/>
+            </div>
+            <div [ngClass]="isEditName?'col-md-3':'col-md-1'">
+              <i class="material-icons" (click)="toggle()" style="cursor:pointer" *ngIf="!isEditName">edit</i>
+              <div class="row">
+                <i *ngIf="isEditName" (click)="toggle()" class="material-icons">done</i>
+                <i *ngIf="isEditName" (click)="toggle()" class="material-icons">close</i>
+              </div>
+            </div>
+          <!-- <div class="col-md-3"></div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
