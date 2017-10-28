@@ -43,6 +43,8 @@ import { StudentService } from './services/student/student.service';
 import { MarkQuizService } from './services/mark-quiz/mark-quiz.service';
 
 import { AppTimePipe } from './pipes/appTimePipe/app-time.pipe';
+import { QuizReviewComponent } from './quiz-review/quiz-review.component';
+import { MarkAnswerDirective } from './directives/mark-answer/mark-answer.directive';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,9 @@ import { AppTimePipe } from './pipes/appTimePipe/app-time.pipe';
     StudentQuizComponent,
     TeacherAssignmentsComponent,
     QuizPanelComponent,
-    AppTimePipe
+    AppTimePipe,
+    QuizReviewComponent,
+    MarkAnswerDirective
   ],
   imports: [
     BrowserModule,
