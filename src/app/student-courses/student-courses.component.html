@@ -29,7 +29,7 @@
                                 <td>{{course.title}}</td>
                                 <td class="text-center"><button class="btn btn-success" (click)="getCourse(course.cId)" data-toggle="modal" data-target="#myModal">View Details</button></td>
                                 <td *ngIf="!course.flag" class="text-center"><button class="btn btn-warning" (click)="enrollStudent(course.cId)">Enroll</button></td>
-                                <td *ngIf="course.flag" class="text-center"><button class="btn btn-primary btn-simple btn-lg" disabled>Enrolled</button></td>
+                                <td *ngIf="course.flag" class="text-center"><button class="btn btn-default btn-simple btn-lg" disabled><i class="material-icons">check_box</i> Enrolled</button></td>
                             </tr>
                         </tbody>
                     </table>

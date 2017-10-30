@@ -3,7 +3,7 @@
     <div class="col-md-8">
       <div class="card">
         <div class="card-header" data-background-color="green">
-          <h2 class="title">{{course.title}} - {{course.name}}</h2>
+          <h2 class="title">{{course?.title}} - {{course?.name}}</h2>
           <p class="category">Assignment Submissions</p>
         </div>
         <div class="row" style="margin-top:2%" *ngFor="let assignment of assignments">
@@ -11,11 +11,18 @@
             <div class="col-md-10 col-md-offset-1">
               <div class="card">
                 <form enctype="multipart/form-data">
+                  
                   <h3 class="card-title"> {{assignment.name}}</h3>
                   <h4 class="card-title"> {{assignment.description}}</h4>
-                  <p> Deadline : {{assignment.endDate | date}} 12.00 A.M</p>
-                  <input type="file" name="assignmentFile" (change)="fileChange($event)" #assignmentFile/>
-                  <input type="button" class="btn btn-success" value="Upload Assignment" (click)="uploadAssignmentFile(assignment.assignId)" />
+                  <p class="redH" *ngIf="!assignment.flag"><i class="material-icons">info</i> Deadline : {{assignment.endDate | date}} 12.00 A.M</p>
+              
+                  <input *ngIf="!assignment.flag" type="file" name="assignmentFile" (change)="fileChange($event)" #assignmentFile/>
+                  
+                  <button *ngIf="!assignment.flag" class="btn btn-success" (click)="uploadAssignmentFile(assignment.assignId)">Upload Assignment</button>
+                  <p *ngIf="assignment.flag" class="card-title greenH"><i class="material-icons">check_circle</i> Assignment Submitted for Grading</p>
+
+                  
+                 
                 </form>
                 
               </div>
@@ -39,9 +46,11 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let assignment of uploadedAssignments">
+                        <template [ngIf]="assignment.courseId==courseId">
                         <td>{{assignment.name}}</td>
                         <td>{{assignment.description}}</td>
                         <td>{{assignment.marks}}</td>
+                      </template>
                     </tr>
                 </tbody>
             </table>

@@ -62,6 +62,8 @@ export class StudentCourseHomeComponent implements OnInit {
   getAssignmentsForStudent() {
     this.studentService.getAssignments(this.studentId).subscribe(assignments => {
       this.uploadedAssignments = assignments;
+      console.log(this.uploadedAssignments);
+      return this.disableAssignment();
     });
   }
 
@@ -79,17 +81,12 @@ export class StudentCourseHomeComponent implements OnInit {
     this.compArray(this.assignments, this.uploadedAssignments);
   }
 
-  compArray(a: Assignment[], b) {
-    console.log("COMP ARR");
+  compArray(a, b) {
     for (let i = 0; i < a.length; i++) {
       for (let k = 0; k < b.length; k++) {
-        console.log(a);
-        console.log(b[k].assignment);
-
-        if (a[i].assignId == b[k].assignment.assignId) {
-          this.assignIds.push(a[i].assignId);
+        if (a[i].assignId == b[k].assignId) {
+          a[i].flag=true;
         }
-
       }
     }
   }
