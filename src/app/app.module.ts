@@ -40,6 +40,7 @@ import { QuizService } from './services/quiz/quiz.service';
 import { CourseService } from './services/course/course.service';
 import { StudentService } from './services/student/student.service';
 import { StudentCourseHomeComponent } from './student-course-home/student-course-home.component';
+import { StudentFeedbackSessionComponent } from './student-feedback-session/student-feedback-session.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { StudentCourseHomeComponent } from './student-course-home/student-course
     StudentQuizComponent,
     TeacherAssignmentsComponent,
     StudentCourseHomeComponent,
+    StudentFeedbackSessionComponent,
 
 
   ],

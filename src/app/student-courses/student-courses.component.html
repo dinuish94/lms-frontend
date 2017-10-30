@@ -1,41 +1,38 @@
-<div class="content" style="margin-top:5%">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header" data-background-color="purple">
-                        <h4 class="title">All courses</h4>
-                        <p class="category">Here is a subtitle for this table</p>
-                    </div>
-                    <div style="margin-top:1%;margin-left:2%">
-                      <div class="row">
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" data-background-color="purple">
+                    <h2 class="title">All courses</h2>
+                    <p class="category">Student can enroll/unenroll from courses</p>
+                </div>
+                <div style="margin-top:1%;margin-left:2%">
+                    <div class="row">
                         <div class="col-md-5">
-                          <form (submit)="searchCourse(search.value)">
-                            <input type="text" class="form-control" name="search" #search placeholder="Search By Title">
-                          </form>
+                            <form (submit)="searchCourse(search.value)">
+                                <input type="text" class="form-control" name="search" #search placeholder="Search By Title">
+                            </form>
                         </div>
-                      </div>
                     </div>
-                    <div class="card-content table-responsive">
-                        <table class="table">
-                            <thead class="text-primary">
-                                <th>Course ID</th>
-                                <th>Title</th>
-                                <th>Details</th>
-                                <th>Enroll</th>
-                                <th>UnEnroll</th>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let course of courses">
-                                    <td>{{course.cId}}</td>
-                                    <td>{{course.title}}</td>
-                                    <td><button class="btn btn-success" (click)="getCourse(course.cId)" data-toggle="modal" data-target="#myModal">View Details</button></td>
-                                    <td><button class="btn btn-warning" (click)="enrollStudent(course.cId)">Enroll</button></td>
-                                    <td><button class="btn btn-danger" (click)="unEnrollStudent(course.cId)">Un-Enroll</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                </div>
+                <div class="card-content table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-primary">
+                            <th>Course ID</th>
+                            <th>Title</th>
+                            <th class="text-center">Details</th>
+                            <th class="text-center">Enroll</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let course of courses">
+                                <td>{{course.cId}}</td>
+                                <td>{{course.title}}</td>
+                                <td class="text-center"><button class="btn btn-success" (click)="getCourse(course.cId)" data-toggle="modal" data-target="#myModal">View Details</button></td>
+                                <td *ngIf="!course.flag" class="text-center"><button class="btn btn-warning" (click)="enrollStudent(course.cId)">Enroll</button></td>
+                                <td *ngIf="course.flag" class="text-center"><button class="btn btn-primary btn-simple btn-lg" disabled>Enrolled</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -43,23 +40,24 @@
 </div>
 
 
+
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog" data-backdrop="false" style="overflow: auto;" tabindex="-1">
     <div class="modal-dialog">
-  
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">{{selectedCourse?.title}}</h4>
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{selectedCourse?.title}}</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{selectedCourse?.description}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            </div>
         </div>
-        <div class="modal-body">
-          <p>{{selectedCourse?.description}}</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-  
+
     </div>
-  </div>
+</div>

@@ -1,28 +1,52 @@
-
-<div class="content" style="margin-top:5%">
-    <div class="container-fluid">
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-8">
       <div class="card">
-          <div class="card-header" data-background-color="orange">
-              <h4 class="title">Enrolled Courses</h4>
-              <p class="category">New employees on 15th September, 2016</p>
-          </div>
-          <div *ngFor="let assignment of assignments"  >
-            <div class="row" style="margin-top:2%" *ngIf="assignment.endDate>currentDate" disabled>
-                <div class="col-md-8">
-                  <div class="alert">
-                    <form enctype="multipart/form-data">
-                      <h1 class="title"><b> {{assignment.name}} </b> </h1>
-                      <p> {{assignment.description}}</p>
-                      <p> Deadline : {{assignment.endDate | date}} 12.00 A.M</p>
-                        <input type="file" name="assignmentFile" (change)="fileChange($event)" #assignmentFile/>     
-                        <input type="button" class="btn btn-info" value="Upload Assignment" (click)="uploadAssignmentFile(assignment.assignId)"/>
-                    </form>    
-                </div>
+        <div class="card-header" data-background-color="green">
+          <h2 class="title">{{course.title}} - {{course.name}}</h2>
+          <p class="category">Assignment Submissions</p>
+        </div>
+        <div class="row" style="margin-top:2%" *ngFor="let assignment of assignments">
+          <div *ngIf="assignment.endDate>currentDate">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="card">
+                <form enctype="multipart/form-data">
+                  <h3 class="card-title"> {{assignment.name}}</h3>
+                  <h4 class="card-title"> {{assignment.description}}</h4>
+                  <p> Deadline : {{assignment.endDate | date}} 12.00 A.M</p>
+                  <input type="file" name="assignmentFile" (change)="fileChange($event)" #assignmentFile/>
+                  <input type="button" class="btn btn-success" value="Upload Assignment" (click)="uploadAssignmentFile(assignment.assignId)" />
+                </form>
+                
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header" data-background-color="red">
+          <h2 class="title">Submitted Assignments</h2>
+          <p class="category">Grades</p>
+        </div>
+        <div class="card-content table-responsive">
+            <table class="table table-hover">
+                <thead class="text-danger">
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Marks</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let assignment of uploadedAssignments">
+                        <td>{{assignment.name}}</td>
+                        <td>{{assignment.description}}</td>
+                        <td>{{assignment.marks}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
       </div>
     </div>
   </div>
-
-
+</div>

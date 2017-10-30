@@ -14,6 +14,11 @@ export class CourseService {
     .map(res => res.json());
   }
 
+  getAllCourses(){
+    return this.http.get('http://localhost:8080/courses')
+    .map(res => res.json());
+  }
+
   getCourseById(courseId){
     return this.http.get('http://localhost:8080/courses/'+courseId)
     .map(res => res.json());

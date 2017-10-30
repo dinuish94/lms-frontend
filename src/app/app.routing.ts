@@ -20,6 +20,7 @@ import { StudentCoursesComponent } from './student-courses/student-courses.compo
 import { StudentFeedbackComponent } from './student-feedback/student-feedback.component';
 import { LoginComponent } from './login/login.component';
 import { StudentCourseHomeComponent } from './student-course-home/student-course-home.component';
+import { StudentFeedbackSessionComponent } from './student-feedback-session/student-feedback-session.component';
 
 
 import { StudentQuizComponent } from './student-quiz/student-quiz.component';
@@ -44,6 +45,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-quiz', component: StudentQuizComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-enrolled-courses/:cId', component: StudentCourseHomeComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'student-feedback/:fId', component: StudentFeedbackSessionComponent /*,canActivate:[AuthGuard]*/},
 ]
 
 @NgModule({

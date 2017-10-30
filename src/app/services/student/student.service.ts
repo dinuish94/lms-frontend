@@ -52,4 +52,9 @@ export class StudentService {
     return this.http.get('http://localhost:8080/students/'+studentId+'/assignments')
     .map(res => res.json());
   }
+
+  getEnrolledCourses(studentId){
+    return this.http.get('http://localhost:8080/students/'+studentId+'/courses')
+    .map(res => res.json());
+  }
 }

@@ -1,50 +1,91 @@
-<div class="content" style="margin-top:5%">
-    <div class="container-fluid">
-        <div class="card">
-            <div class="card-header" data-background-color="blue">
-                <h4 class="title">Welcome Student</h4>
-                <p class="category">Sri Lanka Institue of Information Technology
-                </p>
-            </div>
-            <div class="card-content">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h5>Student | Home</h5>
-                        <a href="/student-enrolled-courses">
-                          <div class="alert alert-primary">
-                              <span><b> My Courses</b></span>
-                          </div>
-                        </a>
-                        <a href="/student-feedback">
-                          <div class="alert alert-warning">
-                              <span><b> FeedBack</b></span>
-                          </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6">
-                        <h5>&nbsp;</h5>
-                        <a href="/student-courses">
-                          <div class="alert alert-success">
-                              <span><b> All Courses</b></span>
-                          </div>
-                        </a>
-                        <div class="alert alert-danger" (click)="test()">
-                            <span><b> Notices</b></span>
-                        </div>                    
-                    </div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" data-background-color="grey">
+                    <h2 class="title">Welcome Student</h2>
+                    <p class="category">Student Moodle
+                    </p>
                 </div>
-                <br>
-                <br>
-                <div class="places-buttons">
+                <div class="card-content">
+                    <br/><br/>
                     <div class="row">
-                        <div class="col-md-6 col-md-offset-3 text-center">
-                            <h5>Notifications Places
-                                <p class="category">Click to view notifications</p>
-                            </h5>
+                        <div class="col-md-10 col-md-offset-1 smenu">
+                            <a href="/student-enrolled-courses">
+                                <div class="card card-stats">
+                                    <div class="card-header" data-background-color="green">
+                                        <i class="material-icons">content_copy</i>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3 class="title">My Courses
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 smenu">
+                            <a href="/student-courses">
+                                <div class="card card-stats">
+                                    <div class="card-header" data-background-color="purple">
+                                        <i class="material-icons">content_copy</i>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3 class="title">Courses
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 smenu">
+                            <a href="/student-feedback">
+                                <div class="card card-stats">
+                                    <div class="card-header" data-background-color="orange">
+                                        <i class="material-icons">content_copy</i>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3 class="title">FeedBack
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 smenu">
+
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="red">
+                                    <i class="material-icons">content_copy</i>
+                                </div>
+                                <div class="card-content">
+                                    <h3 class="title">E-Library
+                                    </h3>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 smenu">
+
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="blue">
+                                    <i class="material-icons">content_copy</i>
+                                </div>
+                                <div class="card-content">
+                                    <h3 class="title">FAQ
+                                    </h3>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-  </div>
+</div>
