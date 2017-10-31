@@ -99,7 +99,7 @@ export class StudentCoursesComponent implements OnInit {
         }
       }
     }
-    console.log(this.courseCompArray);
+    console.log(this.courses);
   }
 
   getCourses() {
@@ -123,6 +123,10 @@ export class StudentCoursesComponent implements OnInit {
     });
     this.courses = [];
     this.courses = this.searchCourses;
+  }
+
+  onKeyDownSearch(input) {
+    return this.searchCourse(input);
   }
 }
 

@@ -9,8 +9,8 @@
                 <div style="margin-top:1%;margin-left:2%">
                     <div class="row">
                         <div class="col-md-5">
-                            <form (submit)="searchCourse(search.value)">
-                                <input type="text" class="form-control" name="search" #search placeholder="Search By Title">
+                            <form>
+                                <input type="text" (keyup)="onKeyDownSearch(search.value)" class="form-control" name="search" #search placeholder="Search By Title">
                             </form>
                         </div>
                     </div>
