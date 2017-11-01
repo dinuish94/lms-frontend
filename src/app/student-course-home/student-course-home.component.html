@@ -1,0 +1,61 @@
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header" data-background-color="green">
+          <h2 class="title">{{course?.title}} - {{course?.name}}</h2>
+          <p class="category">Assignment Submissions</p>
+        </div>
+        <div class="row" style="margin-top:2%" *ngFor="let assignment of assignments">
+          <div *ngIf="assignment.endDate>currentDate">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="card">
+                <form enctype="multipart/form-data">
+                  
+                  <h3 class="card-title"> {{assignment.name}}</h3>
+                  <h4 class="card-title"> {{assignment.description}}</h4>
+                  <p class="redH" *ngIf="!assignment.flag"><i class="material-icons">info</i> Deadline : {{assignment.endDate | date}} 12.00 A.M</p>
+              
+                  <input *ngIf="!assignment.flag" type="file" name="assignmentFile" (change)="fileChange($event)" #assignmentFile/>
+                  
+                  <button *ngIf="!assignment.flag" class="btn btn-success" (click)="uploadAssignmentFile(assignment.assignId)">Upload Assignment</button>
+                  <p *ngIf="assignment.flag" class="card-title greenH"><i class="material-icons">check_circle</i> Assignment Submitted for Grading</p>
+
+                  
+                 
+                </form>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header" data-background-color="red">
+          <h2 class="title">Submitted Assignments</h2>
+          <p class="category">Grades</p>
+        </div>
+        <div class="card-content table-responsive">
+            <table class="table table-hover">
+                <thead class="text-danger">
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Marks</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let assignment of uploadedAssignments">
+                        <template [ngIf]="assignment.courseId==courseId">
+                        <td>{{assignment.name}}</td>
+                        <td>{{assignment.description}}</td>
+                        <td>{{assignment.marks}}</td>
+                      </template>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
