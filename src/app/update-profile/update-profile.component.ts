@@ -8,7 +8,17 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 export class UpdateProfileComponent implements OnChanges, OnInit {
   isEditName: boolean = false;
   name: string = '';
-  constructor() { }
+  student: any;
+  constructor() { 
+    this.student = {
+      name: 'Kashif Roshen',
+      email: 'kashifroshen7@gmail.com',
+      courses: [
+        'Software Technology',
+        'Softwa'
+      ]    
+    }
+  }
 
   // ngOnInit() {
 
