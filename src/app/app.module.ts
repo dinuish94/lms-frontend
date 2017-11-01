@@ -35,12 +35,20 @@ import { StudentHomeComponent } from './student-home/student-home.component';
 import { LoginComponent } from './login/login.component';
 import { StudentQuizComponent } from './student-quiz/student-quiz.component';
 import { TeacherAssignmentsComponent } from './teacher-assignments/teacher-assignments.component';
+import { QuizPanelComponent } from './student-quiz/quiz-panel/quiz-panel.component';
 
 import { QuizService } from './services/quiz/quiz.service';
 import { CourseService } from './services/course/course.service';
 import { StudentService } from './services/student/student.service';
+
 import { StudentCourseHomeComponent } from './student-course-home/student-course-home.component';
 import { StudentFeedbackSessionComponent } from './student-feedback-session/student-feedback-session.component';
+import { MarkQuizService } from './services/mark-quiz/mark-quiz.service';
+
+import { AppTimePipe } from './pipes/appTimePipe/app-time.pipe';
+import { QuizReviewComponent } from './quiz-review/quiz-review.component';
+import { MarkAnswerDirective } from './directives/mark-answer/mark-answer.directive';
+>
 
 @NgModule({
   declarations: [
@@ -74,7 +82,10 @@ import { StudentFeedbackSessionComponent } from './student-feedback-session/stud
     TeacherAssignmentsComponent,
     StudentCourseHomeComponent,
     StudentFeedbackSessionComponent,
-
+    QuizPanelComponent,
+    AppTimePipe,
+    QuizReviewComponent,
+    MarkAnswerDirective
 
   ],
   imports: [
@@ -91,7 +102,8 @@ import { StudentFeedbackSessionComponent } from './student-feedback-session/stud
   providers: [
     QuizService,
     CourseService,
-    StudentService
+    StudentService,
+    MarkQuizService
   ],
   bootstrap: [AppComponent]
 })

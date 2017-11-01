@@ -56,7 +56,7 @@ export class TeacherCourseComponent implements OnInit {
   }
 
   getAllAssignments(){
-    this._teacherAssignmentService.getAllQuestions(this.cId).subscribe(assignments => {
+    this._teacherAssignmentService.getAllAssignments(this.cId).subscribe(assignments => {
       this.assignments = assignments;
     });
   }
