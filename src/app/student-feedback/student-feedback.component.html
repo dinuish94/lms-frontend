@@ -9,12 +9,14 @@
                     <table class="table table-hover">
                         <thead class="text-warning">
                             <th>FeedBack ID</th>
-                            <th>FeedBack Description</th>
+                            <th>FeedBack Name</th>
+                            <th>Lecturer</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
+                            <tr *ngFor="let feedback of feedbacks">
+                                <td>{{feedback.fId}}</td>
+                                <td>{{feedback.name}}</td>
+                                <td>{{feedback.teacher.name}}</td>
                                 <td class="td-actions text-right">
                                     <button type="button" rel="tooltip" title="" class="btn btn-warning btn-simple btn-lg" data-original-title="Edit Task" [routerLink]="['./',1]">
                                     <i class="material-icons">launch</i>

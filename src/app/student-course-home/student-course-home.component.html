@@ -49,7 +49,8 @@
                         <template [ngIf]="assignment.courseId==courseId">
                         <td>{{assignment.name}}</td>
                         <td>{{assignment.description}}</td>
-                        <td>{{assignment.marks}}</td>
+                        <td *ngIf='assignment.marks==0'>Pending</td>
+                        <td *ngIf='assignment.marks!=0'>{{assignment.marks}}</td>
                       </template>
                     </tr>
                 </tbody>
