@@ -2,14 +2,21 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header" data-background-color="green">
+                <div class="card-header" data-background-color="purple">
                     <h2 class="title">FeedBack</h2>
                     <p class="category">{{currentDate | date }}</p>
                 </div>
                 <div class="card-content table-responsive">
-
-
-
+                    <form #f="ngForm" (ngSubmit)="processFeedback(f)" novalidate>
+                        <div class="col-md-12" *ngFor='let question of questions'>
+                          <div class="form-group label-floating is-empty">
+                            <label class="control-label">{{question.question}}</label>
+                            <input type="text"  ngModel class="form-control" name="{{question.qId}}" #question[qId]="ngModel" >
+                            <span class="material-input"></span>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
