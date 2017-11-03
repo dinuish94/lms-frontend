@@ -86,7 +86,8 @@
           </div>
           <div class="card-content">
             <h3 class="title">
-              <a><small>Generate grading sheet</small></a>
+              <a (click)="generateGradeSheet()" data-original-title="Generate Grading Sheet" data-toggle="modal"
+              data-target="#gradeSheetModal"><small>Generate grading sheet</small></a>
             </h3>
           </div>
         </div>
@@ -195,6 +196,55 @@
             </tbody>
           </table>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Assignment Modal -->
+<div id="gradeSheetModal" class="modal fade" role="dialog" data-backdrop="false" style="overflow: auto;" tabindex="-1">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Grade Sheet for Quiz</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group form-info label-floating is-empty">
+                <table class="table">
+                  <thead class="text-info">
+                    <tr>
+                      <th>Student ID</th>
+                      <th>Marks</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let quizMark of quizMarks;">
+                      <td>{{quizMark.student}}</td>
+                      <td>{{quizMark.marks}}</td>                      
+                      <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="" class="btn btn-info btn-simple btn-xs" data-original-title="Edit Task" (click)="editQuestion(question.queId)"><!--(click)="showDialog = !showDialog"-->
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                        <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Remove" (click)=deleteQuestion(question.queId)>
+                                        <i class="material-icons">close</i>
+                                    </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+      <div class="modal-footer">
       </div>
     </div>
   </div>

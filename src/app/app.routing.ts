@@ -60,8 +60,6 @@ const routes: Routes = [
   { path: 'student-quiz', component: StudentQuizComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-enrolled-courses/:cId', component: StudentCourseHomeComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-feedback/:fId', component: StudentFeedbackSessionComponent /*,canActivate:[AuthGuard]*/},
-
-  { path: 'student-quiz', component: StudentQuizComponent /*,canActivate:[AuthGuard]*/},
   { path: 'review-quiz/:quizId', component: QuizReviewComponent /*,canActivate:[AuthGuard]*/},
 
   //Course Routes
