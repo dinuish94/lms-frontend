@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { DatepickerModule } from 'angular2-material-datepicker';
 
+import {} from 'an'
+
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 
@@ -47,8 +49,13 @@ import { StudentFeedbackSessionComponent } from './student-feedback-session/stud
 import { MarkQuizService } from './services/mark-quiz/mark-quiz.service';
 
 import { AppTimePipe } from './pipes/appTimePipe/app-time.pipe';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { QuizReviewComponent } from './quiz-review/quiz-review.component';
 import { MarkAnswerDirective } from './directives/mark-answer/mark-answer.directive';
+import { AdminCourseComponent } from './admin-course/admin-course.component';
+import { AdminStudentComponent } from './admin-student/admin-student.component';
+import { AdminTeacherComponent } from './admin-teacher/admin-teacher.component';
+import { AdminDepartmentComponent } from './admin-department/admin-department.component';
 
 
 @NgModule({
@@ -85,9 +92,13 @@ import { MarkAnswerDirective } from './directives/mark-answer/mark-answer.direct
     StudentFeedbackSessionComponent,
     QuizPanelComponent,
     AppTimePipe,
+    UpdateProfileComponent,
     QuizReviewComponent,
-    MarkAnswerDirective
-
+    MarkAnswerDirective,
+    AdminCourseComponent,
+    AdminStudentComponent,
+    AdminTeacherComponent,
+    AdminDepartmentComponent
   ],
   imports: [
     BrowserModule,

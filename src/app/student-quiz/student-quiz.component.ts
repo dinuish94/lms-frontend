@@ -9,6 +9,7 @@ import { Question } from '../models/question.model';
 import { AnsweredQuestion } from '../models/answeredQuestion.model';
 import { QuizMark1 } from '../models/quizMarks/quizMark.model';
 
+
 import { Observable } from 'rxjs';
 import swal from 'sweetalert2';
 
@@ -143,6 +144,7 @@ export class StudentQuizComponent implements OnInit {
       cancelButtonText: 'cancel'
     }).then(() => {
       this.submitQuiz();
+      console.log(this.quizMark);
       this._quizService.post(this.quizMark).subscribe(any => {
         this.submittedAlert();
       });

@@ -116,7 +116,7 @@
         <form>
           <div class="row">
             <div class="col-md-12">
-              <div class="form-group label-floating is-empty">
+              <div class="form-group form-warning label-floating is-empty">
                 <label class="control-label">Provide feedback</label>
                 <textarea class="form-control" name="quizName" rows="5"></textarea>
                 <span class="material-input"></span>
@@ -148,7 +148,7 @@
         <form>
           <div class="row">
             <div class="col-md-12">
-              <div class="form-group label-floating is-empty">
+              <div class="form-group form-info label-floating is-empty">
                 <label class="control-label">Marks</label>
                 <input type="number" class="form-control" name="marks">
                 <span class="material-input"></span>
@@ -181,44 +181,44 @@
         <form>
           <div class="row">
             <div class="col-md-12">
-              <div class="form-group label-floating is-empty">
+              <div class="form-group form-info label-floating is-empty">
                 <label class="control-label">Assignment Name</label>
                 <input type="text" class="form-control" name="name" [(ngModel)]="assignment.name">
                 <span class="material-input"></span>
               </div>
             </div>
             <div class="col-md-12">
-              <div class="form-group label-floating is-empty">
+              <div class="form-group form-info label-floating is-empty">
                 <label class="control-label">Assignment Description</label>
                 <input type="text" class="form-control" name="description" [(ngModel)]="assignment.description">
                 <span class="material-input"></span>
               </div>
             </div>
             <div class="col-md-12">
-              <div class="form-group label-floating is-empty">
+              <div class="form-group form-info label-floating is-empty">
                 <label class="control-label" >Start Date:</label>
               </div>
             </div>
             <div class="col-md-12">
-              <div class="form-group label-floating is-empty">
+              <div class="form-group form-info label-floating is-empty">
                 <material-datepicker [(date)]="assignment.startDate"></material-datepicker>
                 <input type="time" [(ngModel)]="assignment.startTime" name="assignmentStartTime">
               </div>
             </div>
 
             <div class="col-md-12">
-              <div class="form-group label-floating is-empty">
+              <div class="form-group form-info label-floating is-empty">
                 <label class="control-label" >End Date:</label>
               </div>
             </div>
             <div class="col-md-12">
-              <div class="form-group label-floating is-empty">
+              <div class="form-group form-info label-floating is-empty">
                 <material-datepicker [(date)]="assignment.endDate"></material-datepicker>
                 <input type="time" [(ngModel)]="assignment.endTime" name="assignmentEndTime">
               </div>
             </div>
             <div class="col-md-12">
-              <div class="form-group label-floating is-empty">
+              <div class="form-group form-info label-floating is-empty">
                 <label class="control-label">Update Document</label>
                 <input type="file" class="form-control" name="marks">
                 <span class="material-input"></span>

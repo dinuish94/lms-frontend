@@ -34,7 +34,9 @@
     "googleapis": "19.0.0",
     "jquery": "3.2.1",
     "moment": "2.18.1",
+    "ng-material-floating-button": "^0.6.2",
     "ng2-datepicker": "^2.1.0",
+    "ng2-float-btn": "0.0.3",
     "rxjs": "5.1.0",
     "sweetalert2": "^6.9.1",
     "zone.js": "0.8.4"
