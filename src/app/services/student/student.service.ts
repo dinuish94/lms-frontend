@@ -63,4 +63,14 @@ export class StudentService {
     return this.http.get('http://localhost:8080/students/'+studentId+'/courses')
     .map(res => res.json());
   }
+
+  updateStudent(id,student) {
+    return this.http.put('http://localhost:8080/students/'+id,student)
+         .map(response => response.json());
+  }
+
+  getStudentMarks(id) {
+    return this.http.get('http://localhost:8080/students/'+id+'/quizzes').
+       map(response => response.json());
+    }
 }

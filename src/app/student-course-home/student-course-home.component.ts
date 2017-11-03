@@ -6,6 +6,7 @@ import { Student } from '../models/student.model';
 import { Assignment } from '../models/assignment.model';
 import { Http } from '@angular/http';
 import swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-student-course-home',
@@ -26,9 +27,10 @@ export class StudentCourseHomeComponent implements OnInit {
   assignIds: number[] = [];
   currentDate: number;
   b: any;
+  quizzes: any = new Array();
 
 
-  constructor(private route: ActivatedRoute, private courseService: CourseService, private studentService: StudentService) {
+  constructor(private route: ActivatedRoute, private courseService: CourseService, private studentService: StudentService,private router: Router) {
     let userObj = localStorage.getItem("authUser");
     let user = JSON.parse(userObj);
     this.studentId = user.id;
@@ -42,6 +44,7 @@ export class StudentCourseHomeComponent implements OnInit {
 
     this.getAssignmentsForCourse();
     this.getCourse();
+    this.getQuizzes();
     //this.getStudent();
   }
 
@@ -151,6 +154,17 @@ export class StudentCourseHomeComponent implements OnInit {
       this.file = fileList[0];
     }
   }
+
+
+  getQuizzes() {
+    this.courseService.getQuizzes(this.courseId).subscribe(quizzes => {
+      console.log("quizzes",quizzes);
+      this.quizzes = quizzes;
+    });
+  }
+
+  goToQuiz(quizId) {
+    this.router.navigateByUrl('/student-quiz/'+quizId);  }
 
 }
 

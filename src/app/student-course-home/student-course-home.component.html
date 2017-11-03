@@ -29,6 +29,8 @@
             </div>
           </div>
         </div>
+
+        
       </div>
     </div>
     <div class="col-md-4">
@@ -58,5 +60,32 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="row">
+      <div class="col-md-8">
+          <div class="card">
+            <div class="card-header" data-background-color="green">
+              <p class="category">Quizzes</p>
+            </div>
+            <div class="row" style="margin-top:2%" *ngFor="let quiz of quizzes">
+              <div>
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="card">
+                    <form enctype="multipart/form-data">
+                      
+                      <h3 class="card-title"> {{quiz.name}}</h3>
+                                  
+                      <button class="btn btn-success" (click)="goToQuiz(quiz.qId)">Go To Quiz</button>
+                         
+                    </form>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            
+          </div>
+        </div>
   </div>
 </div>
