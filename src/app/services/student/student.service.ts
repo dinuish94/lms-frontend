@@ -38,14 +38,9 @@ export class StudentService {
     .map(res => res.json());
   }
 
-  updateStudent(id,student) {
-    return this.http.put('http://localhost:8080/students/'+id,student)
-    .map(response => response.json());
-  }
-
-  getStudentMarks(id) {
-    return this.http.get('http://localhost:8080/students/'+id+'/quizzes').
-    map(response => response.json());
+  addStudent(student) {
+    return this.http.post('http://localhost:8080/students',student)
+    .map(res => res.json());
   }
 
   uploadAssignment(file : File, assignId, sId){
