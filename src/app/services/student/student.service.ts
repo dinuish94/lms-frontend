@@ -38,13 +38,11 @@ export class StudentService {
     .map(res => res.json());
   }
 
-<<<<<<< HEAD
   addStudent(student) {
     return this.http.post('http://localhost:8080/students',student)
     .map(res => res.json());
   }
 
-=======
   uploadAssignment(file : File, assignId, sId){
     let formData = new FormData();
     formData.append('file', file);
@@ -64,5 +62,4 @@ export class StudentService {
     return this.http.get('http://localhost:8080/students/'+studentId+'/courses')
     .map(res => res.json());
   }
->>>>>>> 06a0aaed6b5a88c3ddad27cc3d3b45953239200b
 }
