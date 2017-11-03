@@ -1,4 +1,8 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
+import { StudentService } from '../services/student/student.service';
+import {ActivatedRoute} from '@angular/router';
+
+import { Student } from '../models/student.model';
 
 @Component({
   selector: 'app-update-profile',
@@ -9,39 +13,32 @@ export class UpdateProfileComponent implements OnChanges, OnInit {
   isEditName: boolean = false;
   isEditEmail: boolean = false;
   name: string = '';
-  student: any;
-  constructor() { 
-    this.student = {
-      name: 'Kashif Roshen',
-      email: 'kashifroshen7@gmail.com',
-      courses: [
-        'Software Technology',
-        'Software Engineering'
-      ]    
-    }
+  student: any = new Array();
+  studentId: number;
+  editStudent: Student = new Student();
+
+  constructor(private _studentService: StudentService, private _route:ActivatedRoute) { 
+    this.studentId = this._route.snapshot.params['userId'];    
+    this.getStudent();
   }
-
-  // ngOnInit() {
-
-  // }
 
   ngOnChanges(changes) {
     this.name = 'kashif roshen';
-    console.log("changes");
   }
 
   ngOnInit() {
-    console.log("name is online");
     this.name = 'kashif roshen';
   }
 
   editName() {
-    this.isEditName = true;
+    this.editStudent.name = this.student.name;
+    this.updateStudent();
   }
 
 
   editEmail() {
-    this.isEditEmail = true;
+    this.editStudent.email = this.student.email;
+    this.updateStudent();
   }
 
   clickEditName() {
@@ -50,5 +47,29 @@ export class UpdateProfileComponent implements OnChanges, OnInit {
 
   clickEditEmail() {
     this.isEditEmail = true;
+  }
+
+  getStudent() {
+    this._studentService.getStudent(this.studentId).subscribe(student => {
+      this.student = student;
+      this.student.email = 'kashifroshen7@gmail.com';
+    });
+  }
+
+  updateStudent() {
+    this._studentService.updateStudent(this.studentId,this.editStudent).subscribe(student => {
+      this.student = student;
+      this.updateStudent = null;
+      this.togglePencil();
+
+    });
+  }
+
+  private togglePencil() {
+    if (this.isEditName === true) {
+      this.isEditName = false;
+    } else {
+      this.isEditEmail = false;
+    }
   }
 }

@@ -38,8 +38,8 @@ export class StudentService {
     .map(res => res.json());
   }
 
-  updateStudent(student) {
-    return this.http.put('http://localhost:8080/students/',student)
+  updateStudent(id,student) {
+    return this.http.put('http://localhost:8080/students/'+id,student)
     .map(response => response.json());
   }
 
