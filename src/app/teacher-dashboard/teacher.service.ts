@@ -12,13 +12,11 @@ export class TeacherService {
 
   courses: Course[] = [];
 
-  private _courseurl='http://localhost:8080/courses/';
+  private _courseurl='http://localhost:8080/teachers/';
 
-  getAllCourses(): Observable<Course[]> {
-    return this._http.get(this._courseurl)
+  getAllCourses(id:number): Observable<Course[]> {
+    return this._http.get(this._courseurl+id+'/courses')
     .map((response: Response) => <Course[]> response.json())
     .do(data => console.log(JSON.stringify(data)));
-    // this.courses.push(new Course({name:'SET'}))
-    // return this.courses;
   }
 }
