@@ -14,11 +14,16 @@ import 'rxjs/add/operator/map';
 export class TeacherDashboardComponent implements OnInit {
 
   courses: Course[];
+  teacherId: number;
 
-  constructor(private _teacherService: TeacherService) { }
+  constructor(private _teacherService: TeacherService) {
+    let userObj = localStorage.getItem("authUser");
+    let user = JSON.parse(userObj);
+    this.teacherId = user.id;
+   }
 
   ngOnInit() {
-    this._teacherService.getAllCourses().subscribe(courses => {this.courses = courses;
+    this._teacherService.getAllCourses(this.teacherId).subscribe(courses => {this.courses = courses;
       console.log(courses);
     });
   }
