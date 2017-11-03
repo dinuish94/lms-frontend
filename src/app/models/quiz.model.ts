@@ -5,7 +5,8 @@ export class Quiz {
     qId:number;
     answers: String[];
     correctAnswer: String;
-    question: Question[];
+    question: String;
+    questions: Question[];
     duration: number;
     date: Date;
     active:boolean;
@@ -15,7 +16,7 @@ export class Quiz {
     }
 
     printQuestions() {
-        console.log(this.question);
+        console.log(this.questions);
     }
 
 }
