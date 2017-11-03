@@ -26,7 +26,7 @@ export class TeacherDashboardComponent implements OnInit {
   ngOnInit() {
     this._teacherService.getAllCourses(this.teacherId).subscribe(courses => {
       this.courses = courses;
-  });
-  
+    });
+  }
 
 }

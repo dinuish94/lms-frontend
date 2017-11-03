@@ -61,6 +61,10 @@ export class TeacherAssignmentsComponent implements OnInit {
     this._teacherAssignmentService.getStudentSubmissions(this.assignId).subscribe(submissions => {
       console.log(submissions);
       this.submissions = submissions;
+      submissions.forEach( function (submission)
+      {
+          submission.file = encodeURIComponent(submission.file);
+      });
       this.submissionCount = submissions.length;
     })
   }
