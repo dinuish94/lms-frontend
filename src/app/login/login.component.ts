@@ -14,10 +14,11 @@ export class LoginComponent implements OnInit {
   constructor(private loginService : LoginService, private router: Router) { }
 
   ngOnInit() {
+    localStorage.removeItem("authUser");
   }
 
   login(username,password){
-    let authObj = {"id":username, "password":password};
+    let authObj = {"email":username, "password":password};
 
     this.loginService.authenticate(authObj).subscribe(user=>{
         if(user.id === null){
@@ -31,13 +32,13 @@ export class LoginComponent implements OnInit {
           
           swal({
             title: 'Login Success!',
-            text: 'Welcome '+user.role,
+            text: 'Welcome '+user.email,
             type: 'success',
             confirmButtonText: 'OK',
           }).then(()=> {
               switch (user.role) {
                 case 1:
-                  this.router.navigate(['/student-home']);
+                  this.router.navigate(['/home']);
                   break;
                 case 2:
                   this.router.navigate(['/teacher-dashboard']);
