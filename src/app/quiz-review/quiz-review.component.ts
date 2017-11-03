@@ -24,6 +24,7 @@ export class QuizReviewComponent implements OnInit {
   ngOnInit() {
     this.quizId = this._router.snapshot.params['quizId'];
     this._quizService.getMark(1,1).subscribe(quizMark => {
+      console.log(quizMark);
       this.quiz = quizMark;
       this.answeredQuestions = this.quiz.answeredQuestions;
       this.getquestionCount();

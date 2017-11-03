@@ -51,7 +51,8 @@ const routes: Routes = [
   { path: 'student-feedback', component: StudentFeedbackComponent /*,canActivate:[AuthGuard]*/},
   { path: 'login', component: LoginComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-quiz', component: StudentQuizComponent /*,canActivate:[AuthGuard]*/},
-  {path: 'view-profile/:userId', component: UpdateProfileComponent /*,canActivate:[AuthGuard]*/}
+  {path: 'view-profile/:userId', component: UpdateProfileComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'review-quiz/:quizId', component: QuizReviewComponent /*,canActivate:[AuthGuard]*/}
 ];
 
 @NgModule({

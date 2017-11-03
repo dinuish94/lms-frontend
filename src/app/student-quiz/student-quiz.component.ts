@@ -144,6 +144,7 @@ export class StudentQuizComponent implements OnInit {
       cancelButtonText: 'cancel'
     }).then(() => {
       this.submitQuiz();
+      console.log(this.quizMark);
       this._quizService.post(this.quizMark).subscribe(any => {
         this.submittedAlert();
       });
