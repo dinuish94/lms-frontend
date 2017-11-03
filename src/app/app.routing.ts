@@ -20,6 +20,8 @@ import { StudentEnrolledCoursesComponent } from './student-enrolled-courses/stud
 import { StudentCoursesComponent } from './student-courses/student-courses.component';
 import { StudentFeedbackComponent } from './student-feedback/student-feedback.component';
 import { LoginComponent } from './login/login.component';
+import { StudentCourseHomeComponent } from './student-course-home/student-course-home.component';
+import { StudentFeedbackSessionComponent } from './student-feedback-session/student-feedback-session.component';
 
 
 import { StudentQuizComponent } from './student-quiz/student-quiz.component';
@@ -48,6 +50,12 @@ const routes: Routes = [
   { path: 'student-enrolled-courses', component: StudentEnrolledCoursesComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-courses', component: StudentCoursesComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-feedback', component: StudentFeedbackComponent /*,canActivate:[AuthGuard]*/},
+
+  { path: 'login', component: LoginComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'student-quiz', component: StudentQuizComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'student-enrolled-courses/:cId', component: StudentCourseHomeComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'student-feedback/:fId', component: StudentFeedbackSessionComponent /*,canActivate:[AuthGuard]*/},
+
   { path: 'student-quiz', component: StudentQuizComponent /*,canActivate:[AuthGuard]*/},
   { path: 'review-quiz/:quizId', component: QuizReviewComponent /*,canActivate:[AuthGuard]*/}
 

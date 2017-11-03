@@ -8,7 +8,8 @@
         "id": 2,
         "role": "teacher",
         "permissions": [{ "path": "home", "title": "Home", "icon": "home", "class": "" },
-        { "path": "teacher-dashboard", "title": "Dashboard", "icon": "dashboard", "class": "" }]
+        { "path": "teacher-dashboard", "title": "Dashboard", "icon": "dashboard", "class": "" }
+    ]
     }, {
         "id": 3,
         "role": "student",

@@ -1,3 +1,37 @@
-<p>
-  student-enrolled-courses works!
-</p>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" data-background-color="green">
+                    <h2 class="title">Enrolled Courses</h2>
+                    <p class="category">New employees on 15th September, 2016</p>
+                </div>
+                <div class="card-content table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-success">
+                            <th>Course ID</th>
+                            <th>Course Name</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let course of courses">
+                                <td>{{course.cId}}</td>
+                                <td>{{course.title}}</td>
+
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="" class="btn btn-success btn-simple btn-lg" data-original-title="Edit Task" [routerLink]="['./',course.cId]">
+                                    <i class="material-icons">launch</i>  View
+                                </button>
+                                </td>
+                                <td class="td-actions">
+                                    <button type="button" class="btn btn-danger btn-simple btn-lg" (click)="unEnrollStudent(course.cId)">
+                                        <i class="material-icons">highlight_off</i>  Unenroll me
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
