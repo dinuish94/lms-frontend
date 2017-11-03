@@ -47,6 +47,7 @@ import { FeedbackService } from './services/feedback/feedback.service';
 import { StudentCourseHomeComponent } from './student-course-home/student-course-home.component';
 import { StudentFeedbackSessionComponent } from './student-feedback-session/student-feedback-session.component';
 import { MarkQuizService } from './services/mark-quiz/mark-quiz.service';
+import { TeacherService } from './services/teacher/teacher.service';
 
 import { AppTimePipe } from './pipes/appTimePipe/app-time.pipe';
 import { QuizReviewComponent } from './quiz-review/quiz-review.component';
@@ -113,7 +114,8 @@ import { AdminDepartmentComponent } from './admin-department/admin-department.co
     QuizService,
     CourseService,
     StudentService,
-    MarkQuizService
+    MarkQuizService,
+    TeacherService
   ],
   bootstrap: [AppComponent]
 })
