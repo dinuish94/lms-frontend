@@ -3,7 +3,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header" data-background-color="blue">
-              <button class="btn btn-info pull-right" data-toggle="modal" data-target="#myModal"><i class="material-icons">add</i></button>                      
+            <button class="btn btn-info pull-right" data-toggle="modal" data-target="#myModal"><i class="material-icons">add</i></button>
             <h4 class="title">Teacher</h4>
             <p class="category">Teacher Information</p>
           </div>
@@ -12,38 +12,13 @@
               <thead class="text-info">
                 <th>Teacher ID</th>
                 <th>Teacher Name</th>
-                <th>Designation</th>
+                <th>Teacher Email</th>
               </thead>
-              <tbody>
+              <tbody *ngFor="let teacher of teachers">
                 <tr>
-                  <td>001</td>
-                  <td>Kashif Roshen</td>
-                  <td>kashifroshen7@gmail.com</td>
-                </tr>
-                <tr>
-                  <td>002</td>
-                  <td>Tyrion Lannister</td>
-                  <td>tyrion@castlerock.com</td>
-                </tr>
-                <tr>
-                  <td>002</td>
-                  <td>Tyrion Lannister</td>
-                  <td>tyrion@castlerock.com</td>
-                </tr>
-                <tr>
-                  <td>002</td>
-                  <td>Tyrion Lannister</td>
-                  <td>tyrion@castlerock.com</td>
-                </tr>
-                <tr>
-                  <td>002</td>
-                  <td>Tyrion Lannister</td>
-                  <td>tyrion@castlerock.com</td>
-                </tr>
-                <tr>
-                  <td>002</td>
-                  <td>Tyrion Lannister</td>
-                  <td>tyrion@castlerock.com</td>
+                  <td>{{teacher.tId}}</td>
+                  <td>{{teacher.name}}</td>
+                  <td>{{teacher.email}}</td>
                 </tr>
               </tbody>
             </table>
@@ -55,43 +30,43 @@
   
   <!-- Modal -->
   <div id="myModal" class="modal fade" role="dialog" data-backdrop="false" style="overflow: auto;" tabindex="-1">
-      <div class="modal-dialog" style="width:50%">
-    
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Add Teacher</h4>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-md-2"></div>
-              <div class="col-md-3">
-                <label>Name</label>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group" style="margin:0%">
-                    <input type="text" class="form-control" style="margin-top:-10px">
-                </div>
+    <div class="modal-dialog" style="width:50%">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Teacher</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+              <label>Name</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group" style="margin:0%">
+                <input type="text" class="form-control" style="margin-top:-10px" [(ngModel)]="newTeacher.name">
               </div>
             </div>
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-3">
-                  <label>Designation</label>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group" style="margin:0%">
-                      <input type="text" class="form-control" style="margin-top:-10px">
-                  </div>
-                </div>
-              </div>
           </div>
-          <div class="modal-footer">          
-            <button type="button" class="btn btn-success" data-dismiss="modal">Add</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+              <label>Email</label>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group" style="margin:0%">
+                <input type="email" class="form-control" style="margin-top:-10px" [(ngModel)]="newTeacher.email">
+              </div>
+            </div>
           </div>
         </div>
-    
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="addTeacher()">Add</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
       </div>
+  
     </div>
+  </div>
