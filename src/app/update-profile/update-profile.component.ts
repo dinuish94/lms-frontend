@@ -7,6 +7,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 })
 export class UpdateProfileComponent implements OnChanges, OnInit {
   isEditName: boolean = false;
+  isEditEmail: boolean = false;
   name: string = '';
   student: any;
   constructor() { 
@@ -15,7 +16,7 @@ export class UpdateProfileComponent implements OnChanges, OnInit {
       email: 'kashifroshen7@gmail.com',
       courses: [
         'Software Technology',
-        'Softwa'
+        'Software Engineering'
       ]    
     }
   }
@@ -34,8 +35,20 @@ export class UpdateProfileComponent implements OnChanges, OnInit {
     this.name = 'kashif roshen';
   }
 
-  toggle() {
-    this.isEditName = !this.isEditName;
+  editName() {
+    this.isEditName = true;
   }
 
+
+  editEmail() {
+    this.isEditEmail = true;
+  }
+
+  clickEditName() {
+    this.isEditName = true;
+  }
+
+  clickEditEmail() {
+    this.isEditEmail = true;
+  }
 }

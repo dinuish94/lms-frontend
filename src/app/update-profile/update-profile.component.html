@@ -13,8 +13,16 @@
             <div class="col-md-2" style="padding-left:5%;">
               <label style="font-size:large;color:#9c9a9a;">Name</label>
             </div>
-            <div class="col-md-6">
-              <label>{{student.name}}</label>
+            <div class="col-md-3">
+              <label *ngIf="!isEditName">{{student.name}}</label>
+              <input type="text" style="margin-top:-25%" class="form-control" [value]="student.name" *ngIf="isEditName"/>
+            </div>
+            <div class="col-md-3" *ngIf="!isEditName">
+              <i class="material-icons" style="margin-left:50%;color:#9c9a9a;cursor:pointer" (click)="clickEditName()">edit</i>                          
+            </div>
+            <div class="col-md-3" *ngIf="isEditName">
+              <i class="material-icons" style="margin-left:20%;color:#9c9a9a;cursor:pointer" (click)="editName()">done</i>
+              <i class="material-icons" style="margin-left:10%;color:#9c9a9a;cursor:pointer" (click)="editName()">close</i>                           
             </div>
           </div>
           <div class="row" style="padding-top:5%">
@@ -24,8 +32,16 @@
               <div class="col-md-2" style="padding-left:5%;">
                 <label style="font-size:large;color:#9c9a9a;">Email</label>
               </div>
-              <div class="col-md-6">
-                <label>{{student.email}}</label>
+              <div class="col-md-5">
+                <label *ngIf="!isEditEmail">{{student.email}}</label>
+                <input type="text" style="margin-top:-25%" class="form-control" [value]="student.email" *ngIf="isEditEmail"/>                
+              </div>
+              <div class="col-md-2" *ngIf="!isEditEmail">
+                <i class="material-icons" style="color:#9c9a9a;cursor:pointer" (click)="clickEditEmail()">edit</i>                          
+              </div>
+              <div class="col-md-2" *ngIf="isEditEmail">
+                <i class="material-icons" style="color:#9c9a9a;cursor:pointer" (click)="editName()">done</i>
+                <i class="material-icons" style="margin-left:20%;color:#9c9a9a;cursor:pointer" (click)="editName()">close</i>                           
               </div>
             </div>
             <div class="row" style="padding-top:5%">
@@ -35,8 +51,8 @@
                 <div class="col-md-2" style="padding-left:5%;">
                   <label style="font-size:large;color:#9c9a9a;">Courses</label>
                 </div>
-                <div class="col-md-6">
-                  <label *ngFor="let course of student.courses">{{course}}</label>
+                <div class="col-md-6" *ngFor="let course of student.courses">
+                  <label>{{course}}</label>
                 </div>
               </div>
         </div>
