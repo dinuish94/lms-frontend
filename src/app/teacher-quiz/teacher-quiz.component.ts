@@ -4,6 +4,7 @@ import { Course } from '../models/course.model';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Quiz } from '../models/quiz.model';
+import { QuizMark1 } from '../models/quizMarks/quizMark.model';
 import 'rxjs/add/operator/map';
 import { ActivatedRoute } from '@angular/router';
 import {EditQuestionModalComponent} from '../edit-question-modal/edit-question-modal.component';
@@ -25,6 +26,7 @@ export class TeacherQuizComponent implements OnInit {
   showDialog = false;
   addQuestion: boolean;
   questionId : number;
+  quizMarks: QuizMark1[];
 
   constructor(private _teacherQuizService: TeacherQuizService, private _route: ActivatedRoute) { }
 
@@ -124,5 +126,12 @@ export class TeacherQuizComponent implements OnInit {
     })
   }
 
+  generateGradeSheet(){
+    console.log("test")
+    this._teacherQuizService.generateGradeSheet(this.quizNo).subscribe(data => {
+      console.log(data);
+      this.quizMarks = data;
+    })
+  }
 
 }

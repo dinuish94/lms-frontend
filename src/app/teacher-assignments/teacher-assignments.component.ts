@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Assignment } from '../models/assignment.model';
 import { TeacherAssignmentsService } from '../teacher-assignments/teacher-assignments.service';
+import { Submission } from '../models/submission.model';
+import { Grade } from '../models/grade.model';
 
 @Component({
   selector: 'app-teacher-assignments',
@@ -16,6 +18,11 @@ export class TeacherAssignmentsComponent implements OnInit {
   assignments: Assignment[];
   cId: number;
   assignId: number;
+  submissions: Submission[];
+  grade: Grade = new Grade();
+  studentId: number;
+  studentCount: number;
+  submissionCount: number;
 
   constructor(private _route:ActivatedRoute, private _teacherAssignmentService:TeacherAssignmentsService) { }
 
@@ -24,6 +31,8 @@ export class TeacherAssignmentsComponent implements OnInit {
     this.assignId = this._route.snapshot.params['assignId'];       
     this.getAssignments(); 
     this.getAssignmentById();
+    this.getSubmissions();
+    this.getCourseId();
   }
 
   getAssignments(){
@@ -45,6 +54,48 @@ export class TeacherAssignmentsComponent implements OnInit {
       
     })
   }
+
+  getSubmissions(){
+    this._teacherAssignmentService.getStudentSubmissions(this.assignId).subscribe(submissions => {
+      console.log(submissions);
+      this.submissions = submissions;
+      this.submissionCount = submissions.length;
+    })
+  }
+
+  download(fileName:string){
+    this._teacherAssignmentService.downloadStudentSubmission(this.assignId, fileName).subscribe( test => {
+      // var file = 
+    })
+  }
+
+  addStudentMarks(){
+    this.grade.studentId = this.studentId;
+    this.grade.assignId = this.assignId;
+    this._teacherAssignmentService.addStudentMarks(this.assignId, this.grade).subscribe(submissions => {
+      this.getSubmissions();
+    })
+  }
+
+  addFeedback(){
+    this.grade.studentId = this.studentId;
+    this.grade.assignId = this.assignId;
+    this._teacherAssignmentService.addFeedback(this.assignId, this.grade).subscribe(feebacks => {
+      this.getSubmissions();
+    })
+
+  }
+
+  setStudentId(studentId: number){
+    this.studentId = studentId;
+  }
+
+  getCourseId(){
+    this._teacherAssignmentService.getCourseStudentCount(this.cId).subscribe(data=> {
+      this.studentCount = data.students.length;
+    })
+  }
+
 
   // fileChange(event) {
   //   let fileList: FileList = event.target.files;
