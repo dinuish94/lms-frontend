@@ -43,6 +43,7 @@ import { QuizService } from './services/quiz/quiz.service';
 import { CourseService } from './services/course/course.service';
 import { StudentService } from './services/student/student.service';
 import { MarkQuizService } from './services/mark-quiz/mark-quiz.service';
+import { TeacherService } from './services/teacher/teacher.service';
 
 import { AppTimePipe } from './pipes/appTimePipe/app-time.pipe';
 import { QuizReviewComponent } from './quiz-review/quiz-review.component';
@@ -106,7 +107,8 @@ import { AdminDepartmentComponent } from './admin-department/admin-department.co
     QuizService,
     CourseService,
     StudentService,
-    MarkQuizService
+    MarkQuizService,
+    TeacherService
   ],
   bootstrap: [AppComponent]
 })
