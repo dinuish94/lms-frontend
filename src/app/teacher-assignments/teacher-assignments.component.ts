@@ -25,6 +25,7 @@ export class TeacherAssignmentsComponent implements OnInit {
   studentCount: number;
   submissionCount: number;
   file: File;
+  assignmentSource: string;
 
   constructor(private _route:ActivatedRoute, private _teacherAssignmentService:TeacherAssignmentsService) { }
 
@@ -48,6 +49,8 @@ export class TeacherAssignmentsComponent implements OnInit {
       this.assignment = assignment;
       this.assignment.startDate = new Date(assignment.startDate);
       this.assignment.endDate = new Date(assignment.endDate);
+      let x = assignment.file.split('/');
+      this.assignmentSource = x[x.length-1];
     });
   }
 
