@@ -3,12 +3,17 @@
         "id": 1,
         "role": "admin",
         "permissions": [{ "path": "home", "title": "Home", "icon": "home", "class": "" },
-                        { "path": "teacher-dashboard", "title": "Dashboard", "icon": "dashboard", "class": "" }]
+                        { "path": "admin/departments", "title": "Departments", "icon": "school", "class": "" },
+                        { "path": "admin/courses", "title": "Courses", "icon": "library_books", "class": "" },
+                        { "path": "admin/students", "title": "Students", "icon": "people", "class": "" },
+                        { "path": "admin/teachers", "title": "Teachers", "icon": "supervisor_accounts", "class": "" }                        
+                    ]
     }, {
         "id": 2,
         "role": "teacher",
         "permissions": [{ "path": "home", "title": "Home", "icon": "home", "class": "" },
-        { "path": "teacher-dashboard", "title": "Dashboard", "icon": "dashboard", "class": "" }]
+        { "path": "teacher-dashboard", "title": "Dashboard", "icon": "dashboard", "class": "" }
+    ]
     }, {
         "id": 3,
         "role": "student",

@@ -20,11 +20,18 @@ import { StudentEnrolledCoursesComponent } from './student-enrolled-courses/stud
 import { StudentCoursesComponent } from './student-courses/student-courses.component';
 import { StudentFeedbackComponent } from './student-feedback/student-feedback.component';
 import { LoginComponent } from './login/login.component';
+import { StudentCourseHomeComponent } from './student-course-home/student-course-home.component';
+import { StudentFeedbackSessionComponent } from './student-feedback-session/student-feedback-session.component';
 
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 import { StudentQuizComponent } from './student-quiz/student-quiz.component';
 import { QuizReviewComponent } from './quiz-review/quiz-review.component';
+
+import { AdminCourseComponent } from './admin-course/admin-course.component';
+import { AdminDepartmentComponent } from './admin-department/admin-department.component';
+import { AdminStudentComponent } from './admin-student/admin-student.component';
+import { AdminTeacherComponent } from './admin-teacher/admin-teacher.component';
 
 import { AuthGuard } from './auth/auth.guard';
 
@@ -52,7 +59,21 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent /*,canActivate:[AuthGuard]*/},
   { path: 'student-quiz', component: StudentQuizComponent /*,canActivate:[AuthGuard]*/},
   {path: 'view-profile/:userId', component: UpdateProfileComponent /*,canActivate:[AuthGuard]*/},
-  { path: 'review-quiz/:quizId', component: QuizReviewComponent /*,canActivate:[AuthGuard]*/}
+  { path: 'review-quiz/:quizId', component: QuizReviewComponent /*,canActivate:[AuthGuard]*/},
+
+  { path: 'login', component: LoginComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'student-quiz', component: StudentQuizComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'student-enrolled-courses/:cId', component: StudentCourseHomeComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'student-feedback/:fId', component: StudentFeedbackSessionComponent /*,canActivate:[AuthGuard]*/},
+
+  { path: 'student-quiz', component: StudentQuizComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'review-quiz/:quizId', component: QuizReviewComponent /*,canActivate:[AuthGuard]*/},
+
+  //Course Routes
+  { path: 'admin/courses', component: AdminCourseComponent /*,canActivate:[AuthGuard]*/},
+  { path: 'admin/students', component: AdminStudentComponent },
+  { path: 'admin/departments', component: AdminDepartmentComponent },
+  { path: 'admin/teachers', component: AdminTeacherComponent }
 ];
 
 @NgModule({

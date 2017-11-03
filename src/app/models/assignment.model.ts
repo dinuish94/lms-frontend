@@ -1,4 +1,5 @@
 export class Assignment {
+    assignId : number;
     name: String;
     description: string = '';
     startDate: Date;

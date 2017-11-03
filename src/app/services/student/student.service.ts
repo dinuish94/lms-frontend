@@ -33,7 +33,7 @@ export class StudentService {
   }
 
   
-  getStudent(studentId){
+  getStudent(studentId : number){
     return this.http.get('http://localhost:8080/students/'+studentId)
     .map(res => res.json());
   }
@@ -48,4 +48,23 @@ export class StudentService {
     map(response => response.json());
   }
 
+  uploadAssignment(file : File, assignId, sId){
+    let formData = new FormData();
+    formData.append('file', file);
+    formData.append('assignId',assignId);
+    formData.append('sId',sId);
+    console.log(formData);
+    return this.http.post('http://localhost:8080/assignments/student',formData)
+    .map(res => res);
+  }
+
+  getAssignments(studentId){
+    return this.http.get('http://localhost:8080/students/'+studentId+'/assignments')
+    .map(res => res.json());
+  }
+
+  getEnrolledCourses(studentId){
+    return this.http.get('http://localhost:8080/students/'+studentId+'/courses')
+    .map(res => res.json());
+  }
 }
