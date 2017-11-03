@@ -72,4 +72,8 @@ export class UpdateProfileComponent implements OnChanges, OnInit {
       this.isEditEmail = false;
     }
   }
+
+  private getQuiz() {
+    
+  }
 }
