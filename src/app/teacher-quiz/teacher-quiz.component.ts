@@ -70,7 +70,6 @@ export class TeacherQuizComponent implements OnInit {
     }
     this.answers = [];
     this.quiz.correctAnswer = "";
-    this.quiz.name = "";
     this.question = "";
     this.answer = "";
     
@@ -79,7 +78,6 @@ export class TeacherQuizComponent implements OnInit {
   getQuestions() {
     this._teacherQuizService.getAllQuestions(this.quizNo).subscribe(quizzes => {
       this.questions = quizzes;
-      console.log(JSON.stringify(quizzes));
     });
   }
 
@@ -96,6 +94,7 @@ export class TeacherQuizComponent implements OnInit {
     this.quiz.question = this.question;
     this.addQuestion = false;
     this.questionId = queId;
+    this.getQuizById();
   }
 
   getQuestion(queId: number) {
@@ -127,9 +126,7 @@ export class TeacherQuizComponent implements OnInit {
   }
 
   generateGradeSheet(){
-    console.log("test")
     this._teacherQuizService.generateGradeSheet(this.quizNo).subscribe(data => {
-      console.log(data);
       this.quizMarks = data;
     })
   }
