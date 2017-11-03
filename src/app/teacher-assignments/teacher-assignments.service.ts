@@ -71,13 +71,12 @@ export class TeacherAssignmentsService {
       .do(data => console.log(JSON.stringify(data)));
     }
 
-    uploadAssignment(file : File, assignId, sId){
+    uploadAssignment(file : File, assignId){
       let formData = new FormData();
       formData.append('file', file);
       formData.append('assignId',assignId);
-      formData.append('sId',sId);
       console.log(formData);
-      return this._http.post('http://localhost:8080/assignments/student',formData)
+      return this._http.post('http://localhost:8080/assignments/materials',formData)
       .map(res => res);
     }
 

@@ -144,9 +144,7 @@ export class TeacherAssignmentsComponent implements OnInit {
     })
   }
 
-  uploadAssignmentFile(assignId) {
-    let sId = this.studentId.toString();
-    let aId = assignId.toString();
+  uploadAssignmentFile() {
     let assignmentFile: File = this.file;
     this.file = null;
 
@@ -167,7 +165,7 @@ export class TeacherAssignmentsComponent implements OnInit {
       confirmButtonText: 'Yes, Submit Assignment!',
       cancelButtonText: 'Cancel!'
     }).then(() => {
-      this._teacherAssignmentService.uploadAssignment(assignmentFile, aId, sId).subscribe(() => {
+      this._teacherAssignmentService.uploadAssignment(assignmentFile, this.assignId).subscribe(() => {
         swal({
           title: 'Success',
           text: 'Uploaded Succesfully!',
