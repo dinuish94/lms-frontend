@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter,DoCheck } from '@angular/core';
 
 import { Question } from '../../models/question.model';
  import { AnsweredQuestion } from '../../models/answeredQuestion.model';
@@ -11,16 +11,25 @@ import { Observable } from 'rxjs';
   templateUrl: './quiz-panel.component.html',
   styleUrls: ['./quiz-panel.component.css']
 })
-export class QuizPanelComponent implements OnInit {
+export class QuizPanelComponent implements OnInit,DoCheck {
   @Input() questions: Question[];
   @Input() answeredQuestions: AnsweredQuestion[];
   @Input() currentQuestion: Question;
   @Input() currentIndex: number;
   @Output() navigate: EventEmitter<any> = new EventEmitter<any>();
+  @Output() timeUp: EventEmitter<any> = new EventEmitter<any>();
+  
 
-  count: number = 3600;
+  count: number = 3000;
   countDown;
   constructor() { 
+  }
+
+  ngDoCheck() {
+    if (this.count === 0) {
+      this.count = -1;
+      this.timeUp.emit();
+    }
   }
 
   setButtonClass(index) {
@@ -40,10 +49,11 @@ export class QuizPanelComponent implements OnInit {
       result.question === this.questions[index]
     );
 
-    if (answered != -1) {
+    if (answered != -1 && this.answeredQuestions[answered].selectedAnswer !== '-') {
       return true;
     }
   }
+
 
   ngOnInit() {
     this.countDown = Observable.timer(0,1000)

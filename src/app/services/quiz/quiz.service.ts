@@ -23,6 +23,4 @@ export class QuizService {
   post(quizMark: QuizMark1) {
     return this.http.post(generateQuizMarksUrl(quizMark.quiz,quizMark.student),quizMark);
   }
-
-  qu
 }
