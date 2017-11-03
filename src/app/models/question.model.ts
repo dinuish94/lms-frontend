@@ -4,6 +4,7 @@ export class Question {
     answers: string[];
     correctAnswer: string;
     flagged: boolean = false;
+    selectedAnswer='';
 
     constructor(values: Object={}) {
         Object.assign(this,values);

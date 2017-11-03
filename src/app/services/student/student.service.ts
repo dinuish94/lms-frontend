@@ -43,4 +43,9 @@ export class StudentService {
     .map(response => response.json());
   }
 
+  getStudentMarks(id) {
+    return this.http.get('http://localhost:8080/students/'+id+'/quizzes').
+    map(response => response.json());
+  }
+
 }

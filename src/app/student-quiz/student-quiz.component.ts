@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { QuizService } from '../services/quiz/quiz.service';
 import { MarkQuizService } from '../services/mark-quiz/mark-quiz.service';
 
 import { Quiz } from '../models/quizDTO.model';
 import { Question } from '../models/question.model';
-import { Answer } from '../models/answer.model';
-import { QuizMark } from '../models/quizMarks.model';
+import { AnsweredQuestion } from '../models/answeredQuestion.model';
+import { QuizMark1 } from '../models/quizMarks/quizMark.model';
 
 
 import { Observable } from 'rxjs';
@@ -21,10 +22,9 @@ import swal from 'sweetalert2';
 export class StudentQuizComponent implements OnInit {
   quiz: Quiz;
   questions: Question[] = new Array();
-  answeredQuestions: Question[] = new Array();
+  answeredQuestions: AnsweredQuestion[] = new Array();
   question: Question = new Question();
   index: number = 0;
-  answers: Answer[] = new Array();
   selectedAnswer: string;
   answer; Answer;
   course: string;
@@ -32,13 +32,11 @@ export class StudentQuizComponent implements OnInit {
   count: number = 3600;
   countDown;
   showPanel: boolean = false;
-  quizMark: QuizMark = new QuizMark();
+  quizMark: QuizMark1 = new QuizMark1();
 
-  constructor(private _quizService: QuizService, private _quizMarkService: MarkQuizService) {
-    this.countDown = Observable.timer(0,1000)
-    .take(this.count)
-    .map(()=> --this.count);
-}
+  constructor(private _quizService: QuizService, private _quizMarkService: MarkQuizService, private _router: Router) {
+
+  }
 
   ngOnInit() {
     this.getQuiz();
@@ -73,29 +71,37 @@ export class StudentQuizComponent implements OnInit {
   }
 
   setAnswer() {
-    let index = this.answers.findIndex(result => result.question === this.question.queId);
+    let index = this.answeredQuestions.findIndex(result => result.question === this.question);
 
     if (index !== -1) {
-      this.selectedAnswer = this.answers[index].selectedAnswer;
-      console.log('answer is ',this.selectedAnswer);
+      this.selectedAnswer = this.answeredQuestions[index].selectedAnswer;
+    } else {
+      this.selectedAnswer = "";
     }
   }
 
   addAnswer() {
+    let answeredQuestion = new AnsweredQuestion();
+
     if (this.answered() != -1) {
-      this.answers.splice(this.answered(), 1);
+      this.answeredQuestions.splice(this.answered(), 1);
     }
 
     if ((this.selectedAnswer !== '') && (this.selectedAnswer !== undefined)) {
-      this.answeredQuestions.push(this.question);
-      this.answers.push(new Answer(this.question.queId, this.selectedAnswer));
-      this.selectedAnswer='';
+      answeredQuestion.question = this.question;
+      answeredQuestion.selectedAnswer = this.selectedAnswer;
+      this.answeredQuestions.push(answeredQuestion);
+      this.selectedAnswer = '';
     }
-    
   }
 
-  private answered() {
-    return this.answers.findIndex(result => result.question === this.question.queId);
+  private answered(index?) {
+    if (index) {
+      let question = this.questions[index];
+      return this.answeredQuestions.findIndex(result => result.question === question);
+    } else {
+      return this.answeredQuestions.findIndex(result => result.question === this.question);
+    }
   }
 
   last() {
@@ -111,18 +117,20 @@ export class StudentQuizComponent implements OnInit {
     this.question.flagged = !this.question.flagged;
   }
 
-  navigateCallback(index) {
-    console.log('did index come',index);
-    this.question = this.questions[index];
-    this.index = index;
+  navigateCallback(indexes) {
+    this.addAnswer();
+    console.log('did index come', indexes.newIndex);
+    this.question = this.questions[indexes.newIndex];
+    this.index = indexes.newIndex;
     this.setAnswer();
   }
 
   submitQuiz() {
-    this._quizMarkService.submitQuiz(this.quiz,this.answers);
+    this._quizMarkService.submitQuiz(this.quiz, this.answeredQuestions);
     this._quizMarkService.markQuiz();
     this._quizMarkService.setStudentMark();
     this.quizMark = this._quizMarkService.getStudentMark();
+    console.log("quiz mark", this.quizMark);
 
   }
 
@@ -134,20 +142,26 @@ export class StudentQuizComponent implements OnInit {
       showCancelButton: true,
       confirmButtonText: 'submit',
       cancelButtonText: 'cancel'
-    }).then(()=> {
+    }).then(() => {
       this.submitQuiz();
       this._quizService.post(this.quizMark).subscribe(any => {
-        console.log("any",any);
-        swal(
-          'Success!',
-          'your answers have been submitted',
-          'success'
-        );
-      });    
-    }, function(dismiss) {
+        this.submittedAlert();
+      });
+    }, function (dismiss) {
       // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
       if (dismiss === 'cancel') {
       }
     })
+  }
+
+  submittedAlert() {
+    swal(
+      'Success!',
+      'your answers have been submitted',
+      'success'
+    );
+    setTimeout(() => {
+      this._router.navigateByUrl('/review-quiz/1');
+    }, 2000);
   }
 }

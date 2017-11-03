@@ -2,7 +2,8 @@ export const backend =  {
     baseUrl: 'http://localhost:8080/',
     apiSuffix: {
         quiz: 'quizzes/',
-        quizMark: 'quizmarks'
+        quizMark: 'quizmarks',
+        student: 'students/'
     }
 }
 
@@ -14,6 +15,6 @@ export const generateQuizUrl = (id) => {
     return backend.baseUrl+backend.apiSuffix.quiz+'/'+id;
 }
 
-export const generateQuizMarksUrl = (id) => {
-    return backend.baseUrl+backend.apiSuffix.quizMark+'/';
+export const generateQuizMarksUrl = (quizId: number,studentId: number) => {
+    return backend.baseUrl+backend.apiSuffix.quiz+quizId+'/'+backend.apiSuffix.student+studentId+'/'+backend.apiSuffix.quizMark;
 }

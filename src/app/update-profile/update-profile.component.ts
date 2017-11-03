@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { StudentService } from '../services/student/student.service';
+import { QuizService } from '../services/quiz/quiz.service';
 import {ActivatedRoute} from '@angular/router';
 
 import { Student } from '../models/student.model';
@@ -16,10 +17,12 @@ export class UpdateProfileComponent implements OnChanges, OnInit {
   student: any = new Array();
   studentId: number;
   editStudent: Student = new Student();
+  quizzes: any = new Array();
 
-  constructor(private _studentService: StudentService, private _route:ActivatedRoute) { 
+  constructor(private _studentService: StudentService, private _route:ActivatedRoute, private _quizService: QuizService) { 
     this.studentId = this._route.snapshot.params['userId'];    
     this.getStudent();
+    this.getQuizMarks();
   }
 
   ngOnChanges(changes) {
@@ -73,7 +76,26 @@ export class UpdateProfileComponent implements OnChanges, OnInit {
     }
   }
 
-  private getQuiz() {
-    
+  private getQuizMarks() {
+   this._studentService.getStudentMarks(this.studentId).subscribe(studentMarks => {
+      this.mapQuizzes(studentMarks);
+   });
+  }
+
+  private mapQuizzes(studentMarks: any) {
+    let quiz: any = {
+      course:'',
+      quiz:'',
+      mark:0
+    };
+    studentMarks.forEach(studentMark => {
+      console.log(studentMark.marks);
+      quiz.course = studentMark.quiz.course.name;
+      quiz.quiz = studentMark.quiz.name;
+      quiz.mark = studentMark.marks;
+      console.log(quiz);
+
+      this.quizzes.push(quiz);
+    });
   }
 }

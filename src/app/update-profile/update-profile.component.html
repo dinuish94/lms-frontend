@@ -5,64 +5,65 @@
         <div class="card-header" style="background-color:	#00cc99">
           <div class="row">
             <div class="col-md-6">
-                <h3 class="title">Student Profile</h3>
+              <h3 class="title">Student Profile</h3>
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-3">
-                <button class="btn" style="background-color:#00cc99" data-toggle="modal" data-target="#myModal">Quiz Marks</button>
+              <button class="btn" style="background-color:#00cc99" data-toggle="modal" data-target="#myModal">Quiz Marks</button>
             </div>
           </div>
         </div>
         <div class="card-content">
           <div class="row" style="padding-top:5%">
-            <div class="col-md-1" style="padding-left:20%;"> 
-                <i class="material-icons" style="color:	#9c9a9a">person</i>
+            <div class="col-md-1" style="padding-left:20%;">
+              <i class="material-icons" style="color:	#9c9a9a">person</i>
             </div>
             <div class="col-md-2" style="padding-left:5%;">
               <label style="font-size:large;color:#9c9a9a;">Name</label>
             </div>
             <div class="col-md-5">
               <label *ngIf="!isEditName">{{student.name}}</label>
-              <input type="text" style="margin-top:-15%" class="form-control" [(ngModel)]="student.name" *ngIf="isEditName"/>
+              <input type="text" style="margin-top:-15%" class="form-control" [(ngModel)]="student.name" *ngIf="isEditName" />
             </div>
             <div class="col-md-2" *ngIf="!isEditName">
-              <i class="material-icons" style="color:#9c9a9a;cursor:pointer" (click)="clickEditName()">edit</i>                          
+              <i class="material-icons" style="color:#9c9a9a;cursor:pointer" (click)="clickEditName()">edit</i>
             </div>
             <div class="col-md-2" *ngIf="isEditName">
               <i class="material-icons" style="color:#9c9a9a;cursor:pointer" (click)="editName()">done</i>
-              <i class="material-icons" style="margin-left:20%;color:#9c9a9a;cursor:pointer" (click)="editName()">close</i>                           
+              <i class="material-icons" style="margin-left:20%;color:#9c9a9a;cursor:pointer" (click)="editName()">close</i>
             </div>
           </div>
           <div class="row" style="padding-top:5%">
-              <div class="col-md-1" style="padding-left:20%;"> 
-                  <i class="material-icons" style="color:#9c9a9a">email</i>
-              </div>
-              <div class="col-md-2" style="padding-left:5%;">
-                <label style="font-size:large;color:#9c9a9a;">Email</label>
-              </div>
-              <div class="col-md-5">
-                <label *ngIf="!isEditEmail">{{student.email}}</label>
-                <input type="text" style="margin-top:-15%" class="form-control" [(ngModel)]="student.email" *ngIf="isEditEmail" [(ngModel)]="editStudent.email"/>                
-              </div>
-              <div class="col-md-2" *ngIf="!isEditEmail">
-                <i class="material-icons" style="color:#9c9a9a;cursor:pointer" (click)="clickEditEmail()">edit</i>                          
-              </div>
-              <div class="col-md-2" *ngIf="isEditEmail">
-                <i class="material-icons" style="color:#9c9a9a;cursor:pointer" (click)="editEmail()">done</i>
-                <i class="material-icons" style="margin-left:20%;color:#9c9a9a;cursor:pointer" (click)="editName()">close</i>                           
-              </div>
+            <div class="col-md-1" style="padding-left:20%;">
+              <i class="material-icons" style="color:#9c9a9a">email</i>
             </div>
-            <div class="row" style="padding-top:5%">
-                <div class="col-md-1" style="padding-left:20%;"> 
-                    <i class="material-icons" style="color:#9c9a9a">book</i>
-                </div>
-                <div class="col-md-2" style="padding-left:5%;">
-                  <label style="font-size:large;color:#9c9a9a;">Courses</label>
-                </div>
-                <div class="col-md-6" *ngFor="let course of student.courses">
-                  <label>{{course}}</label>
-                </div>
-              </div>
+            <div class="col-md-2" style="padding-left:5%;">
+              <label style="font-size:large;color:#9c9a9a;">Email</label>
+            </div>
+            <div class="col-md-5">
+              <label *ngIf="!isEditEmail">{{student.email}}</label>
+              <input type="text" style="margin-top:-15%" class="form-control" [(ngModel)]="student.email" *ngIf="isEditEmail" [(ngModel)]="editStudent.email"
+              />
+            </div>
+            <div class="col-md-2" *ngIf="!isEditEmail">
+              <i class="material-icons" style="color:#9c9a9a;cursor:pointer" (click)="clickEditEmail()">edit</i>
+            </div>
+            <div class="col-md-2" *ngIf="isEditEmail">
+              <i class="material-icons" style="color:#9c9a9a;cursor:pointer" (click)="editEmail()">done</i>
+              <i class="material-icons" style="margin-left:20%;color:#9c9a9a;cursor:pointer" (click)="editName()">close</i>
+            </div>
+          </div>
+          <div class="row" style="padding-top:5%">
+            <div class="col-md-1" style="padding-left:20%;">
+              <i class="material-icons" style="color:#9c9a9a">book</i>
+            </div>
+            <div class="col-md-2" style="padding-left:5%;">
+              <label style="font-size:large;color:#9c9a9a;">Courses</label>
+            </div>
+            <div class="col-md-6" *ngFor="let course of student.courses">
+              <label>{{course}}</label>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -70,32 +71,34 @@
 </div>
 
 <div id="myModal" class="modal fade" role="dialog" data-backdrop="false" style="overflow: auto;" tabindex="-1">
-    <div class="modal-dialog">
-  
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">{{selectedCourse?.title}}</h4>
-        </div>
-        <div class="modal-body">
-          <table>
-            <tr>
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">{{selectedCourse?.title}}</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
               <th>Course</th>
               <th>Quiz</th>
               <th>Quiz Mark</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let quiz of quizzes">
+              <td>{{quiz.course}}</td>
+              <td>{{quiz.quiz}}</td>
+              <td>{{quiz.mark}}</td>
             </tr>
-            <tr>
-              <td>{{}}</td>
-              <td>{{}}</td>
-              <td>{{}}</td>
-            </tr>
-          </table>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+          </tbody>
+        </table>
       </div>
-  
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
+
   </div>
+</div>

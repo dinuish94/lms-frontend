@@ -44,6 +44,8 @@ import { MarkQuizService } from './services/mark-quiz/mark-quiz.service';
 
 import { AppTimePipe } from './pipes/appTimePipe/app-time.pipe';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { QuizReviewComponent } from './quiz-review/quiz-review.component';
+import { MarkAnswerDirective } from './directives/mark-answer/mark-answer.directive';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,9 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     TeacherAssignmentsComponent,
     QuizPanelComponent,
     AppTimePipe,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    QuizReviewComponent,
+    MarkAnswerDirective
   ],
   imports: [
     BrowserModule,
