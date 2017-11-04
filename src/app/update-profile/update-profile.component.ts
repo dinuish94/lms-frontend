@@ -10,32 +10,31 @@ import { Student } from '../models/student.model';
   templateUrl: './update-profile.component.html',
   styleUrls: ['./update-profile.component.css']
 })
-export class UpdateProfileComponent implements OnChanges, OnInit {
+export class UpdateProfileComponent implements OnInit {
   isEditName: boolean = false;
   isEditEmail: boolean = false;
   name: string = '';
-  student: any = new Array();
+  student: any = {
+    courses: new Array()
+  };
   studentId: number;
   editStudent: Student = new Student();
   quizzes: any = new Array();
 
   constructor(private _studentService: StudentService, private _route:ActivatedRoute, private _quizService: QuizService) { 
-    this.studentId = this._route.snapshot.params['userId'];    
-    this.getStudent();
-    this.getQuizMarks();
   }
 
-  ngOnChanges(changes) {
-    this.name = 'kashif roshen';
-  }
-
-  ngOnInit() {
-    this.name = 'kashif roshen';
-  }
 
   editName() {
     this.editStudent.name = this.student.name;
     this.updateStudent();
+  }
+
+  ngOnInit() {
+    this.studentId = this._route.snapshot.params['userId'];    
+    this.getStudent();
+    this.getQuizMarks();
+    this.mapCourses();
   }
 
 
@@ -54,8 +53,10 @@ export class UpdateProfileComponent implements OnChanges, OnInit {
 
   getStudent() {
     this._studentService.getStudent(this.studentId).subscribe(student => {
+      console.log(student);
       this.student = student;
       this.student.email = 'kashifroshen7@gmail.com';
+      this.mapCourses();
     });
   }
 
@@ -78,8 +79,17 @@ export class UpdateProfileComponent implements OnChanges, OnInit {
 
   private getQuizMarks() {
    this._studentService.getStudentMarks(this.studentId).subscribe(studentMarks => {
+     console.log(studentMarks,"ge");
       this.mapQuizzes(studentMarks);
    });
+  }
+
+  private mapCourses() {
+    this.student.courses.forEach(course => {
+      let i = 0;
+      this.student.courses[i] = course.name;
+      i++;
+    });
   }
 
   private mapQuizzes(studentMarks: any) {
