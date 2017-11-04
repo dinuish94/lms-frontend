@@ -5,6 +5,7 @@ export class Assignment {
     startDate: Date;
     endDate: Date;
     courseId: number;
+    file: String;
   
     constructor(values: Object = {}) {
       Object.assign(this, values);

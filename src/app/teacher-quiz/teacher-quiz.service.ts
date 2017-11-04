@@ -5,6 +5,7 @@ import { Quiz } from '../models/quiz.model';
 import { AddedQuiz } from '../models/addedQuiz.model';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
+import { QuizMark1 } from '../models/quizMarks/quizMark.model';
 
 @Injectable()
 export class TeacherQuizService {
@@ -64,6 +65,12 @@ export class TeacherQuizService {
     return this._http.get(this._addquizurl + quizId + "/active")
     .map((response: Response) => response.json())
     .do(data => JSON.stringify(data));
+  }
+
+  generateGradeSheet(quizId: number): Observable<QuizMark1[]> {
+    return this._http.get("http://localhost:8080/quizzes/marks/"+quizId)
+    .map((response: Response) => response.json())
+    .do(data => JSON.stringify(data))
   }
 
 }
