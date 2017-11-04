@@ -43,6 +43,7 @@ import { QuizService } from './services/quiz/quiz.service';
 import { CourseService } from './services/course/course.service';
 import { StudentService } from './services/student/student.service';
 import { FeedbackService } from './services/feedback/feedback.service';
+import { DepartmentsService } from './services/departments/departments.service';
 
 import { StudentCourseHomeComponent } from './student-course-home/student-course-home.component';
 import { StudentFeedbackSessionComponent } from './student-feedback-session/student-feedback-session.component';
@@ -117,7 +118,8 @@ import { AdminDepartmentComponent } from './admin-department/admin-department.co
     CourseService,
     StudentService,
     MarkQuizService,
-    TeacherService
+    TeacherService,
+    DepartmentsService
   ],
   bootstrap: [AppComponent]
 })

@@ -35,4 +35,8 @@ export class CourseService {
     )
   } 
 
+  addCourse(newCourse) {
+    return this.http.post('http://localhost:8080/courses',newCourse).map(res => res.json)
+  }
+
 }
