@@ -18,7 +18,7 @@
         "id": 3,
         "role": "student",
         "permissions": [
-            { "path": "home", "title": "Home", "icon": "home", "class": "" }]
+            { "path": "student-home", "title": "Home", "icon": "home", "class": "" }]
     }
 ]
 
