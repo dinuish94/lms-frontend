@@ -11,7 +11,7 @@
     }, {
         "id": 2,
         "role": "teacher",
-        "permissions": [{ "path": "home", "title": "Home", "icon": "home", "class": "" },
+        "permissions": [
         { "path": "teacher-dashboard", "title": "Dashboard", "icon": "dashboard", "class": "" }
     ]
     }, {
