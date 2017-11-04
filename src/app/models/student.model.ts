@@ -2,12 +2,15 @@ import { Course } from './course.model';
 import { Assignment } from './assignment.model';
 
 export class Student {
-    sId: number;
-    name: string = '';
+    studentId: number;
+    name: String;
+    email: String;
+
     courses : Course[];
     studentAssignment : Assignment[];
-  
-    constructor(values: Object = {}) {
-      Object.assign(this, values);
+
+    constructor(value: Object={}) {
+        Object.assign(this,value);
+
     }
 }

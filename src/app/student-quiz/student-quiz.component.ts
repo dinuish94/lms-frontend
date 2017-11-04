@@ -9,8 +9,11 @@ import { Question } from '../models/question.model';
 import { AnsweredQuestion } from '../models/answeredQuestion.model';
 import { QuizMark1 } from '../models/quizMarks/quizMark.model';
 
+
 import { Observable } from 'rxjs';
 import swal from 'sweetalert2';
+
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -32,17 +35,19 @@ export class StudentQuizComponent implements OnInit {
   countDown;
   showPanel: boolean = false;
   quizMark: QuizMark1 = new QuizMark1();
+  quizId: number;
 
-  constructor(private _quizService: QuizService, private _quizMarkService: MarkQuizService, private _router: Router) {
+  constructor(private _quizService: QuizService, private _quizMarkService: MarkQuizService, private _router: Router, private _route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
+    this.quizId = this._route.snapshot.params['quizId'];
     this.getQuiz();
   }
 
   getQuiz() {
-    this._quizService.get(1).subscribe(response => {
+    this._quizService.get(this.quizId).subscribe(response => {
       this.quiz = response;
       console.log(this.quiz);
       this.questions = this.quiz.questions;
@@ -50,6 +55,7 @@ export class StudentQuizComponent implements OnInit {
       this.question = this.questions[0];
       this.course = this.quiz.course.name;
       this.quizNo = this.quiz.qId;
+      this.mapAnsweredQuestions();
     });
   }
 
@@ -80,18 +86,28 @@ export class StudentQuizComponent implements OnInit {
   }
 
   addAnswer() {
-    let answeredQuestion = new AnsweredQuestion();
+    let answeredQuestion = this.answeredQuestions[this.answered()];
 
-    if (this.answered() != -1) {
-      this.answeredQuestions.splice(this.answered(), 1);
-    }
+    // if (this.answered() != -1) {
+    //   this.answeredQuestions.splice(this.answered(), 1);
+    // }
 
     if ((this.selectedAnswer !== '') && (this.selectedAnswer !== undefined)) {
       answeredQuestion.question = this.question;
       answeredQuestion.selectedAnswer = this.selectedAnswer;
-      this.answeredQuestions.push(answeredQuestion);
+      //this.answeredQuestions.push(answeredQuestion);
       this.selectedAnswer = '';
     }
+  }
+  
+
+  mapAnsweredQuestions() {
+    this.questions.forEach(question => {
+      let answeredQ = new AnsweredQuestion();
+      answeredQ.question = question;
+      answeredQ.selectedAnswer = '-';
+      this.answeredQuestions.push(answeredQ);
+    });
   }
 
   private answered(index?) {
@@ -118,7 +134,6 @@ export class StudentQuizComponent implements OnInit {
 
   navigateCallback(indexes) {
     this.addAnswer();
-    console.log('did index come', indexes.newIndex);
     this.question = this.questions[indexes.newIndex];
     this.index = indexes.newIndex;
     this.setAnswer();
@@ -129,8 +144,22 @@ export class StudentQuizComponent implements OnInit {
     this._quizMarkService.markQuiz();
     this._quizMarkService.setStudentMark();
     this.quizMark = this._quizMarkService.getStudentMark();
-    console.log("quiz mark", this.quizMark);
+  }
 
+  timeUpSubmit(event) {
+    swal(
+      'Your time is up!',
+      'The quiz would be submitted',
+      'warning'
+    );
+
+    this.submitQuiz();
+
+    this._quizService.post(this.quizMark).subscribe(any => {
+    });
+    setTimeout(() => {
+      this._router.navigateByUrl('/review-quiz/' + this.quizId);
+    }, 2000);
   }
 
   submitAlert() {
@@ -143,6 +172,7 @@ export class StudentQuizComponent implements OnInit {
       cancelButtonText: 'cancel'
     }).then(() => {
       this.submitQuiz();
+      console.log(this.quizMark);
       this._quizService.post(this.quizMark).subscribe(any => {
         this.submittedAlert();
       });
@@ -160,7 +190,7 @@ export class StudentQuizComponent implements OnInit {
       'success'
     );
     setTimeout(() => {
-      this._router.navigateByUrl('/review-quiz/1');
+      this._router.navigateByUrl('/review-quiz/' + this.quizId);
     }, 2000);
   }
 }

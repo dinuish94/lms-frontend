@@ -22,9 +22,7 @@ export class MarkQuizService implements OnInit {
   }
 
   setStudent() {
-    this.student = {
-      id: 1
-    }
+    this.student = JSON.parse(localStorage.getItem("authUser"));
   }
 
   setQuiz(quiz: Quiz) {

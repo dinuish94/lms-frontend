@@ -18,12 +18,16 @@ export class QuizReviewComponent implements OnInit {
   quizId: number;
   all: number=0;
   correct: number=0;
+  user: any;
 
   constructor(private _quizMarkService: MarkQuizService, private _quizService: QuizService, private _router: ActivatedRoute) { }
 
   ngOnInit() {
     this.quizId = this._router.snapshot.params['quizId'];
-    this._quizService.getMark(1,1).subscribe(quizMark => {
+    this.user = JSON.parse(localStorage.getItem("authUser"));
+    
+
+    this._quizService.getMark(this.quizId,this.user.id).subscribe(quizMark => {
       this.quiz = quizMark;
       this.answeredQuestions = this.quiz.answeredQuestions;
       this.getquestionCount();

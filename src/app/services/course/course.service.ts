@@ -29,4 +29,14 @@ export class CourseService {
     .map(res => res.json());
   }
 
+  getQuizzes(courseId) {
+    return this.http.get('http://localhost:8080/courses/'+courseId+'/quizzes').map(
+      res => res.json()
+    )
+  } 
+
+  addCourse(newCourse) {
+    return this.http.post('http://localhost:8080/courses',newCourse).map(res => res.json)
+  }
+
 }

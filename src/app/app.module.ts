@@ -43,6 +43,7 @@ import { QuizService } from './services/quiz/quiz.service';
 import { CourseService } from './services/course/course.service';
 import { StudentService } from './services/student/student.service';
 import { FeedbackService } from './services/feedback/feedback.service';
+import { DepartmentsService } from './services/departments/departments.service';
 
 import { StudentCourseHomeComponent } from './student-course-home/student-course-home.component';
 import { StudentFeedbackSessionComponent } from './student-feedback-session/student-feedback-session.component';
@@ -50,6 +51,7 @@ import { MarkQuizService } from './services/mark-quiz/mark-quiz.service';
 import { TeacherService } from './services/teacher/teacher.service';
 
 import { AppTimePipe } from './pipes/appTimePipe/app-time.pipe';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { QuizReviewComponent } from './quiz-review/quiz-review.component';
 import { MarkAnswerDirective } from './directives/mark-answer/mark-answer.directive';
 import { AdminCourseComponent } from './admin-course/admin-course.component';
@@ -92,6 +94,7 @@ import { AdminDepartmentComponent } from './admin-department/admin-department.co
     StudentFeedbackSessionComponent,
     QuizPanelComponent,
     AppTimePipe,
+    UpdateProfileComponent,
     QuizReviewComponent,
     MarkAnswerDirective,
     AdminCourseComponent,
@@ -115,7 +118,8 @@ import { AdminDepartmentComponent } from './admin-department/admin-department.co
     CourseService,
     StudentService,
     MarkQuizService,
-    TeacherService
+    TeacherService,
+    DepartmentsService
   ],
   bootstrap: [AppComponent]
 })

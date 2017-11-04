@@ -35,7 +35,9 @@ export class SidebarComponent implements OnInit {
     constructor(private http: Http) { }
 
     ngOnInit() {
-        let role = 2;
+        let user:any = JSON.parse(localStorage.getItem('authUser'));
+        let role = user.role;
+        
         this.getJSON().subscribe(data => {
              this.permissions=data;
              this.permissions.forEach(permission => {

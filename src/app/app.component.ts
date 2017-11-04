@@ -12,7 +12,7 @@ export class AppComponent implements OnInit,AfterViewChecked {
   fullPage: boolean = false;
 
   constructor(public location: Location) {
-    if (this.location.path() === '/student-quiz') {
+    if (this.location.path().includes('student-quiz')) {
       this.fullPage = true;
     } else {
       this.fullPage = false;
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit,AfterViewChecked {
 
   ngAfterViewChecked() {
     setTimeout(() => {
-      if (this.location.path() === '/student-quiz') {
+      if (this.location.path().includes('student-quiz')) {
       this.fullPage = true;
     } else {
       this.fullPage = false;
