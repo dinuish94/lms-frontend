@@ -225,7 +225,7 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let quizMark of quizMarks;">
-                      <td>{{quizMark.student}}</td>
+                      <td>{{quizMark.student.name}}</td>
                       <td>{{quizMark.marks}}</td>                      
                       <td class="td-actions text-right">
                         <button type="button" rel="tooltip" title="" class="btn btn-info btn-simple btn-xs" data-original-title="Edit Task" (click)="editQuestion(question.queId)"><!--(click)="showDialog = !showDialog"-->
